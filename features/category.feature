@@ -23,13 +23,13 @@ Background:
 
 	And I am on a category page
 
-Scenerio: display all related articles
+Scenario: display all related articles
 	When I follow "test_cat_1"
 	Then I should see following displayed: "test_art_1", "test_art_3", "test_art_6"
 	When I follow "test_cat_2"
 	Then I should see following displayed: "test_art_2", "test_art_5"
 
-Scenerio: Display a brief of the article
+Scenario: Display a brief of the article
 	When I follow "test_cat_1"
 	Then I should see the following displayed: "title", "creat_date", "author", "category"
 
