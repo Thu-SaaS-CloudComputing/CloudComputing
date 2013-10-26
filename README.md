@@ -7,3 +7,4 @@ CloudComputing
 [![Code Climate](https://codeclimate.com/github/Thu-SaaS-CloudComputing/CloudComputing.png)](https://codeclimate.com/github/Thu-SaaS-CloudComputing/CloudComputing)
 
 [![Dependency Status](https://gemnasium.com/Thu-SaaS-CloudComputing/CloudComputing.png)](https://gemnasium.com/Thu-SaaS-CloudComputing/CloudComputing)
+
