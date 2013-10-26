@@ -11,7 +11,7 @@ group :development, :test do
   gem 'capybara'
 end
 group :test do
-  gem 'cucumber-rails' 
+  gem 'cucumber-rails', :require => false 
 end
 # Gems used only for assets and not required
 # in production environments by default.
