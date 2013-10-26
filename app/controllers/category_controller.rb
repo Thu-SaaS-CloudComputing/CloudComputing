@@ -15,7 +15,7 @@ class CategoryController < ApplicationController
   def show
     all_category = Category.all
     cat = Category.find_by_id(params[:id])
-    articles = 
+#    articles = 
   end
 
   def update
