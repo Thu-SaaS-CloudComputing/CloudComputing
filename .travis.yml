@@ -1,3 +1,4 @@
 language: ruby
+script: "bundle exec rake travis:build"
 rvm:
   - 1.9.3
