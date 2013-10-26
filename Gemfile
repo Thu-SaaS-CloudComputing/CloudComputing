@@ -9,6 +9,7 @@ gem 'sqlite3'
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'database_cleaner'
 end
 group :test do
   gem 'cucumber-rails', :require => false 

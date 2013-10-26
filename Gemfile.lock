@@ -63,6 +63,7 @@ GEM
       capybara (>= 1.1.2)
       cucumber (>= 1.1.8)
       nokogiri (>= 1.5.0)
+    database_cleaner (0.8.0)
     debugger (1.6.2)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -180,6 +181,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   coveralls
   cucumber-rails
+  database_cleaner
   debugger
   haml
   jquery-rails
