@@ -1,6 +1,9 @@
 class CategoryController < ApplicationController
   def index
-    all_category = Category.all
+    @all_category = Category.all
+    if !@all_category.empty?
+      @articles = @all_category[0].articles
+    end
   end
  
   def create
@@ -13,9 +16,9 @@ class CategoryController < ApplicationController
   end
 
   def show
-    all_category = Category.all
+    @all_category = Category.all
     cat = Category.find_by_id(params[:id])
-#    articles = 
+    @articles = cat.articles
   end
 
   def update

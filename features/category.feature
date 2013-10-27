@@ -25,9 +25,9 @@ Background:
 
 Scenario: display all related articles
 	When I follow "test_cat_1"
-	Then I should see following displayed: "test_art_1", "test_art_3", "test_art_6"
+	Then I should see the following displayed: "test_art_1", "test_art_3", "test_art_6"
 	When I follow "test_cat_2"
-	Then I should see following displayed: "test_art_2", "test_art_5"
+	Then I should see the following displayed: "test_art_2", "test_art_5"
 
 Scenario: Display a brief of the article
 	When I follow "test_cat_1"

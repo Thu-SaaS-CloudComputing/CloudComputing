@@ -1,10 +1,10 @@
-Given /the following categories exist:/ do |item_list|
+Given /^the following category exist:$/ do |item_list|
   item_list.hashes.each do |item|
     Category.create!(item)
   end  
 end
 
-Given /the following articles exist:/ do |item_list|
+Given /^the following article exist:$/ do |item_list|
   item_list.hashes.each do |item|
     Article.create!(item)
   end
@@ -20,11 +20,11 @@ Then /^(?:|I )am on (.+)$/ do |page_name|
 end
 
 
-When /I follow "(.*)"/ do |click|
+When /^I follow "(.*)"$/ do |click|
   click_link(click)
 end 
 
-Then /I should see following displayed: (.*)/ do |lst|
+Then /^I should see the following displayed: (.*)$/ do |lst|
   art_list = lst.scan(/[^, "]/)
   art_list.each do |art|
     if page.respond_to? :should
