@@ -1,0 +1,1 @@
+CloudComputing::Application.config.secret_token = ENV['SECRET_TOKEN'] || '34aff71d1e2085f5b4eb63eca262b9e84c71ab8d38f8257119b755cd89402bc98e00015645552b6f5fd78f1e18b1cfa92ac6accf55e30ae0ceb77fdd2e2fca42'
