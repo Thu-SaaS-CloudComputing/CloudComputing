@@ -1,6 +1,6 @@
 class CategoryController < ApplicationController
   def index
-    all_category = Category.all
+    @categories = Category.all
   end
  
   def create
@@ -13,9 +13,10 @@ class CategoryController < ApplicationController
   end
 
   def show
-    all_category = Category.all
-    cat = Category.find_by_id(params[:id])
-#    articles = 
+    @categories= Category.all
+    id = params[:id]
+    id |= 0
+    @articles = Category.find_by_id(id).articles
   end
 
   def update
