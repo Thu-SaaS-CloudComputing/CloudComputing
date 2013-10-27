@@ -1,4 +1,6 @@
 CloudComputing::Application.routes.draw do
+  get "category/index"
+
   resources :category
   # The priority is based upon order of creation:
   # first created -> highest priority.

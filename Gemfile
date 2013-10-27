@@ -44,5 +44,6 @@ gem 'jquery-rails'
 gem 'debugger'
 # use haml
 gem 'haml'
+gem "haml-rails"
 # use coverall
 gem 'coveralls', require: false

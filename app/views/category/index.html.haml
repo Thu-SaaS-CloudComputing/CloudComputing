@@ -1,9 +1,9 @@
-- @all_categories.each do |category|
-  =link_to category.name, category_path(category)
-table#articles
+%h1 XueTang Project
+%table#Click to view details
+  %thead
+    %tr
+      %th= link_to 'All categories', category_path, :id => 'title_header'
   %tbody
-    - @articles.each do |article|
+    - @categories.each do |category|
       %tr
-        %td= article.title
-        %td= article.author
-
+        %td= link_to "#{category.title}", category_path(category)
