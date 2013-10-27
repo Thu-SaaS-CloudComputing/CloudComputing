@@ -15,7 +15,7 @@ class CategoryController < ApplicationController
   def show
     @categories= Category.all
     id = params[:id]
-    id |= 0
+    id ||= 0
     @articles = Category.find_by_id(id).articles
   end
 
