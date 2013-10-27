@@ -1,6 +1,6 @@
-- @all_categories.each do |category|
+- @categories.each do |category|
   =link_to category.name, category_path(category)
-table#articles
+%table#articles
   %tbody
     - @articles.each do |article|
       %tr
