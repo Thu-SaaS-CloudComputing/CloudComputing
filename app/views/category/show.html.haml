@@ -1,9 +1,16 @@
-- @categories.each do |category|
-  =link_to category.name, category_path(category)
-%table#articles
-  %tbody
-    - @articles.each do |article|
-      %tr
-        %td= article.title
-        %td= article.author
+
+%h1 XueTang_CloudComputing
+
+%div#br
+  - @categories.each do |category|
+    %div#notice=link_to category.name, category_path(category)
+  %table#article_table
+    %tbody
+      %tr#firstline
+        %td Title
+        %td Author
+      - @articles.each do |article|
+        %tr.articles
+          %td= article.title
+          %td= article.author
 

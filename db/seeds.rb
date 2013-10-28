@@ -16,6 +16,13 @@ end
 
 articles = [{:title => 'Test title', :author => 'admin', :category => Category.find_by_name('新闻')},
            {:title => '哈哈哈', :author => 'cgcgbcbc', :category => Category.find_by_name('公告')},
+           {:title => 'News No.1', :author => 'admin zjx', :category => Category.find_by_name('新闻')},
+           {:title => 'News No.2', :author => 'admin zjx', :category => Category.find_by_name('新闻')},
+           {:title => 'News No.3', :author => 'admin zjx', :category => Category.find_by_name('新闻')},
+           {:title => 'News No.4', :author => 'admin zjx', :category => Category.find_by_name('新闻')},
+           {:title => 'Announcement No.1', :author => 'admin zjx', :category => Category.find_by_name('公告')},
+           {:title => 'Announcement No.2', :author => 'admin zjx', :category => Category.find_by_name('公告')},
+           {:title => 'Announcement No.3', :author => 'admin zjx', :category => Category.find_by_name('公告')}
 ]
 
 articles.each do |article|
