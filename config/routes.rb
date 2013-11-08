@@ -1,7 +1,9 @@
 CloudComputing::Application.routes.draw do
   get "category/index"
-
+  get "article/index"
+  
   resources :category
+  resources :article
 
   root :to => "category#show", :id => 1
   # The priority is based upon order of creation:

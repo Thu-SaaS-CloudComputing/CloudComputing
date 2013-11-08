@@ -4,7 +4,7 @@ def path_to(page_name)
   when /an artivle (.+) page/
     article_path(Article.find_by_title($1).id)
   when /a category (.+) page/
-    category_path(Category.find_by_title($1).id)
+    category_path(Category.find_by_name($1).id)
   end
   
 end
@@ -17,6 +17,7 @@ end
 
 Given /^the following article exist:$/ do |item_list|
   item_list.hashes.each do |item|
+    item[:category] = Category.find_by_name(item[:category])
     Article.create!(item)
   end
 end

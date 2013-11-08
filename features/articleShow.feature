@@ -5,9 +5,9 @@ Feature:
 
 Background:
         Given the following category exist:
-        |name     |description       |option    |
-        |cat_1    |                  |          |
-        |cat_2    |                  |          |
+        |name     |description       |
+        |cat_1    |haha              |
+        |cat_2    |haha              |
 
         Given the following article exist:
         |title    |author   |category   |content           |

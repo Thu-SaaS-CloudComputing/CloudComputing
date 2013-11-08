@@ -61,7 +61,7 @@ div#notice {
   float: left;
   font-size: 25px;
   height: 40px;
-  width: 60px;
+  //width: 60px;
   border-radius: 10px;
   background-color: yellow;
   padding: 5px;
@@ -91,5 +91,21 @@ form label {
 #firstline {
   background-color: #1e8;
   font-size: 25px;
+}
+#content{
+  text-align: left
+}
+div#back{
+  color: black;
+  float: left;
+  font-size: 25px;
+  height: 40px;
+  //width: 60px;
+  border-radius: 10px;
+  background-color: white;
+  padding: 5px;
+  margin: 20px;
+  text-align: center;
+  line-height: 40px;
 }
 
