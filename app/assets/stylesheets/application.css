@@ -65,7 +65,7 @@ div#notice {
   border-radius: 10px;
   background-color: yellow;
   padding: 5px;
-  margin: 20px;
+  margin: 5px;
   text-align: center;
   line-height: 40px;
 }
@@ -75,7 +75,7 @@ div#notice {
 }
 table#article_table {
   float: none;
-  width: 600px;
+  width: 1000px;
   text-align: center;
 }
 form label {
@@ -86,7 +86,7 @@ form label {
 }
 #br {
   float: none;
-  width: 600px;
+  width: 1000px;
 }
 #firstline {
   background-color: #1e8;
