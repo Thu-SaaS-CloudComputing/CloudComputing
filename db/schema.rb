@@ -11,15 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131026125730) do
+ActiveRecord::Schema.define(:version => 20131108221338) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
     t.string   "author"
     t.integer  "category_id"
-    t.string   "content"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "content",     :default => "(No Content)"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
   end
 
   add_index "articles", ["category_id"], :name => "index_articles_on_category_id"
@@ -28,8 +28,9 @@ ActiveRecord::Schema.define(:version => 20131026125730) do
     t.string   "name"
     t.text     "description"
     t.text     "option"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "parent",      :default => 0
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
 end
