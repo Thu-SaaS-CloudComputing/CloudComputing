@@ -1,7 +1,7 @@
 def path_to(page_name)
   case page_name
 
-  when /an artivle (.+) page/
+  when /an article (.+) page/
     article_path(Article.find_by_title($1).id)
   when /a category (.+) page/
     category_path(Category.find_by_name($1).id)
@@ -22,7 +22,11 @@ Given /^the following article exist:$/ do |item_list|
   end
 end
 
-Then /^(?:|I )am on (.+)$/ do |page_name|
+When /I am on (.+)$/ do |page_name|
+  visit path_to(page_name)
+end
+
+Then /^(?:|I )should be on (.+)$/ do |page_name|
   current_path = URI.parse(current_url).path
   if current_path.respond_to? :should
     current_path.should == path_to(page_name)

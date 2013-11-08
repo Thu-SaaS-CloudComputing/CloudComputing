@@ -7,10 +7,10 @@ Feature: Category page
 Background: categories and articles in database
 	
 	Given the following category exist:
-	|title		|description            |
-	|test_cat_1	|This is for test	|
-	|test_cat_2	|For test		|
-	|test_cat_3	|Test			|
+	|name		|description            |id     |parent |
+	|test_cat_1	|This is for test	|1      |0      |
+	|test_cat_2	|For test		|2      |1      |
+	|test_cat_3	|Test			|3      |1      |
 
 	Given the following article exist:
 	|title	        |author 	|category	|
@@ -23,7 +23,7 @@ Background: categories and articles in database
 	|test_art_7	|Bill		|test_cat_1     |
 
 Scenario: display all related articles
-        When I am on a category page
+        When I am on a category test_cat_1 page
 	When I follow "test_cat_1"
 	Then I should see the following displayed: "test_art_1", "test_art_3", "test_art_6"
 	When I follow "test_cat_2"
