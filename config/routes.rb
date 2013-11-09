@@ -4,7 +4,17 @@ CloudComputing::Application.routes.draw do
   
   resources :category
   resources :article
-
+  
+  namespace :admin do
+    resources :category, :only => [:show, :edit] do
+      member do
+        get 'new_sub'
+        get 'upward'
+        get 'downward'
+      end
+    end
+  end
+  
   root :to => "category#show", :id => 1
   # The priority is based upon order of creation:
   # first created -> highest priority.
