@@ -1,6 +1,8 @@
 class CreateCategories < ActiveRecord::Migration
   def change
-    drop_table :categories
+    if ActiveRecord::Base.connection.table_exists? 'categories'
+      drop_table :categories
+    end
     create_table :categories do |t|
       t.string :name
       t.text :description

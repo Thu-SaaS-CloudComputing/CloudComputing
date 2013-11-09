@@ -1,6 +1,8 @@
 class CreateArticles < ActiveRecord::Migration
   def change
-    drop_table :articles
+    if ActiveRecord::Base.connection.table_exists? 'articles'
+      drop_table :articles
+    end
     create_table :articles do |t|
       t.string :title
       t.string :author
