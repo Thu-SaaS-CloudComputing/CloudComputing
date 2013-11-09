@@ -8,7 +8,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 categories = [{:name => '新闻', :description => '', :option => {}},
               {:name => '公告', :description => '', :option => {}},
-              {:name => 'Chicken Soup', :description => '', :option => {}},
+              {:name => 'Chicken Soup', :description => '', :option => {}, :parent => 1},
 ]
 
 categories.each do |category|
@@ -38,5 +38,3 @@ articles = [{:title => 'Test title', :author => 'admin', :category => Category.f
 articles.each do |article|
   Article.create!(article)
 end
-
-

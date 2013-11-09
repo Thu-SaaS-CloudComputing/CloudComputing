@@ -1,19 +1,22 @@
 %h1 XueTang_CloudComputing
 
 %div#br
-  - @categories.each do |category|
+  - @top_category.each do |category|
     %div#notice=link_to "#{category.name} (#{category.id} -> #{category.parent})", category_path(category)
+  %table#subcategory_table
+    %tbody
+      %tr#firstline
+        - @sub_category.each do |subcategory|
+          %td= link_to "#{subcategory.name}", category_path(subcategory)  if subcategory
   %table#article_table
     %tbody
       %tr#firstline
         %td Title
         %td Author
         %td id
-        %td preview_content
       - @articles.each do |article|
         %tr.articles
           %td= article.title
           %td= article.author
           %td= article.id
-          %td= article.content
 

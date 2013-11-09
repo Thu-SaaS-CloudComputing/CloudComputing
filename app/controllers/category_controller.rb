@@ -1,6 +1,12 @@
 class CategoryController < ApplicationController
   def index
-    @categories = Category.all
+    all_category = Category.all
+    @categories = Array.new
+    all_category.each do |cat|
+      if cat.parent == 0
+        @categories << cat
+      end
+    end
   end
  
   def create
@@ -13,10 +19,12 @@ class CategoryController < ApplicationController
   end
 
   def show
-    @categories= Category.all
     id = params[:id]
     id ||= 0
-    @articles = Category.find_by_id(id).articles
+    tem_cat = Category.find(id)
+    @articles = tem_cat.articles
+    @top_category = Category.find_top_categories
+    @sub_category = Category.find_sub_categories(tem_cat.id)
   end
 
   def update

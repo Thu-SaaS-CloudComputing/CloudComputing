@@ -6,4 +6,4 @@
   %tbody
     - @categories.each do |category|
       %tr
-        %td= link_to "#{category.title}", category_path(:id => category.id)
+        %td= link_to "#{category.title}", category_path(category.id)
