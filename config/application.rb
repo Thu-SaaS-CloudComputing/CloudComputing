@@ -61,5 +61,6 @@ module CloudComputing
 
     config.assets.initialize_on_precompile = true
     config.assets.precompile = %w( *.js *.css )
+    config.assets.compile = true
   end
 end
