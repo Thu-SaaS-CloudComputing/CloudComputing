@@ -19,7 +19,7 @@ pickle-email-*.html
 .project
 
 #RubyMine
-.idea/workspace.xml
+.idea
 
 #Emacs
 *~
