@@ -1,111 +1,111 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  background: White;
-  color: DarkSlateGrey;
-  font-family: Tahoma, Verdana, sans-serif;
-  font-size: 10pt;
-}
-div#main {
-  margin: 0;
-  padding: 0 20px 20px;
-}
-a {
-  background: transparent;
-  color: maroon;
-  text-decoration: underline;
-  font-weight: bold;
-}
-h1 {
-  color: maroon;
-  font-size: 150%;
-  font-style: italic;
-  display: block;
-  width: 100%;
-  border-bottom: 1px solid DarkSlateGrey;
-}
-h1.title {
-  margin: 0 0 1em;
-  padding: 10px;
-  background-color: orange;
-  color: white;
-  border-bottom: 4px solid gold;
-  font-size: 2em;
-  font-style: normal;
-}
-table#movies {
-  margin: 10px;
-  border-collapse: collapse;
-  width: 100%;
-  border-bottom: 2px solid black;
-}
-table#movies th {
-  border: 2px solid white;
-  font-weight: bold;
-  background-color: wheat;
-}
-table#movies th, table#movies td {
-  padding: 4px;
-  text-align: left;
-}
-table#movies th.hilite {
-  background-color: yellow;
-}
-#notice #warning {
-  background: rosybrown;
-  margin: 1em 0;
-  padding: 4px;
-}
-div#notice {
-  color: black;
-  float: left;
-  font-size: 25px;
-  height: 40px;
-  //width: 60px;
-  border-radius: 10px;
-  background-color: yellow;
-  padding: 5px;
-  margin: 5px;
-  text-align: center;
-  line-height: 40px;
-}
-.articles {
-  background-color: #4fb;
-  font-size: 20px;
-}
-table#article_table {
-  float: none;
-  width: 1000px;
-  text-align: center;
-}
-form label {
-  display: block;
-  line-height: 25px;
-  font-weight: bold;
-  color: maroon;
-}
-#br {
-  float: none;
-  width: 1000px;
-}
-#firstline {
-  background-color: #1e8;
-  font-size: 25px;
-}
-#content{
-  text-align: left
-}
-div#back{
-  color: black;
-  float: left;
-  font-size: 25px;
-  height: 40px;
-  //width: 60px;
-  border-radius: 10px;
-  background-color: white;
-  padding: 5px;
-  margin: 20px;
-  text-align: center;
-  line-height: 40px;
-}
+/*html, body {*/
+  /*margin: 0;*/
+  /*padding: 0;*/
+  /*background: White;*/
+  /*color: DarkSlateGrey;*/
+  /*font-family: Tahoma, Verdana, sans-serif;*/
+  /*font-size: 10pt;*/
+/*}*/
+/*div#main {*/
+  /*margin: 0;*/
+  /*padding: 0 20px 20px;*/
+/*}*/
+/*a {*/
+  /*background: transparent;*/
+  /*color: maroon;*/
+  /*text-decoration: underline;*/
+  /*font-weight: bold;*/
+/*}*/
+/*h1 {*/
+  /*color: maroon;*/
+  /*font-size: 150%;*/
+  /*font-style: italic;*/
+  /*display: block;*/
+  /*width: 100%;*/
+  /*border-bottom: 1px solid DarkSlateGrey;*/
+/*}*/
+/*h1.title {*/
+  /*margin: 0 0 1em;*/
+  /*padding: 10px;*/
+  /*background-color: orange;*/
+  /*color: white;*/
+  /*border-bottom: 4px solid gold;*/
+  /*font-size: 2em;*/
+  /*font-style: normal;*/
+/*}*/
+/*table#movies {*/
+  /*margin: 10px;*/
+  /*border-collapse: collapse;*/
+  /*width: 100%;*/
+  /*border-bottom: 2px solid black;*/
+/*}*/
+/*table#movies th {*/
+  /*border: 2px solid white;*/
+  /*font-weight: bold;*/
+  /*background-color: wheat;*/
+/*}*/
+/*table#movies th, table#movies td {*/
+  /*padding: 4px;*/
+  /*text-align: left;*/
+/*}*/
+/*table#movies th.hilite {*/
+  /*background-color: yellow;*/
+/*}*/
+/*#notice #warning {*/
+  /*background: rosybrown;*/
+  /*margin: 1em 0;*/
+  /*padding: 4px;*/
+/*}*/
+/*div#notice {*/
+  /*color: black;*/
+  /*float: left;*/
+  /*font-size: 25px;*/
+  /*height: 40px;*/
+  /*//width: 60px;*/
+  /*border-radius: 10px;*/
+  /*background-color: yellow;*/
+  /*padding: 5px;*/
+  /*margin: 5px;*/
+  /*text-align: center;*/
+  /*line-height: 40px;*/
+/*}*/
+/*.articles {*/
+  /*background-color: #4fb;*/
+  /*font-size: 20px;*/
+/*}*/
+/*table#article_table {*/
+  /*float: none;*/
+  /*width: 1000px;*/
+  /*text-align: center;*/
+/*}*/
+/*form label {*/
+  /*display: block;*/
+  /*line-height: 25px;*/
+  /*font-weight: bold;*/
+  /*color: maroon;*/
+/*}*/
+/*#br {*/
+  /*float: none;*/
+  /*width: 1000px;*/
+/*}*/
+/*#firstline {*/
+  /*background-color: #1e8;*/
+  /*font-size: 25px;*/
+/*}*/
+/*#content{*/
+  /*text-align: left*/
+/*}*/
+/*div#back{*/
+  /*color: black;*/
+  /*float: left;*/
+  /*font-size: 25px;*/
+  /*height: 40px;*/
+  /*//width: 60px;*/
+  /*border-radius: 10px;*/
+  /*background-color: white;*/
+  /*padding: 5px;*/
+  /*margin: 20px;*/
+  /*text-align: center;*/
+  /*line-height: 40px;*/
+/*}*/
 
