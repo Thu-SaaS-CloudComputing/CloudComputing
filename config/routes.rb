@@ -7,7 +7,7 @@ CloudComputing::Application.routes.draw do
   resources :admin, :only => [:index]
 
   namespace :admin do
-    resources :category, :only => [:show, :edit] do
+    resources :category do
       member do
         get 'new_sub'
         get 'upward'
