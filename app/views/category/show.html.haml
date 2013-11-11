@@ -3,7 +3,7 @@
   %ul.nav.nav-tabs
     - @top_category.each do |category|
       %li{ :class => (params[:id] == category.id.to_s)?'active':nil }
-        =link_to "#{category.name} (#{category.id} -> #{category.parent})", category_path(category)
+        =link_to "#{category.name}", category_path(category)
   %table#subcategory_table.table.table-bordered
     %tbody
       %tr#firstline

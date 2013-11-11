@@ -108,4 +108,9 @@
   /*text-align: center;*/
   /*line-height: 40px;*/
 /*}*/
+.title
+{
+    text-align: center;
+    font-size: 25px
+}
 
