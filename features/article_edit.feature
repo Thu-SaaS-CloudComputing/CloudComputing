@@ -17,7 +17,7 @@ Background:
         |art_4    |David    |cat_2      |content for art_4 |
 	
 Scenario: post new articles
-	Given I am on the new page
+	Given I am on the new article page
 	Given I fill in "title" with "art_5"
 	Then I fill in "author" with "EEE"
 	Then I fill in "category" with "cat_1"

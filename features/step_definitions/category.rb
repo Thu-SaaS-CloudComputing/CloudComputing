@@ -5,6 +5,10 @@ def path_to(page_name)
     article_path(Article.find_by_title($1).id)
   when /a category (.+) page/
     category_path(Category.find_by_name($1).id)
+  when /the new article page/
+    new_article_path()
+  when /the edit page of "(.+)"$/
+    edit_article_path()
   end
   
 end
@@ -41,12 +45,14 @@ When /^I follow "(.*)"$/ do |click|
 end 
 
 Then /^I should see the following displayed: (.*)$/ do |lst|
-  art_list = lst.scan(/[^, "]/)
-  art_list.each do |art|
-    if page.respond_to? :should
-        page.should has_content(art)
-    else
-      assert page.has_content(art)
+  if lst.class == String
+    art_list = lst.split(/[, "]+/)
+    art_list.each do |art|
+      if page.respond_to? :should
+        page.should have_content(art)
+      else
+        assert page.have_content(art)
+      end
     end
   end
 end

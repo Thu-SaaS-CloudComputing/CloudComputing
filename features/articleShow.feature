@@ -18,10 +18,10 @@ Background:
 
 Scenario: display top level categories
           When I am on an article art_1 page
-          Then I should see the following displayed: "cat_1", "cat_2"
+          Then I should see the following displayed: cat_1, cat_2
           When I follow "cat_1"
           Then I am on a category cat_1 page
 
 Scenario: display the content of an article
           When I am on an article art_1 page
-          Then I should see the following displayed: "content for art_1", "Andy"
+          Then I should see the following displayed: content for art_1, Andy

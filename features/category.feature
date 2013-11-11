@@ -25,13 +25,16 @@ Background: categories and articles in database
 Scenario: display all related articles
         When I am on a category test_cat_1 page
 	When I follow "test_cat_1"
-	Then I should see the following displayed: "test_art_1", "test_art_3", "test_art_6"
+	Then I should see the following displayed: test_art_1, test_art_3, test_art_6
 	When I follow "test_cat_2"
-	Then I should see the following displayed: "test_art_2", "test_art_5"
+	Then I should see the following displayed: test_art_2, test_art_5
 
 Scenario: Display a brief of the article
-        When I am on a category page
+        When I am on a category test_cat_2 page
 	When I follow "test_cat_1"
-	Then I should see the following displayed: "title", "creat_date", "author", "category"
+	Then I should see the following displayed: test_art_1, test_art_3
 
+Scenario: Display subcategories
+        When I am on a category test_cat_1 page
+        Then I should see the following displayed: test_cat_2, test_cat_3
 

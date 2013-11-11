@@ -27,18 +27,24 @@ describe CategoryController do
       Category.should_receive(:find)
       get :show, {:id => 1}
     end
+
     it "should find find all top categories" do
       Category.should_receive(:find_top_categories)
       #assigns(:top_category).should == @top_category
       get :show, {:id => 1}
+      assigns(:top_category).should == @top_category
     end
+
     it "should return articles under the categories" do
       @result_1.should_receive(:articles)
       get :show, {:id => 1}
+      assigns(:sub_category).should_not be_nil
     end
+
     it "should return subcategories" do
       Category.should_receive(:find_sub_categories)
       get :show, {:id => 1}
+      assigns(:sub_category).should == @sub_category
     end
   end
 
