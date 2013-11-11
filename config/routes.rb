@@ -1,12 +1,13 @@
 CloudComputing::Application.routes.draw do
   get "category/index"
   get "article/index"
-  
+
   resources :category
   resources :article
-  
+  resources :admin, :only => [:index]
+
   namespace :admin do
-    resources :category, :only => [:show, :edit] do
+    resources :category do
       member do
         get 'new_sub'
         get 'upward'

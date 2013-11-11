@@ -14,7 +14,7 @@ class Category < ActiveRecord::Base
   end
   
   def push_sub_categories(category_list, repeat)
-    Category.find_all_by_parent(id).each do
+    Category.find_sub_categories(id).each do
       |sub_category|
       category_list << {:prefix => "> " * repeat + "- ", :content => sub_category}
       sub_category.push_sub_categories(category_list, repeat + 1)
@@ -22,10 +22,10 @@ class Category < ActiveRecord::Base
   end
   
   def self.find_top_categories
-    Category.find_all_by_parent(0)
+    Category.find_all_by_parent(0, :order => '"order"')
   end
 
   def self.find_sub_categories(parent)
-    Category.find_all_by_parent(parent)
+    Category.find_all_by_parent(parent, :order => '"order"')
   end
 end

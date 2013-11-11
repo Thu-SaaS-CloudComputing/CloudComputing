@@ -6,6 +6,7 @@
       %th order
       %th id
       %th parent
+      %th delete link
       %th edit link
       %th insert link
       %th upward
@@ -18,6 +19,7 @@
         %td= category[:content].id
         %td= category[:content].parent
         %td= link_to "EDIT", edit_admin_category_path(category[:content])
+        %td= link_to "-", admin_category_path(category[:content]), :method => :delete, :confirm => 'Are you sure?'
         %td= link_to "+", new_sub_admin_category_path(category[:content])
         %td= link_to "UP", upward_admin_category_path(category[:content])
         %td= link_to "DOWN", downward_admin_category_path(category[:content])
