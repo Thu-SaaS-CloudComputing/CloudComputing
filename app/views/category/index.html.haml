@@ -2,8 +2,8 @@
 %table#Categories
   %thead
     %tr
-      %th= link_to 'All categories', category_path, :id => 'title_header'
+      %th= 'All categories'
   %tbody
     - @categories.each do |category|
       %tr
-        %td= link_to "#{category.title}", category_path(category.id)
+        %td= link_to "#{category.name}", category_path(category)
