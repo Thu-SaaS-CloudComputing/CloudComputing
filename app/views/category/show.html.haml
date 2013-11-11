@@ -16,7 +16,7 @@
         %td id
       - @articles.each do |article|
         %tr.articles
-          %td= article.title
+          %td= link_to "#{article.title}", article_path(article)
           %td= article.author
           %td= article.id
 
