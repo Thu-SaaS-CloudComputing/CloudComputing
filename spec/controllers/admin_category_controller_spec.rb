@@ -4,7 +4,8 @@ describe Admin::CategoryController do
 
   describe "GET 'index'" do
     it "should goto index page" do
-      get :show, {:id => 0}
+      get :index
+      response.should render_template('admin/category/index')
     end
   end
   
