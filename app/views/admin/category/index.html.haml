@@ -1,27 +1,36 @@
-%h1 XueTang Project: Category edit list
-%table
-  %thead
-    %tr
-      %th Categories
-      %th order
-      %th id
-      %th parent
-      %th delete link
-      %th edit link
-      %th insert link
-      %th upward
-      %th downward
-  %tbody
-    - @categories.each do |category|
-      %tr
-        %td= link_to "#{category[:prefix] + category[:content].name}", category_path(category[:content].id)
-        %td= category[:content].order
-        %td= category[:content].id
-        %td= category[:content].parent
-        %td= link_to "EDIT", edit_admin_category_path(category[:content])
-        %td= link_to "-", admin_category_path(category[:content]), :method => :delete, :confirm => 'Are you sure?'
-        %td= link_to "+", new_sub_admin_category_path(category[:content])
-        %td= link_to content_tag(:span, "", :class => "glyphicon glyphicon-up"), upward_admin_category_path(category[:content])
-        %td= link_to "DOWN", downward_admin_category_path(category[:content])
-%br
-= link_to "Insert Top Category", new_sub_admin_category_path(0)
+%h1 XueTang Project
+%div.row-fluid
+  %div.span2
+    =render "nav"
+  %div.span10
+    %h1 Category edit list
+    %div.row-fluid
+      %div.span2
+        =render "nav"
+      %div.span10
+        %table.table.table-bordered.table-hover
+          %thead
+            %tr
+              %th Categories
+              %th order
+              %th id
+              %th parent
+              %th edit link
+              %th delete link
+              %th insert link
+              %th upward
+              %th downward
+          %tbody
+            - @categories.each do |category|
+              %tr
+                %td= link_to "#{category[:prefix] + category[:content].name}", category_path(category[:content].id)
+                %td= category[:content].order
+                %td= category[:content].id
+                %td= category[:content].parent
+                %td= link_to "EDIT", edit_admin_category_path(category[:content])
+                %td= link_to "-", admin_category_path(category[:content]), :method => :delete, :confirm => 'Are you sure?'
+                %td= link_to "+", new_sub_admin_category_path(category[:content])
+                %td= link_to "UP", upward_admin_category_path(category[:content])
+                %td= link_to "DOWN", downward_admin_category_path(category[:content])
+        %br
+        = link_to "Insert Top Category", new_sub_admin_category_path(0), {:class => "btn btn-link"}
