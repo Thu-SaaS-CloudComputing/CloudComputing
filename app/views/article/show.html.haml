@@ -5,6 +5,12 @@
     - @categories.each do |category|
       %li{ :class => (params[:id] == category.id.to_s)?'active':nil }
         =link_to "#{category.name}", category_path(category)
+  %ol.breadcrumb
+    - @trace_category.each do |category|
+      %li
+        =link_to "#{category.name}", category_path(category)
+      %li \
+    %li.active #{@article.title}
   %table#article_table
     %tbody
       %tr#firstline

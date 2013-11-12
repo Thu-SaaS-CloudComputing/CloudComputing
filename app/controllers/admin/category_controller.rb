@@ -3,17 +3,14 @@ class Admin::CategoryController < ApplicationController
     @categories = []
     Category.find_top_categories.each do
       |t|
-      @categories << {:prefix => " -", :content => t}
+      @categories << {:prefix => "- ", :content => t}
       t.push_sub_categories(@categories, 1)
     end
-  end
- 
-  def create
   end
   
   def new_sub
     Category.create!(:name => "(new category)", :parent => params[:id])
-    redirect_to admin_category_path(0)
+    redirect_to admin_category_path()
   end
   
   def upward
@@ -30,7 +27,7 @@ class Admin::CategoryController < ApplicationController
       end
       @last = t
     end
-    redirect_to admin_category_path(0)
+    redirect_to admin_category_path()
   end
   
   def downward
@@ -46,10 +43,7 @@ class Admin::CategoryController < ApplicationController
       end
       @last = t
     end
-    redirect_to admin_category_path(0)
-  end
-  
-  def new
+    redirect_to admin_category_path()
   end
 
   def edit
@@ -57,25 +51,20 @@ class Admin::CategoryController < ApplicationController
   end
 
   def show
-    @categories = []
-    Category.find_top_categories.each do
-      |t|
-      @categories << {:prefix => "- ", :content => t}
-      t.push_sub_categories(@categories, 1)
-    end
+    redirect_to admin_categories_path()
   end
 
   def update
     @category = Category.find params[:id]
     @category.update_attributes!(params[:category])
     flash[:notice] = "#{@category.name} was successfully updated."
-    redirect_to admin_category_path(0)
+    redirect_to admin_category_path()
   end
 
   def destroy # database leak(remaining )...
     @category = Category.find(params[:id])
     @category.destroy
     flash[:notice] = "Movie '#{@category.name}' deleted."
-    redirect_to admin_category_path(0)
+    redirect_to admin_category_path()
   end
 end

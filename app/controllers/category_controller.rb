@@ -21,10 +21,17 @@ class CategoryController < ApplicationController
   def show
     id = params[:id]
     id ||= 0
-    tem_cat = Category.find(id)
-    @articles = tem_cat.articles
+    @current_category = Category.find(id)
+    @articles = @current_category.articles
     @top_category = Category.find_top_categories
-    @sub_category = Category.find_sub_categories(tem_cat.id)
+    @sub_category = Category.find_sub_categories(@current_category.id)
+    
+    @trace_category = []
+    @i = @current_category
+    while @i.parent != 0
+      @i = Category.find(@i.parent)
+      @trace_category.unshift @i
+    end
   end
 
   def update

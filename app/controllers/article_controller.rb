@@ -17,7 +17,14 @@ class ArticleController < ApplicationController
     id ||= 0
     @article = Article.find_by_id(id)
     @category = @article.category
-    @categories = Category.all
+    @categories = Category.find_top_categories
+    
+    @trace_category = []
+    @trace_category.unshift(@i = @category)
+    while @i.parent != 0
+      @i = Category.find(@i.parent)
+      @trace_category.unshift @i
+    end
   end
 
   def update

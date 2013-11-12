@@ -1,9 +1,27 @@
-%h1 XueTang Project
-%table#Categories
+%h1 XueTang Project: Category edit list
+%table
   %thead
     %tr
-      %th= link_to 'All categories', category_path, :id => 'title_header'
+      %th Categories
+      %th order
+      %th id
+      %th parent
+      %th delete link
+      %th edit link
+      %th insert link
+      %th upward
+      %th downward
   %tbody
     - @categories.each do |category|
       %tr
-        %td= link_to "#{category.prefix + category.content.title}", category_path(category.id)
+        %td= link_to "#{category[:prefix] + category[:content].name}", category_path(category[:content].id)
+        %td= category[:content].order
+        %td= category[:content].id
+        %td= category[:content].parent
+        %td= link_to "EDIT", edit_admin_category_path(category[:content])
+        %td= link_to "-", admin_category_path(category[:content]), :method => :delete, :confirm => 'Are you sure?'
+        %td= link_to "+", new_sub_admin_category_path(category[:content])
+        %td= link_to content_tag(:span, "", :class => "glyphicon glyphicon-up"), upward_admin_category_path(category[:content])
+        %td= link_to "DOWN", downward_admin_category_path(category[:content])
+%br
+= link_to "Insert Top Category", new_sub_admin_category_path(0)
