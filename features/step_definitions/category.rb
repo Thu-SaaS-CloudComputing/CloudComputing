@@ -41,7 +41,7 @@ end
 
 
 When /^I follow "(.*)"$/ do |click|
-  click_link(click)
+  first(:link, click).click
 end 
 
 Then /^I should see the following displayed: (.*)$/ do |lst|
