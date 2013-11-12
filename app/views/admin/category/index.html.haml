@@ -1,9 +1,13 @@
 %h1 XueTang Project
-%table#Categories
-  %thead
-    %tr
-      %th= link_to 'All categories', category_path, :id => 'title_header'
-  %tbody
-    - @categories.each do |category|
-      %tr
-        %td= link_to "#{category.prefix + category.content.title}", category_path(category.id)
+%div.row-fluid
+  %div.span2
+    =render "nav"
+  %div.span10
+    %table#Categories
+      %thead
+        %tr
+          %th= link_to 'All categories', category_path, :id => 'title_header'
+          %tbody
+            - @categories.each do |category|
+              %tr
+                %td= link_to "#{category.prefix + category.content.title}", category_path(category.id)
