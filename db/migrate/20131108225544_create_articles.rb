@@ -7,7 +7,7 @@ class CreateArticles < ActiveRecord::Migration
       t.string :title
       t.string :author
       t.references :category
-      t.string :content, :default => "(No Content)"
+      t.text :content, :default => "(No Content)"
 
       t.timestamps
     end

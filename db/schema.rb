@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 20131110181008) do
     t.string   "title"
     t.string   "author"
     t.integer  "category_id"
-    t.string   "content",     :default => "(No Content)"
+    t.text     "content",     :default => "(No Content)"
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
     t.text     "tags"
