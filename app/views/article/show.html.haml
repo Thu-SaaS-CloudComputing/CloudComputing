@@ -5,16 +5,20 @@
     - @categories.each do |category|
       %li{ :class => (params[:id] == category.id.to_s)?'active':nil }
         =link_to "#{category.name}", category_path(category)
-  %table#article_table
-    %tbody
-      %tr#firstline
-        %td.title.popover-title{:colspan => '3'}= @article.title
-      %tr
-        %td.popover-title= "author: #{@article.author}"
-        %td.popover-title= "create date: #{@article.created_at}"
-        %td.popover-title= "category: #{@article.category.name}"
-      %br
-      %tr#content
-        %td{:colspan => '3'}= @article.content
-  %div#back= link_to "back", category_path(@article.category)
+  %div#article_table
+    %div.row-fluid
+      %div#firstline.span12.text-center
+        %h3
+          = @article.title
+    %div.row-fluid
+      %div.span2.text-left
+        = "author: #{@article.author}"
+      %div.span8.text-center
+        = "create date: #{@article.created_at}"
+      %div.span2.text-right
+        = "category: #{@article.category.name}"
+    %div.row-fluid.hero-unit#content
+      %div.span10.text-left{:style => "padding-left:0px;padding-right:0px;"}
+        = @article.content
+    %div#back.btn.btn-link= link_to "back", category_path(@article.category)
 
