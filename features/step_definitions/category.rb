@@ -9,6 +9,8 @@ def path_to(page_name)
     new_article_path()
   when /the edit page of "(.+)"$/
     edit_article_path()
+  when /the visitor index page/
+    "/visitor_index"
   end
   
 end
@@ -51,7 +53,7 @@ Then /^I should see the following displayed: (.*)$/ do |lst|
       if page.respond_to? :should
         page.should have_content(art)
       else
-        assert page.have_content(art)
+        assert page.has_content?(art)
       end
     end
   end
