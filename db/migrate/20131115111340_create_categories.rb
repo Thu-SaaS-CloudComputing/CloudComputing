@@ -1,8 +1,5 @@
 class CreateCategories < ActiveRecord::Migration
-  def change
-    if ActiveRecord::Base.connection.table_exists? 'categories'
-      drop_table :categories
-    end
+  def up
     create_table :categories do |t|
       t.string :name
       t.text :description
@@ -12,5 +9,9 @@ class CreateCategories < ActiveRecord::Migration
 
       t.timestamps
     end
+  end
+
+  def down
+    drop_table :categories
   end
 end
