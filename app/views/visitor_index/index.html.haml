@@ -21,8 +21,22 @@
             %th= article.author
 
 %div.span10
+
   %table.table.table-bordered.table-hover
     %thead
+      %tr
+        %th{:colspan => "7", :style => "text-align: center; font-size: 25px"} Lesson Table
+      %tr
+        %td{:colspan => "7"}
+          %div.btn-group
+            %button.btn.btn-default.dropdown-toggle{:type => "button", "data-toggle" => "dropdown"}
+              Classroom
+              %span.caret
+            %ul.dropdown-menu{:role => "menu"}
+              -@classrooms.each do |clarm|
+                %li= link_to clarm, visitor_index_path(:classroom => clarm)
+              -@departments.each do |dep|
+                %li= link_to dep, visitor_index_path(:department => dep)
       %tr
         %th Mon.
         %th Tue.

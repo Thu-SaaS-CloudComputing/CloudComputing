@@ -6,8 +6,16 @@ class VisitorIndexController < ApplicationController
     @top_categories.each do |category|
       @subcategories[category] = Category.find_sub_categories(category)
     end
-    
-    lessons = Lesson.all
+
+    @classrooms = Lesson.get_all_classrooms
+    @departments = Lesson.get_all_departments
+    if params.has_key?(:classroom)
+      lessons = Lesson.find_all_by_classroom(params[:classroom])
+    elsif params.has_key?(:department)
+      lessons = Lesson.find_all_by_department(params[:department])
+    else
+      lessons = Lesson.all
+    end
     @table = Hash.new
     
     lessons.each do |lesson|
