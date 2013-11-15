@@ -1,5 +1,5 @@
 class CreateCategories < ActiveRecord::Migration
-  def change
+  def up
     create_table :categories do |t|
       t.string :name
       t.text :description
@@ -9,5 +9,9 @@ class CreateCategories < ActiveRecord::Migration
 
       t.timestamps
     end
+  end
+
+  def down
+    drop_table :categories
   end
 end
