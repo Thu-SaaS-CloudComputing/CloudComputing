@@ -1,0 +1,21 @@
+%h1 Edit Lessons
+%div.row-fluid
+  %div.span2
+    =render "nav"
+  %div.span10
+    %table.table.table-bordered.table-hover
+      %thead
+        %tr
+          %th Name
+          %th Day/Rank
+          %th Classroom
+          %th Department
+          %th
+      %tbody
+        - @lessons.each do |lesson|
+          %tr
+            %td= lesson.name
+            %td= "#{lesson.column}/#{lesson.row}"
+            %td= lesson.classroom
+            %td= lesson.department
+            %td= link_to "Edit", edit_admin_lesson_table_path(lesson.id)
