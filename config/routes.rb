@@ -8,12 +8,13 @@ CloudComputing::Application.routes.draw do
   resources :admin, :only => [:index]
 
   namespace :admin do
-    resources :category, only: [:edit, :destroy, :index] do
+    resources :category, only: [:edit, :destroy, :index, :update] do
       member do
         get '', :action => :index
         get 'new_sub'
         get 'upward'
         get 'downward'
+        get 'switch_show'
       end
     end
   end
