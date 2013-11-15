@@ -1,13 +1,15 @@
 class CreateArticles < ActiveRecord::Migration
-  def change
+  def up
     create_table :articles do |t|
       t.string :title
       t.string :author
-      t.references :category
       t.text :content, :default => "(No Content)"
 
       t.timestamps
     end
-    add_index :articles, :category_id
+  end
+
+  def down
+    drop_table :articles
   end
 end
