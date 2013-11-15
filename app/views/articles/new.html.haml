@@ -1,7 +1,15 @@
 %h1 XueTang Project
-= form_tag article_path, :method => :post do
+= form_tag articles_path, :method => :post do
   = label :article, :title, 'Title'
   = text_field :article, :title
+
+  = label :article, :author, 'Author'
+  = text_field :article, :author
+
+  = label :article, :content, 'Text'
+  = text_area :article, :content
+  %br
+  = submit_tag 'submit'
 
 /%h1 XueTang Project
 /%form{:id => 'Information', :method => 'post', :link_to => article_path}

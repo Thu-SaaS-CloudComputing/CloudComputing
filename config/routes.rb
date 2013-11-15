@@ -1,10 +1,10 @@
 CloudComputing::Application.routes.draw do
   get "category/index"
-  get "article/index"
+  get "articles/index"
 
   resources :visitor_index
   resources :category
-  resources :article
+  resources :articles
   resources :admin, :only => [:index]
 
   namespace :admin do
