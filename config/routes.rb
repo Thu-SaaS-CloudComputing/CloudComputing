@@ -8,6 +8,13 @@ CloudComputing::Application.routes.draw do
   resources :admin, :only => [:index]
 
   namespace :admin do
+    resources :lesson_table, only: [:edit, :destroy, :index, :update] do
+      member do
+        get '', :action => :index
+        get 'update'
+      end
+    end
+
     resources :category, only: [:edit, :destroy, :index] do
       member do
         get '', :action => :index

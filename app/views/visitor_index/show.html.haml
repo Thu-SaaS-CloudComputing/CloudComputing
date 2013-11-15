@@ -39,6 +39,7 @@
             %ul.dropdown-menu{:role => "menu"}
               -@classrooms.each do |clarm|
                 %li= link_to clarm, visitor_index_path(:id => 1, :classroom => clarm)
+              %li= link_to "Show all", visitor_index_path(:id => 1)
           %div.btn-group
             %button.btn.btn-default.dropdown-toggle{:type => "button", "data-toggle" => "dropdown"}
               Department
@@ -46,6 +47,7 @@
             %ul.dropdown-menu{:role => "menu"}
               -@departments.each do |dep|
                 %li= link_to dep, visitor_index_path(:id => 1, :department => dep)
+              %li= link_to "Show all", visitor_index_path(:id => 1)
       %tr
         %th Mon.
         %th Tue.
