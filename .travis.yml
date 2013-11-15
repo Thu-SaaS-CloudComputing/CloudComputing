@@ -1,4 +1,7 @@
 language: ruby
-script: "bundle exec rake travis:build"
+before_script:
+  - "bundle exec rake db:migrate"
+  - "bundle exec rake db:test:prepare"
+script: "bundle exec rake travis:build --trace"
 rvm:
   - 1.9.3
