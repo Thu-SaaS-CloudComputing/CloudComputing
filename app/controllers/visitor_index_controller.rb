@@ -1,11 +1,6 @@
 class VisitorIndexController < ApplicationController
   def index
-    @articles = Article.all
-    @top_categories = Category.find_top_categories
-    @subcategories = {}
-    @top_categories.each do |category|
-      @subcategories[category] = Category.find_sub_categories(category)
-    end
+    
   end
  
   def create
@@ -18,7 +13,12 @@ class VisitorIndexController < ApplicationController
   end
 
   def show
-    
+    @articles = Article.all
+    @top_categories = Category.find_top_categories
+    @subcategories = {}
+    @top_categories.each do |category|
+      @subcategories[category] = Category.find_sub_categories(category)
+    end
   end
 
   def update
