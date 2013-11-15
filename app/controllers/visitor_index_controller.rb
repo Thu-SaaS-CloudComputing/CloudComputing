@@ -1,5 +1,17 @@
 class VisitorIndexController < ApplicationController
   def index
+  end
+ 
+  def create
+  end
+  
+  def new
+  end
+
+  def edit
+  end
+
+  def show
     @articles = Article.all
     @top_categories = Category.find_top_categories
     @subcategories = {}
@@ -31,19 +43,6 @@ class VisitorIndexController < ApplicationController
       end
       @table[lesson.row] = rank
     end
-  end
- 
-  def create
-  end
-  
-  def new
-  end
-
-  def edit
-  end
-
-  def show
-    
   end
 
   def update
