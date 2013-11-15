@@ -19,3 +19,23 @@
             %th= link_to "#{article.title}", article_path(article)
             %th= article.created_at
             %th= article.author
+
+%div.span10
+  %table.table.table-bordered.table-hover
+    %thead
+      %tr
+        %th Mon.
+        %th Tue.
+        %th Wed.
+        %th Thu.
+        %th Fri.
+        %th Sat.
+        %th Sun.
+    %tbody
+      - (1..6).each do |row|
+        %tr
+          - (1..7).each do |col|
+            %td
+              -generate_lesson_table(row, col, @table).each do |line|
+                =line
+                %br
