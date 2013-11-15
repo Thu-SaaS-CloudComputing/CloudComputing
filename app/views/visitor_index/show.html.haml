@@ -38,10 +38,15 @@
               %span.caret
             %ul.dropdown-menu{:role => "menu"}
               -@classrooms.each do |clarm|
-                %li= link_to clarm, visitor_index_path(:classroom => clarm)
+                %li= link_to clarm, visitor_index_path(:id => 1, :classroom => clarm)
+          %div.btn-group
+            %button.btn.btn-default.dropdown-toggle{:type => "button", "data-toggle" => "dropdown"}
+              Department
+              %span.caret
+            %ul.dropdown-menu{:role => "menu"}
               -@departments.each do |dep|
-                %li= link_to dep, visitor_index_path(:department => dep)
-    %tr
+                %li= link_to dep, visitor_index_path(:id => 1, :department => dep)
+      %tr
         %th Mon.
         %th Tue.
         %th Wed.

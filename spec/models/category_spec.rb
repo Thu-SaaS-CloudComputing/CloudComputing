@@ -10,12 +10,12 @@ describe Category do
   end
 
   it "should find topcategories" do
-    Category.should_receive(:find_all_by_parent)#.with(0)
+    Category.should_receive(:find_all_by_parent)
     result = Category.find_top_categories
     result.should == [@cat_1, @cat_2, @cat_3]
   end
   it "should find subcategories" do
-    Category.should_receive(:find_all_by_parent)#.with(1)
+    Category.should_receive(:find_all_by_parent)
     result = Category.find_sub_categories(1)
     result.should == [@cat_3, @cat_4]
   end
