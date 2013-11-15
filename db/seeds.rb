@@ -6,17 +6,18 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-categories = [{:name => '新闻', :description => '', :option => {}},
-              {:name => '公告', :description => '', :option => {}},
-              {:name => 'Chicken Soup', :description => '', :option => {}, :parent => 1},
+categories = [{:name => '新闻', :description => '', :option => {}, :show_on_index => "shown"},
+              {:name => '公告', :description => '', :option => {}, :show_on_index => "shown"},
+              {:name => 'Chicken Soup', :description => '', :option => {}, :parent => 1, :show_on_index => "unavailable"},
+              {:name => 'secret', :description => '', :option => {}, :show_on_index => "hidden"}
 ]
 
 categories.each do |category|
   Category.create!(category)
 end
 
-Category.create!({:name => 'regular', :description => '', :option => {}, :parent => Category.find_by_name('公告').id})
-Category.create!({:name => 'urgent', :description => '', :option => {}, :parent => Category.find_by_name('公告').id})
+Category.create!({:name => 'regular', :description => '', :option => {}, :parent => Category.find_by_name('公告').id, :show_on_index => 'unavailable'})
+Category.create!({:name => 'urgent', :description => '', :option => {}, :parent => Category.find_by_name('公告').id, :show_on_index => 'unavailable'})
 
 articles = [{:title => 'Test title', :author => 'admin', :category => Category.find_by_name('新闻'), :content => "test1"},
            {:title => '哈哈哈', :author => 'cgcgbcbc', :category => Category.find_by_name('公告'),  :content => "test1"},

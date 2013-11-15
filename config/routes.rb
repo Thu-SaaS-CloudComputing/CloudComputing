@@ -14,6 +14,7 @@ CloudComputing::Application.routes.draw do
         get 'new_sub'
         get 'upward'
         get 'downward'
+        get 'switch_show'
       end
     end
   end

@@ -64,7 +64,14 @@ class Admin::CategoryController < ApplicationController
   def destroy # database leak(remaining )...
     @category = Category.find(params[:id])
     @category.destroy
-    flash[:notice] = "Movie '#{@category.name}' deleted."
+    flash[:notice] = "Category '#{@category.name}' deleted."
+    redirect_to admin_category_path()
+  end
+  
+  def switch_show
+    @category = Category.find params[:id]
+    @category.switch_show
+    flash[:notice] = "Category #{@category.name}'s visibility on index has been switched."
     redirect_to admin_category_path()
   end
 end
