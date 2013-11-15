@@ -51,7 +51,7 @@ class Admin::CategoryController < ApplicationController
   end
 
   def show
-    redirect_to admin_categories_path()
+    redirect_to admin_category_path()
   end
 
   def update
@@ -64,7 +64,7 @@ class Admin::CategoryController < ApplicationController
   def destroy # database leak(remaining )...
     @category = Category.find(params[:id])
     @category.destroy
-    flash[:notice] = "Movie '#{@category.name}' deleted."
+    flash[:notice] = "category '#{@category.name}' deleted."
     redirect_to admin_category_path()
   end
 end
