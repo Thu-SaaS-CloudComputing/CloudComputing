@@ -15,6 +15,7 @@
           %th insert link
           %th upward
           %th downward
+          %th shown on index
       %tbody
         - @categories.each do |category|
           %tr
@@ -27,5 +28,9 @@
             %td= link_to "+", new_sub_admin_category_path(category[:content])
             %td= link_to "UP", upward_admin_category_path(category[:content])
             %td= link_to "DOWN", downward_admin_category_path(category[:content])
+            -if category[:content].show_on_index == "unavailable"
+              %td= "unavailable"
+            -else
+              %td= link_to "#{category[:content].show_on_index}", switch_show_admin_category_path(category[:content])
     %br
     = link_to "Insert Top Category", new_sub_admin_category_path(0), {:class => "btn btn-link"}
