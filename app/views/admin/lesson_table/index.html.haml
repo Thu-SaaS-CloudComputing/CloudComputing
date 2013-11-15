@@ -10,7 +10,8 @@
           %th Day/Rank
           %th Classroom
           %th Department
-          %th
+          %th Edit
+          %th Delete
       %tbody
         - @lessons.each do |lesson|
           %tr
@@ -19,3 +20,7 @@
             %td= lesson.classroom
             %td= lesson.department
             %td= link_to "Edit", edit_admin_lesson_table_path(lesson.id)
+            %td= link_to "Delete", admin_lesson_table_path(:id => lesson.id), :method => "delete", :confirm => "Are you sure?"
+
+%br
+  = link_to "Add new lesson", "/admin/lesson_table/0/new_lesson", {:class => "btn btn-link"}

@@ -11,7 +11,7 @@ CloudComputing::Application.routes.draw do
     resources :lesson_table, only: [:edit, :destroy, :index, :update] do
       member do
         get '', :action => :index
-        get 'update'
+        get 'new_lesson'
       end
     end
     resources :category, only: [:edit, :destroy, :index, :update] do

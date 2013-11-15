@@ -18,11 +18,21 @@ class Admin::LessonTableController < ApplicationController
   def update
     @lesson = Lesson.find params[:id]
     @lesson.update_attributes!(params[:lesson])
-    flashp[:notice] = "#{@lesson.name} was successfully updated!"
+    flash[:notice] = "#{@lesson.name} was successfully updated!"
     redirect_to admin_lesson_table_path
   end
 
+  def new_lesson
+    new_les = {:name => "Unknown", :row => 0, :column => 0, :classroom => "Unknown", :department => "Unknown"}
+    Lesson.create!(new_les)
+    redirect_to admin_lesson_table_path()
+  end
+
   def destroy
+    lesson = Lesson.find(params[:id])
+    lesson.destroy
+    flash[:notice] = "Lesson '#{lesson.name}' deleted."
+    redirect_to admin_lesson_table_path()
   end
 
 end
