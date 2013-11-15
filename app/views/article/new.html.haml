@@ -1,0 +1,13 @@
+%h1 XueTang Project
+= form_tag article_path, :method => :post do
+  = label :article, :title, 'Title'
+  = text_field :article, :title
+
+/%h1 XueTang Project
+/%form{:id => 'Information', :method => 'post', :link_to => article_path}
+/  %label= 'title'
+/  %input#Title
+/  %label= 'text'
+/  %textarea#Text
+/  %button{:type => 'reset'}= 'reset'
+/  %button{:type => 'submit'}= 'submit'
