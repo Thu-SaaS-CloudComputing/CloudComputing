@@ -6,10 +6,19 @@ attr_accessible :description, :name, :option, :parent, :order, :show_on_index
   has_many :articles
   serialize :option, Hash
   
-  after_create :set_order_attribute
+  after_create :set_order_attribute, :set_show_on_index_attribute
 
   def set_order_attribute
     self.order = id if order.nil?
+    self.save
+  end
+  
+  def set_show_on_index_attribute
+    if self.parent == 0
+      self.show_on_index = 'hidden'
+    else
+      self.show_on_index = 'unavailable'
+    end
     self.save
   end
   
