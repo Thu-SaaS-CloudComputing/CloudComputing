@@ -62,7 +62,7 @@
           - (1..7).each do |col|
             %td
               -generate_lesson_table(row, col, @table).each do |le|
-                %span.label.label-primary{:style => "background-color: #006DCC"}
+                %span.label.label-primary{:style => "background-color: #006DCC; margin: 2px"}
                   -le.each do |line|
                     =line
                     %br

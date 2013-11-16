@@ -1,13 +1,20 @@
 class Admin::LessonTableController < ApplicationController
   def index
-    @classrooms = Lesson.get_all_classrooms
-    @departments = Lesson.get_all_departments
-    if params.has_key? :classroom
-      @lessons = Lesson.find_all_by_classroom params[:classroom]
-    elsif params.has_key? :department
-      @lessons = Lesson.find_all_by_department params[:department]
+    @lessons = Hash.new
+
+    if params[:sort] == "classroom"
+      @table_head = Lesson.get_all_classrooms
+      @table_head.each do |classroom|
+        @lessons[classroom.to_sym] = Lesson.find_all_by_classroom(classroom)
+      end
+    elsif params[:sort] == "department"
+      @table_head = Lesson.get_all_departments
+      @table_head.each do |department|
+        @lessons[department.to_sym] = Lesson.find_all_by_department(department)
+      end
     else
-      @lessons = Lesson.all
+      @table_head = ["All Lessons"]
+      @lessons["All Lessons"] = Lesson.all
     end
   end
 
