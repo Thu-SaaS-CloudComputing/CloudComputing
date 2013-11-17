@@ -1,0 +1,35 @@
+%h1 Edit Lessons
+%div.row-fluid
+  %div.span2
+    =render "nav"
+  %div.span10
+    = link_to "Sorted by Classroom", admin_lesson_table_path(:id => 0, :sort => "classroom"), :class => "btn btn-default btn-lg", :role => "button"
+    = link_to "Sorted by Department", admin_lesson_table_path(:id => 0, :sort => "department"), :class => "btn btn-default btn-lg", :role => "button"
+    = link_to "Unsorted", admin_lesson_table_path(:id => 0), :class => "btn btn-default btn-lg", :role => "button"
+    %br
+    - @lessons.each do |key, content|
+      %table.table.table-bordered.table-hover
+        %thead
+          %tr{:colspan => "6"}
+            %th
+              %span.label{:style => "font-size: 16px"}
+                = key
+          %tr
+            %th Name
+            %th Day/Rank
+            %th Classroom
+            %th Department
+            %th Edit
+            %th Delete
+        %tbody
+          - content.each do |lesson|
+            %tr
+              %td= lesson.name
+              %td= "#{lesson.column}/#{lesson.row}"
+              %td= lesson.classroom
+              %td= lesson.department
+              %td= link_to "Edit", edit_admin_lesson_table_path(lesson.id)
+              %td= link_to "Delete", admin_lesson_table_path(:id => lesson.id), :method => "delete", :confirm => "Are you sure?"
+
+%br
+  = link_to "Add new lesson", "/admin/lesson_table/0/new_lesson", {:class => "btn btn-link"}

@@ -36,4 +36,12 @@ ActiveRecord::Schema.define(:version => 20131115094105) do
     t.string   "show_on_index"
   end
 
+  create_table "lessons", :force => true do |t|
+    t.string  "name"
+    t.integer "column"
+    t.integer "row"
+    t.string  "classroom"
+    t.string  "department"
+  end
+
 end

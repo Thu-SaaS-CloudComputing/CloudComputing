@@ -8,6 +8,19 @@ attr_accessible :description, :name, :option, :parent, :order, :show_on_index
   
   after_create :set_order_attribute, :set_show_on_index_attribute
 
+  def tree_plant()
+    sub_cat = Category.find_sub_categories(self.id)
+
+    if sub_cat
+      sub_cat.each do |cat|
+        hcat = cat.tree_plant
+      end
+      return {self.name.to_sym => sub_cat}
+    else
+      return self.name
+    end
+  end
+
   def set_order_attribute
     self.order = id if order.nil?
     self.save
@@ -55,5 +68,12 @@ attr_accessible :description, :name, :option, :parent, :order, :show_on_index
 
   def self.find_sub_categories(parent)
     Category.find_all_by_parent(parent, :order => '"order"')
+  end
+
+  def self.category_tree
+    cat_tree = Category.find_top_categories
+    cat_tree.each do |cat|
+      cat = cat.tree_plant()
+    end
   end
 end
