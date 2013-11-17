@@ -11,7 +11,10 @@ describe VisitorIndexController do
     Lesson.stub(:all).and_return(@fake_result)
     Lesson.stub(:get_all_classrooms).and_return(@fake_classrooms)
     Lesson.stub(:get_all_deaprtments).and_return(@fake_departments)
+    Lesson.stub(:find_all_by_classroom).and_return([@lesson_1, @lesson_3])
+    Lesson.stub(:find_all_by_department).and_return([@lesson_1, @lesson_2])
   end
+
   describe 'Lesson table' do
     it 'should access the database' do
       Lesson.should_receive(:all)
@@ -30,6 +33,15 @@ describe VisitorIndexController do
       get "show"
       assigns(:departments).should == @fake_departments
     end
+    it 'should be able to sort the result with classroom' do
+      get "show", :classroom => "cla_1"
+      assigns(:table).should == {2 => {2 => [@lesson_1]}, 3 => {3 => [@lesson_3]}}
+    end
+    it 'should be able to sort the result with departmetn' do
+      get "show", :department => "dep_1"
+      assigns(:table).should == {2 => {2 => [@lesson_1]}, 3 => {3 => [@lesson_2]}}
+    end
+
 
     #it 'should render proper page' do
     #  response.should render_template("visitor_index")
