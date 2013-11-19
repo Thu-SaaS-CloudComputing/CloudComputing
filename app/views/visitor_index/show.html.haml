@@ -23,3 +23,47 @@
             %td= link_to "#{article.title}", article_path(article)
             %td{:style => "color: gray"}= article.created_at
             %td{:style => "color: gray"}= article.author
+
+%div.span10
+
+  %table.table.table-bordered.table-hover
+    %thead
+      %tr
+        %th{:colspan => "7", :style => "text-align: center; font-size: 25px"} Lesson Table
+      %tr
+        %td{:colspan => "7"}
+          %div.btn-group
+            %button.btn.btn-default.dropdown-toggle{:type => "button", "data-toggle" => "dropdown"}
+              Classroom
+              %span.caret
+            %ul.dropdown-menu{:role => "menu"}
+              -@classrooms.each do |clarm|
+                %li= link_to clarm, visitor_index_path(:id => 1, :classroom => clarm)
+              %li= link_to "Show all", visitor_index_path(:id => 1)
+          %div.btn-group
+            %button.btn.btn-default.dropdown-toggle{:type => "button", "data-toggle" => "dropdown"}
+              Department
+              %span.caret
+            %ul.dropdown-menu{:role => "menu"}
+              -@departments.each do |dep|
+                %li= link_to dep, visitor_index_path(:id => 1, :department => dep)
+              %li= link_to "Show all", visitor_index_path(:id => 1)
+      %tr
+        %th Mon.
+        %th Tue.
+        %th Wed.
+        %th Thu.
+        %th Fri.
+        %th Sat.
+        %th Sun.
+    %tbody
+      - (1..6).each do |row|
+        %tr
+          - (1..7).each do |col|
+            %td
+              -generate_lesson_table(row, col, @table).each do |le|
+                %span.label.label-primary{:style => "background-color: #006DCC; margin: 2px"}
+                  -le.each do |line|
+                    =line
+                    %br
+                %br
