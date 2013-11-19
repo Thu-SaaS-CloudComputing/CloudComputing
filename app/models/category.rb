@@ -27,9 +27,9 @@ attr_accessible :description, :name, :option, :parent, :order, :show_on_index
   end
   
   def set_show_on_index_attribute
-    if self.parent == 0
+    if self.parent == 0 && self.show_on_index != 'shown'
       self.show_on_index = 'hidden'
-    else
+    elsif self.parent != 0
       self.show_on_index = 'unavailable'
     end
     self.save
