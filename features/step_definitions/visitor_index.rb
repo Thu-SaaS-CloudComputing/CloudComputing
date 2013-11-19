@@ -1,5 +1,4 @@
 Then /I should see the following displayed in the block of (.+): (.*)$/ do |category_name, contents|
-  debugger
   block = page.find_by_id(category_name)
   if block==nil
     assert false
