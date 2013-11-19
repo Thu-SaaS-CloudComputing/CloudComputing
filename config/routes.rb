@@ -2,7 +2,7 @@ CloudComputing::Application.routes.draw do
   get "category/index"
   get "articles/index"
 
-  resources :visitor_index
+  resources :visitor_index, only: [:index, :show]
   resources :category
   resources :articles
   resources :admin, :only => [:index]
@@ -25,7 +25,7 @@ CloudComputing::Application.routes.draw do
     end
   end
   
-  root :to => "visitor_index#show"
+  root :to => "visitor_index#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

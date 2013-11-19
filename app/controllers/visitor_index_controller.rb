@@ -1,5 +1,6 @@
 class VisitorIndexController < ApplicationController
   def index
+    redirect_to visitor_index_path(0), params
   end
  
   def create
