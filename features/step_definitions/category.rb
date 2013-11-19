@@ -10,7 +10,7 @@ def path_to(page_name)
   when /the edit page of "(.+)"$/
     edit_article_path()
   when /the visitor index page/
-    "/visitor_index"
+    "/visitor_index/0"
   end
   
 end
