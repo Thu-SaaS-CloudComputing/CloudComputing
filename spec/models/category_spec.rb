@@ -10,13 +10,24 @@ describe Category do
   end
 
   it "should find topcategories" do
-    Category.should_receive(:find_all_by_parent)
+    Category.should_receive(:find_all_by_parent).and_return([@cat_1, @cat_2, @cat_3])
     result = Category.find_top_categories
-    #result.should == [@cat_1, @cat_2, @cat_3]
+    result.should == [@cat_1, @cat_2, @cat_3]
   end
   it "should find subcategories" do
-    Category.should_receive(:find_all_by_parent)
+    Category.should_receive(:find_all_by_parent).and_return([@cat_3, @cat_4])
     result = Category.find_sub_categories(1)
-    #result.should == [@cat_3, @cat_4]
+    result.should == [@cat_3, @cat_4]
+  end
+  it 'should plant the tree as wished' do
+    Category.should_receive(:find_sub_categories).with(1).and_return([@cat_3, @cat_4])
+    Category.should_receive(:find_sub_categories).with(3).and_return([@cat_5])
+    Category.should_receive(:find_sub_categories).with(5).and_return(nil)
+    Category.should_receive(:find_sub_categories).with(4).and_return(nil)
+    #@cat_3.should_receive(:tree_plant).and_return('called_3')
+    #@cat_4.should_receive(:tree_plant).and_return('called_4')
+    @result = @cat_1.tree_plant
+    #@result.should == {:cat_1 => ['called_3', 'called_4']}
+    @result.should == {:cat_1 => [{:cat_3 => ['cat_5']}, 'cat_4']}
   end
 end

@@ -10,12 +10,13 @@ attr_accessible :description, :name, :option, :parent, :order, :show_on_index
 
   def tree_plant()
     sub_cat = Category.find_sub_categories(self.id)
+    result = Array.new
 
     if sub_cat
       sub_cat.each do |cat|
-        hcat = cat.tree_plant
+        result << cat.tree_plant
       end
-      return {self.name.to_sym => sub_cat}
+      return {self.name.to_sym => result}
     else
       return self.name
     end
