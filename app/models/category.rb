@@ -73,8 +73,10 @@ attr_accessible :description, :name, :option, :parent, :order, :show_on_index
 
   def self.category_tree
     cat_tree = Category.find_top_categories
+    result = Array.new
     cat_tree.each do |cat|
-      cat = cat.tree_plant()
+      result << cat.tree_plant()
     end
+    return result
   end
 end

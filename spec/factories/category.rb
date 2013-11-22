@@ -9,5 +9,6 @@ FactoryGirl.define do
     parent 0
     articles {[FactoryGirl.build(:article)]}
     order 0
+    show_on_index 'shown'
   end
 end
