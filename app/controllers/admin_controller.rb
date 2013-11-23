@@ -4,18 +4,18 @@ class AdminController < ApplicationController
   
   def login
     if params[:logout]
-      session[:admin_auth] = nil;
+      session[:admin_auth] = nil
     end
   end
   
   def auth
-    print params
     if Root.auth(params[:login][:username], params[:login][:password])
-      session[:admin_auth] = Time.now;
+      session[:admin_auth] = Time.now
+      redirect_to admin_index_path()
     else
-      session[:admin_auth] = nil;
+      session[:admin_auth] = nil
+      redirect_to admin_login_path()
     end
-    redirect_to admin_index_path()
   end
   
   def index
