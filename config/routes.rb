@@ -14,6 +14,8 @@ CloudComputing::Application.routes.draw do
         get 'new_lesson'
       end
     end
+    get 'login'
+    post 'login', :action => :auth
     resources :category, only: [:edit, :destroy, :index, :update] do
       member do
         get '', :action => :index
