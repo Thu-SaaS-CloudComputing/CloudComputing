@@ -13,7 +13,7 @@ describe Admin::LessonTableController do
     Lesson.stub(:find_all_by_classroom).with("cla_1").and_return([@lesson_1, @lesson_3, @lesson_4])
     Lesson.stub(:find_all_by_classroom).with("cla_2").and_return([@lesson_2])
     Lesson.stub(:all).and_return([@lesson_1, @lesson_2, @lesson_3, @lesson_4])
-    session[:admin_auth] = true;
+    session[:admin_auth] = Time.now;
   end
 
   describe "Index page" do

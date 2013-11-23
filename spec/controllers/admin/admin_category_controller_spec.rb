@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Admin::CategoryController do
   before :each do
-    session[:admin_auth] = true;
+    session[:admin_auth] = Time.now;
   end
   
   describe "GET 'index'" do

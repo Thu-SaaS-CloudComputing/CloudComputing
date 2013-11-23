@@ -11,7 +11,7 @@ class AdminController < ApplicationController
   def auth
     print params
     if Root.auth(params[:login][:username], params[:login][:password])
-      session[:admin_auth] = true;
+      session[:admin_auth] = Time.now;
     else
       session[:admin_auth] = nil;
     end
@@ -24,8 +24,10 @@ class AdminController < ApplicationController
 private
   
   def authorize
-    if !session[:admin_auth]
+    if !session[:admin_auth] || session[:admin_auth] < 15.minutes.ago
       redirect_to admin_login_path()
+    else
+      session[:admin_auth] = Time.now
     end
   end
   
