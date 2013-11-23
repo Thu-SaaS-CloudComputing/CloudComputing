@@ -1,4 +1,4 @@
-class Admin::CategoryController < ApplicationController
+class Admin::CategoryController < AdminController
   def index
     @categories = []
     Category.find_top_categories.each do

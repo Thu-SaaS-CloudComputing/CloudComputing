@@ -1,4 +1,4 @@
-class Admin::LessonTableController < ApplicationController
+class Admin::LessonTableController < AdminController
   def index
     @lessons = Hash.new
 
