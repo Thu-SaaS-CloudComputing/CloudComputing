@@ -1,7 +1,10 @@
 require 'spec_helper'
 
 describe Admin::CategoryController do
-
+  before :each do
+    session[:admin_auth] = true;
+  end
+  
   describe "GET 'index'" do
     it "should goto index page" do
       get :index
