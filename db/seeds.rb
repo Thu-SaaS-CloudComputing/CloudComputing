@@ -52,3 +52,14 @@ lessons = [
 lessons.each do |lesson|
   Lesson.create!(lesson)
 end
+
+
+root_users = [
+              {:username => "admin", :password => "admin"}
+             ]
+
+root_users.each do |root_user|
+  Root.create!(root_user)
+end
+
+

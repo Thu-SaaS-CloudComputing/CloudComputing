@@ -10,10 +10,12 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'sqlite3'
+  gem 'simplecov'
 end
 group :test do
   gem 'cucumber-rails', :require => false 
   gem 'factory_girl_rails', :require => false
+  gem 'ZenTest'
 end
 # for heroku deployee
 group :production do
