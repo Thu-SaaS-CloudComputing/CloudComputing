@@ -59,7 +59,7 @@ describe Admin::LessonTableController do
     end
     it 'should redirect to admin page' do
       Lesson.stub(:find).and_return(@lesson_1)
-      @lesson.stub(:update_attributes!)
+      @lesson_1.stub(:update_attributes!)
       get 'update', :id => 1
       response.should redirect_to admin_lesson_table_path()
     end
