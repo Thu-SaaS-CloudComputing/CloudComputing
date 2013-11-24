@@ -11,6 +11,12 @@ def path_to(page_name)
     edit_article_path()
   when /the visitor index page/
     "/visitor_index/0"
+  when /the admin page/
+    admin_index_path()
+  when /the edit categary page/
+    "/admin/category/0"
+  when /the edit lesson table page/
+    "/admin/lesson_table/0"
   end
   
 end

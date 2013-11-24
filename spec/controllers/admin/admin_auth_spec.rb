@@ -1,9 +1,6 @@
 require 'spec_helper'
 
 describe AdminController do
-  before :each do
-    
-  end
 
   describe "Auth on Index page" do
     it 'should show the index page when logged in' do

@@ -8,7 +8,7 @@
     = link_to "Unsorted", admin_lesson_table_path(:id => 0), :class => "btn btn-default btn-lg", :role => "button"
     %br
     - @lessons.each do |key, content|
-      %table.table.table-bordered.table-hover
+      %table.table.table-bordered.table-hover{:id => key}
         %thead
           %tr{:colspan => "6"}
             %th
@@ -28,8 +28,8 @@
               %td= "#{lesson.column}/#{lesson.row}"
               %td= lesson.classroom
               %td= lesson.department
-              %td= link_to "Edit", edit_admin_lesson_table_path(lesson.id)
-              %td= link_to "Delete", admin_lesson_table_path(:id => lesson.id), :method => "delete", :confirm => "Are you sure?"
+              %td= link_to "Edit", edit_admin_lesson_table_path(lesson.id), :id => lesson.name+"_edit"
+              %td= link_to "Delete", admin_lesson_table_path(:id => lesson.id), :method => "delete", :confirm => "Are you sure?", :id => lesson.name+"_delete"
 
 %br
   = link_to "Add new lesson", "/admin/lesson_table/0/new_lesson", {:class => "btn btn-link"}
