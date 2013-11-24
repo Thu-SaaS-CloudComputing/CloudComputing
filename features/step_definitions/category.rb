@@ -21,6 +21,14 @@ def path_to(page_name)
   
 end
 
+Given /I have already logged in/ do
+  Root.create!(:username => "admin", :password => "admin")
+  visit "/admin/login"
+  fill_in :login_username, :with => "admin"
+  fill_in :login_password, :with => "admin"
+  click_button "Login"
+end
+
 Given /^the following category exist:$/ do |item_list|
   item_list.hashes.each do |item|
     Category.create!(item)
@@ -48,8 +56,10 @@ Then /^(?:|I )should be on (.+)$/ do |page_name|
 end
 
 
-When /^I follow "(.*)"$/ do |click|
-  first(:link, click).click
+When /^I follow "(.*)"$/ do |link_name|
+  #debugger
+  first(:link, link_name).click
+  #click_link(link_name)
 end 
 
 Then /^I should see the following displayed: (.*)$/ do |lst|

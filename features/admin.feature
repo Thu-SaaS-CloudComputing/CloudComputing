@@ -21,6 +21,7 @@ Background: categories and articles in database
 	|test_art_5	|Andy		|test_cat_2	|
 	|test_art_6	|Bill		|test_cat_1	|
 	|test_art_7	|Bill		|test_cat_1     |
+        Given I have already logged in
 	And I am on the admin page
 
 Scenario: Have access to edit categary page
