@@ -49,9 +49,9 @@ class Admin::CategoryController < AdminController
     @category = Category.find params[:id]
   end
 
-  def show
-    redirect_to admin_category_path()
-  end
+  #def show
+  #  redirect_to admin_category_path()
+  #end
 
   def update
     @category = Category.find params[:id]
