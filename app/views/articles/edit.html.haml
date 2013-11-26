@@ -1,5 +1,5 @@
 %h1 XueTang Project
-= form_tag articles_path, :method => :post do
+= form_tag article_path(@article), :method => :put do
   = label :article, :title, 'Title'
   = text_field :article, :title
 
@@ -9,5 +9,5 @@
   = label :article, :content, 'Text'
   = text_area :article, :content
   %br
-  = submit_tag 'submit'
+  = submit_tag 'Save Changes'
 
