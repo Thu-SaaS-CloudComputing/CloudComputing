@@ -11,6 +11,8 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'sqlite3'
   gem 'simplecov'
+  # To use debugger
+  gem 'debugger'
 end
 group :test do
   gem 'cucumber-rails', :require => false 
@@ -46,8 +48,6 @@ gem 'jquery-rails'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-gem 'debugger'
 # use haml
 gem 'haml'
 gem "haml-rails"
