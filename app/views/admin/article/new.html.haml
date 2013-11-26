@@ -1,0 +1,18 @@
+%h1 New article
+%div.row-fluid
+  %div.span2
+    =render "nav"
+  %div.span10
+    = form_tag admin_article_path, :method => :post do
+          
+      = label :article, :title, 'Title'
+      = text_field :article, :title
+
+      = label :article, :author, 'Author'
+      = text_field :article, :author
+
+      = label :article, :content, 'Text'
+      = text_area :article, :content
+      %br
+      = submit_tag 'submit'
+

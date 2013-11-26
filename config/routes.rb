@@ -25,6 +25,12 @@ CloudComputing::Application.routes.draw do
         get 'switch_show'
       end
     end
+    resources :article, only: [:edit, :new, :destroy, :index, :update] do
+      member do
+        get '', :action => :new
+        get 'new'
+      end
+    end
   end
   
   root :to => "visitor_index#show"

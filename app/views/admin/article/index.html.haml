@@ -1,0 +1,36 @@
+%h1 Category edit list
+%div.row-fluid
+  %div.span2
+    =render "nav"
+  %div.span10
+    %table.table.table-bordered.table-hover
+      %thead
+        %tr
+          %th Categories
+          %th order
+          %th id
+          %th parent
+          %th edit link
+          %th delete link
+          %th insert link
+          %th upward
+          %th downward
+          %th shown on index
+      %tbody
+        - @categories.each do |category|
+          %tr
+            %td= link_to "#{category[:prefix] + category[:content].name}", category_path(category[:content].id)
+            %td= category[:content].order
+            %td= category[:content].id
+            %td= category[:content].parent
+            %td= link_to "EDIT", edit_admin_category_path(category[:content]), :id => category[:content].name+"_edit"
+            %td= link_to "-", admin_category_path(category[:content]), :method => :delete, :confirm => 'Are you sure?', :id => category[:content].name+"_-"
+            %td= link_to "+", new_sub_admin_category_path(category[:content]),:id=>category[:content].name+"_+"
+            %td= link_to "UP", upward_admin_category_path(category[:content]),:id=>category[:content].name+"_up"
+            %td= link_to "DOWN", downward_admin_category_path(category[:content]),:id=>category[:content].name+"_down"
+            -if category[:content].show_on_index == "unavailable"
+              %td= "unavailable"
+            -else
+              %td= link_to "#{category[:content].show_on_index}", switch_show_admin_category_path(category[:content])
+    %br
+    = link_to "Insert Top Category", new_sub_admin_category_path(0), {:class => "btn btn-link"}
