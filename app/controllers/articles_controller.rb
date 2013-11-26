@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
   def show
     id = params[:id]
     id ||= 0
-    @article = Article.find_by_id(id)
+    @article = Article.find(id)
     @category = @article.category
     @categories = Category.find_top_categories
     

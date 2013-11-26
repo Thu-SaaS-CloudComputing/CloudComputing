@@ -10,9 +10,23 @@ def path_to(page_name)
   when /the edit page of "(.+)"$/
     edit_article_path()
   when /the visitor index page/
-    "/visitor_index"
+    "/visitor_index/0"
+  when /the admin page/
+    admin_index_path()
+  when /the edit categary page/
+    "/admin/category/0"
+  when /the edit lesson table page/
+    "/admin/lesson_table/0"
   end
   
+end
+
+Given /I have already logged in/ do
+  Root.create!(:username => "admin", :password => "admin")
+  visit "/admin/login"
+  fill_in :login_username, :with => "admin"
+  fill_in :login_password, :with => "admin"
+  click_button "Login"
 end
 
 Given /^the following category exist:$/ do |item_list|
@@ -42,8 +56,10 @@ Then /^(?:|I )should be on (.+)$/ do |page_name|
 end
 
 
-When /^I follow "(.*)"$/ do |click|
-  first(:link, click).click
+When /^I follow "(.*)"$/ do |link_name|
+  #debugger
+  first(:link, link_name).click
+  #click_link(link_name)
 end 
 
 Then /^I should see the following displayed: (.*)$/ do |lst|

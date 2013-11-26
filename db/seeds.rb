@@ -39,3 +39,27 @@ articles = [{:title => 'Test title', :author => 'admin', :category => Category.f
 articles.each do |article|
   Article.create!(article)
 end
+
+
+lessons = [
+           {:name => "Algorithm Design", :column => 1, :row => 3, :classroom => "学堂117", :department => "姚班"},
+           {:name => "程序设计", :column => 2, :row => 2, :classroom => "学堂112", :department => "姚班"},
+           {:name => "What's the hell", :column => 1, :row => 3, :classroom => "Hell", :department => "Physics"},
+           {:name => "Quantum Theory", :column => 3, :row => 5, :classroom => "Schrdinger", :department => "Physics"},
+           {:name => "Computing Biology", :column => 4, :row => 2, :classroom => "Turing", :department => "Biology"}
+          ]
+
+lessons.each do |lesson|
+  Lesson.create!(lesson)
+end
+
+
+root_users = [
+              {:username => "admin", :password => "admin"}
+             ]
+
+root_users.each do |root_user|
+  Root.create!(root_user)
+end
+
+

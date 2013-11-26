@@ -1,4 +1,4 @@
-class Admin::CategoryController < ApplicationController
+class Admin::CategoryController < AdminController
   def index
     @categories = []
     Category.find_top_categories.each do
@@ -17,7 +17,6 @@ class Admin::CategoryController < ApplicationController
     @last = nil
     Category.find_sub_categories(Category.find(params[:id]).parent).each do
       |t|
-      p t.order
       if (t.id.to_s == params[:id] and @last != nil)
         @torder = t.order
         t.order = @last.order
@@ -50,9 +49,9 @@ class Admin::CategoryController < ApplicationController
     @category = Category.find params[:id]
   end
 
-  def show
-    redirect_to admin_category_path()
-  end
+  #def show
+  #  redirect_to admin_category_path()
+  #end
 
   def update
     @category = Category.find params[:id]

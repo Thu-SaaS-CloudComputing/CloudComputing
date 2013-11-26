@@ -7,7 +7,8 @@ FactoryGirl.define do
   factory :category do
     name "test_category"
     parent 0
-    articles [FactoryGirl.build(:article)]
+    articles {[FactoryGirl.build(:article)]}
     order 0
+    show_on_index 'shown'
   end
 end

@@ -10,10 +10,14 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'sqlite3'
+  gem 'simplecov'
+  # To use debugger
+  gem 'debugger'
 end
 group :test do
   gem 'cucumber-rails', :require => false 
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', :require => false
+  gem 'ZenTest'
 end
 # for heroku deployee
 group :production do
@@ -44,8 +48,6 @@ gem 'jquery-rails'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-gem 'debugger'
 # use haml
 gem 'haml'
 gem "haml-rails"

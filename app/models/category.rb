@@ -8,15 +8,29 @@ attr_accessible :description, :name, :option, :parent, :order, :show_on_index
   
   after_create :set_order_attribute, :set_show_on_index_attribute
 
+  def tree_plant()
+    sub_cat = Category.find_sub_categories(self.id)
+    result = Array.new
+
+    if sub_cat
+      sub_cat.each do |cat|
+        result << cat.tree_plant
+      end
+      return {self.name.to_sym => result}
+    else
+      return self.name
+    end
+  end
+
   def set_order_attribute
     self.order = id if order.nil?
     self.save
   end
   
   def set_show_on_index_attribute
-    if self.parent == 0
+    if self.parent == 0 && self.show_on_index != 'shown'
       self.show_on_index = 'hidden'
-    else
+    elsif self.parent != 0
       self.show_on_index = 'unavailable'
     end
     self.save
@@ -55,5 +69,14 @@ attr_accessible :description, :name, :option, :parent, :order, :show_on_index
 
   def self.find_sub_categories(parent)
     Category.find_all_by_parent(parent, :order => '"order"')
+  end
+
+  def self.category_tree
+    cat_tree = Category.find_top_categories
+    result = Array.new
+    cat_tree.each do |cat|
+      result << cat.tree_plant()
+    end
+    return result
   end
 end

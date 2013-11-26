@@ -1,0 +1,9 @@
+%h1 Admin Login
+
+= form_tag("", method: "post") do
+  = label :login, :username, 'Username'
+  = text_field :login, :username, size: 30
+  = label :login, :password, 'Password'
+  = password_field :login, :password, size: 30
+  %br
+  = submit_tag 'Login', :class => "btn"

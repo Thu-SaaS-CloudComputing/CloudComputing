@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    ZenTest (4.9.5)
     actionmailer (3.2.15)
       actionpack (= 3.2.15)
       mail (~> 2.5.4)
@@ -180,6 +181,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ZenTest
   capybara
   coffee-rails (~> 3.2.1)
   coveralls
@@ -194,6 +196,7 @@ DEPENDENCIES
   rails (= 3.2.15)
   rspec-rails
   sass-rails (~> 3.2.3)
+  simplecov
   sqlite3
   therubyracer
   uglifier (>= 1.0.3)

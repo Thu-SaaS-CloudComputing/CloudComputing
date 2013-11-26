@@ -2,12 +2,20 @@ CloudComputing::Application.routes.draw do
   get "category/index"
   get "articles/index"
 
-  resources :visitor_index
+  resources :visitor_index, only: [:index, :show]
   resources :category
   resources :articles
   resources :admin, :only => [:index]
 
   namespace :admin do
+    resources :lesson_table, only: [:edit, :destroy, :index, :update] do
+      member do
+        get '', :action => :index
+        get 'new_lesson'
+      end
+    end
+    get 'login'
+    post 'login', :action => :auth
     resources :category, only: [:edit, :destroy, :index, :update] do
       member do
         get '', :action => :index
