@@ -26,9 +26,26 @@ describe Category do
     Category.should_receive(:find_sub_categories).with(4).and_return(nil)
     #@cat_3.should_receive(:tree_plant).and_return('called_3')
     #@cat_4.should_receive(:tree_plant).and_return('called_4')
-    @result = @cat_1.tree_plant
+    result = @cat_1.tree_plant
     #@result.should == {:cat_1 => ['called_3', 'called_4']}
-    @result.should == {:cat_1 => [{:cat_3 => ['cat_5']}, 'cat_4']}
+    result.should == {:cat_1 => [{:cat_3 => ['cat_5']}, 'cat_4']}
+  end
+  it 'should give a category tree that can be used as wished' do
+    result =  Category.category_tree
+    stream = []
+    # middle left right
+    tree_output = lambda { |node| 
+      if node.class == Hash
+        stream << node.keys[0]
+        node[node.keys[0]].each(&tree_output)
+      elsif node.class == Array
+        node.each(&tree_output)
+      else
+        stream << node
+      end
+    }
+    result.each(&tree_output)
+    stream.should == [@cat_1,@cat_3,@cat_5,@cat_4,@cat_2]
   end
   it 'should give a full category tree' do
     Category.should_receive(:find_top_categories).and_return([@cat_1, @cat_2])
