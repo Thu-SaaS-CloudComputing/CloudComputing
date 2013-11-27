@@ -5,8 +5,8 @@
       %li
         =link_to "#{category.name}", category_path(category)
 -@top_categories_to_show.each do |category|
-  %div.span5{:id => category.name}
-    %table.table.table-bordered.table-hover
+  %div.span5
+    %table.table.table-bordered.table-hover{:id => category.name}
       %thead
         %tr
           %th{:colspan => '4', :style => "text-align: center"}= link_to "#{category.name}", category_path(category)
