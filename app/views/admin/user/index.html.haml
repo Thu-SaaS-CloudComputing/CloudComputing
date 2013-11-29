@@ -14,4 +14,4 @@
           %tr
             %td= user.name
             %td= user.studentID
-            %td= link_to "Show Details", admin_user_path(user.id)
+            %td= link_to "Show Details", admin_user_path(user.id), :id => "#{user.name}_detail"

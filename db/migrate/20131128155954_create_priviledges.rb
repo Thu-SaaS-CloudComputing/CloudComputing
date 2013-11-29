@@ -7,7 +7,7 @@ class CreatePriviledges < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :priviledges_users do |t|
+    create_table :priviledges_users, id: false do |t|
       t.belongs_to :priviledge
       t.belongs_to :user
     end
