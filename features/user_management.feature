@@ -58,6 +58,13 @@ Background: users, priviledges, priviledges_database and users in database
     And I follow detail of user_1
     Then I should be on user_1 detail page
     And I should see the following displayed: user_1, 2012012429
-    And I should not see the following displayed: edit_category_cat_2, delete_category_cat_2, add_articles_under_cat_2, edit_articles_under_cat_2, delete_articles_under_cat_2
-    And I should see the following displayed: edit_category_cat_1, delete_category_cat_1, add_articles_under_cat_1, edit_articles_under_cat_1, delete_articles_under_cat_1
+    And I should see "off" displayed in the following priviledges: edit_category_cat_2, delete_category_cat_2, add_articles_under_cat_2, edit_articles_under_cat_2, delete_articles_under_cat_2
+    And I should see "on" displayed in the following priviledges: edit_category_cat_1, delete_category_cat_1, add_articles_under_cat_1, edit_articles_under_cat_1, delete_articles_under_cat_1
+    And I should see all priviledges displayed
+    
+  Scenario: change the priviledges of users
+    When I am on user_1 detail page
+    Then I should see "off" displayed in the following priviledges: edit_category_cat_2, delete_category_cat_2, add_articles_under_cat_2, edit_articles_under_cat_2, delete_articles_under_cat_2
+    When I follow "off" in switch of priviledge edit_category_cat_2
+    Then I should see "on" displayed in the following priviledges: edit_category_cat_2
     
