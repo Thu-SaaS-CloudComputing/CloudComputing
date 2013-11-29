@@ -8,6 +8,7 @@ class Admin::UserController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @priviledges = @user.priviledge
+    @priviledges = @user.priviledges
+    @all_priviledges = Priviledge.all
   end
 end

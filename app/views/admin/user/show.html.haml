@@ -1,5 +1,30 @@
-%h1 XueTang Project
+%h1 User Management
 %div.row-fluid
   %div.span2
     =render "nav"
   %div.span10
+    %h1
+      %small
+        =@user.name
+    %table.table.table-hover
+      %thead
+        %tr{:colspan => "5"}
+          %th Priviledge List
+        %tr
+          %th Priviledge
+          %th Description
+          %th State
+          %th Authorized
+          %th UnAuthorized
+      %tbody
+        - @all_priviledges.each do |priviledge|
+          %tr
+            %td= priviledge.name
+            %td= priviledge.description
+            %td
+              - if @user.has_priviledge?(priviledge)
+                Authorized
+              - else
+                UnAuthorized
+            %td= link_to "Anthorize", admin_user_path, {:class => "btn btn-primary btn-block"}
+            %td= link_to "UnAuthorize", admin_user_path, {:class => "btn btn-primary btn-block"}

@@ -25,14 +25,14 @@ CloudComputing::Application.routes.draw do
         get 'switch_show'
       end
     end
-    resources :user, only: [:edit, :index, :update, :show] do
+    resources :user, only: [:index, :edit, :update, :show] do
       member do
-        get '', :action => :index
+        #get '', :action => :index
       end
     end
     resources :priviledge, only: [:show, :index] do
       member do
-        get '', :action => :index
+        #get '', :action => :index
       end
     end
   end
