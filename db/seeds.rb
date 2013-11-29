@@ -84,16 +84,6 @@ priviledges.each do |priviledge|
   Priviledge.create!(priviledge)
 end
 
-links = Array.new
-(1..priviledges.size()).each do |x|
-  links << {:priviledge_id => x, :user_id => 1}
-end
-
-(1..5).each do |x|
-  links << {:priviledge_id => x, :user_id => 2}
-end
-
-
 users = [
          {:name => "user_1", :studentID => "2012012429"},
          {:name => "user_2", :studentID => "2012012428"},
@@ -103,3 +93,23 @@ users = [
 users.each do |user|
   User.create!(user)
 end
+
+links = Array.new
+(1..priviledges.size()).each do |x|
+  links << {:priviledge_id => x, :user_id => 1}
+end
+
+(1..5).each do |x|
+  links << {:priviledge_id => x, :user_id => 2}
+end
+
+links.each do |item|
+  priviledge = Priviledge.find_by_id(item[:priviledge_id])
+  user = User.find_by_id(item[:user_id])
+  priviledge.users << user
+  user.priviledges << priviledge
+  priviledge.save!
+  user.save!
+end
+
+

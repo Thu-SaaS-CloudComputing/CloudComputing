@@ -17,6 +17,10 @@ def path_to(page_name)
     "/admin/category/0"
   when /the edit lesson table page/
     "/admin/lesson_table/0"
+  when /the user management page/
+    "/admin/user"
+  when /(.+) detail page/
+    "/admin/user/#{User.find_by_name($1).id}"
   end
   
 end
@@ -65,11 +69,24 @@ end
 Then /^I should see the following displayed: (.*)$/ do |lst|
   if lst.class == String
     art_list = lst.split(/[, "]+/)
-    art_list.each do |art|
+    art_list.each do |item|
       if page.respond_to? :should
-        page.should have_content(art)
+        page.should have_content(item)
       else
-        assert page.has_content?(art)
+        assert page.has_content?(item)
+      end
+    end
+  end
+end
+
+Then /^I should not see the following displayed: (.*)$/ do |lst|
+  if lst.class == String
+    art_list = lst.split(/[, "]+/)
+    art_list.each do |item|
+      if page.respond_to? :should
+        page.should have_no_content(item)
+      else
+        assert page.has_no_content?(item)
       end
     end
   end
