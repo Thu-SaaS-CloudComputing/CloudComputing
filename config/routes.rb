@@ -25,6 +25,16 @@ CloudComputing::Application.routes.draw do
         get 'switch_show'
       end
     end
+    resources :user, only: [:edit, :index, :update, :show] do
+      member do
+        get '', :action => :index
+      end
+    end
+    resources :priviledge, only: [:show, :index] do
+      member do
+        get '', :action => :index
+      end
+    end
   end
   
   root :to => "visitor_index#show"
