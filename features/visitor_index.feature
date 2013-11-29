@@ -36,6 +36,8 @@ Scenario: display all top level categories
 
 Scenario: display brief content of each category in blocks
   Given I am on the visitor index page
+  
+	Then show me the page
   Then I should see the following displayed in the block of test_cat_1: test_art_1, test_art_3, test_art_6, test_cat_2, test_cat_3
   And I should see the following displayed in the block of test_cat_4: test_art_8, test_art_9
   And I should see the following displayed in the block of test_cat_5: test_art_10, test_art_11, test_cat_6
