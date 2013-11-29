@@ -8,23 +8,19 @@
         =@user.name
     %table.table.table-hover
       %thead
-        %tr{:colspan => "5"}
+        %tr{:colspan => "3"}
           %th Priviledge List
         %tr
           %th Priviledge
           %th Description
           %th State
-          %th Authorized
-          %th UnAuthorized
       %tbody
         - @all_priviledges.each do |priviledge|
           %tr
             %td= priviledge.name
             %td= priviledge.description
-            %td
+            %td{:id =>  "#{priviledge.name}_switch"}
               - if @user.has_priviledge?(priviledge)
-                Authorized
+                = link_to "Authorized", "#{@user.id}/switch/#{priviledge.id}", {:class => "btn btn-primary btn-block"}
               - else
-                UnAuthorized
-            %td= link_to "Anthorize", admin_user_path, {:class => "btn btn-primary btn-block"}
-            %td= link_to "UnAuthorize", admin_user_path, {:class => "btn btn-primary btn-block"}
+                = link_to "UnAuthorized", "#{@user.id}/switch/#{priviledge.id}", {:class => "btn btn-primary btn-block"}

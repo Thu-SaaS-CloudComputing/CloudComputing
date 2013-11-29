@@ -28,6 +28,9 @@ CloudComputing::Application.routes.draw do
     resources :user, only: [:index, :edit, :update, :show] do
       member do
         #get '', :action => :index
+        #get 'authorize/:priviledge', :action => :authorize
+        #get 'unauthorize/:priviledge', :action => :unauthorize
+        get 'switch/:priviledge', :action => :switch
       end
     end
     resources :priviledge, only: [:show, :index] do
