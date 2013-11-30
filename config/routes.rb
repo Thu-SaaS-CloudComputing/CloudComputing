@@ -59,6 +59,12 @@ CloudComputing::Application.routes.draw do
         #get '', :action => :index
       end
     end
+    resources :plugins, only: [:index] do
+      member do
+        get '', :action => :index
+        post 'enable'
+      end
+    end
   end
   
   root :to => "visitor_index#show"
