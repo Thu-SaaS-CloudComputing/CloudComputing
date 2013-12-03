@@ -8,6 +8,8 @@
       = label :article, :title, 'Title'
       = text_field :article, :title
 
+      = select :article, :category, options_from_collection_for_select(@categories, 'id', 'name')
+
       = label :article, :author, 'Author'
       = text_field :article, :author
 
