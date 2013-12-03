@@ -16,9 +16,9 @@ attr_accessible :description, :name, :option, :parent, :order, :show_on_index
       sub_cat.each do |cat|
         result << cat.tree_plant
       end
-      return {self.name.to_sym => result}
+      return {self => result}
     else
-      return self.name
+      return self
     end
   end
 
