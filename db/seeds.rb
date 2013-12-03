@@ -53,6 +53,12 @@ lessons.each do |lesson|
   Lesson.create!(lesson)
 end
 
+plugins = [
+  {:name => "carousel", :description => "首页上的滚动图片新闻", :enable => false}
+]
+plugins.each do |plugin|
+  Plugins.create!(plugin)
+end
 
 root_users = [
               {:username => "admin", :password => "admin"}

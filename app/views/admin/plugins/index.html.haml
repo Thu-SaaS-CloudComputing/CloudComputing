@@ -1,0 +1,16 @@
+%h1 Plugins Manager
+%div.row-fluid
+  %div.span2
+    =render "nav"
+  %div.span10
+    %table.table.table-bordered.table-hover
+      %thead
+        %th name
+        %th description
+        %th enable
+      %tbody
+        - @plugins.each do |plugin|
+          %tr
+            %td= plugin.name
+            %td= plugin.description
+            %td= plugin.enable
