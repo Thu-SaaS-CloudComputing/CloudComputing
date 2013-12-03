@@ -59,14 +59,14 @@ CloudComputing::Application.routes.draw do
         #get '', :action => :index
       end
     end
-    resources :plugins, only: [:index] do
+    resources :plugins, only: [:index, :edit] do
       member do
         get '', :action => :index
-        post 'enable'
+        post 'enable', :action => :toggle_enable
       end
     end
   end
-  
+
   root :to => "visitor_index#show"
   # The priority is based upon order of creation:
   # first created -> highest priority.

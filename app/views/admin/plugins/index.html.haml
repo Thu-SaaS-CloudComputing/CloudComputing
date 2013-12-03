@@ -3,6 +3,13 @@
   %div.span2
     =render "nav"
   %div.span10
+    %div.alert.alert-success.alert-dismissable.fade.in{:style => "display:none;"}
+      %strong Success!
+      Your operation succeed! See on
+      =link_to "index",visitor_index_path(0), :class => "alert-link"
+    %div.alert.alert-error.alert-dismissable.fade.in{:style => "display:none;"}
+      %strong Failed!
+      Your operation Failed!
     %table.table.table-bordered.table-hover
       %thead
         %th name
@@ -13,4 +20,33 @@
           %tr
             %td= plugin.name
             %td= plugin.description
-            %td= plugin.enable
+            -if plugin.enable
+              %td= link_to "Enable","javascript:;",:onclick => "Plugins.toggleEnable(#{plugin.id})"
+            -else
+              %td= link_to "Disable","javascript:;",:onclick => "Plugins.toggleEnable(#{plugin.id})"
+-content_for :scripts do
+  :javascript
+    var Plugins = (function(){
+      function toggleEnable(id){
+        $('.alert').hide();
+        var url = "#{admin_plugins_path}";
+        url = url +'/'+id+'/enable';
+        var $target = $(event.target);
+        $.ajax({
+          method:'POST',
+          url: url,
+          success:function(res){
+            $('.alert-success').show();
+            $target.text(res.enable?'Enable':'Disable');
+          },
+          error:function(res){
+            $('.alert-error').show();
+            $target.text(res.enable?'Enable':'Disable');
+          }
+        });
+      }
+      var result = {
+        toggleEnable : toggleEnable,
+      };
+      return result;
+    })();
