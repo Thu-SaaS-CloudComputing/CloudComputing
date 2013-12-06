@@ -8,7 +8,8 @@ describe Admin::CategoryController do
     @category_4 = FactoryGirl.create(:category, parent: 2, id: 4, order: 4)
     session[:user_timestamp] = Time.now;
     session[:user] = "2012012429"
-    Admin::CategoryController.any_instance.stub(:validate).and_return(true)
+    Admin::CategoryController.any_instance.stub(:validate_edit).and_return(true)
+    Admin::CategoryController.any_instance.stub(:validate_delete).and_return(true)
   end
   
   describe "Category.find" do
