@@ -23,6 +23,13 @@ describe User do
     end
   end
 
+  describe 'valid?' do
+    before :each do
+      @fake_user = FactoryGirl.build(:user, studentID: "2012012429")
+    end
+    it 'should return true when the student number is valid'
+    it 'should return false when the student number is invalid'
+  end
   #describe 'temporary_user' do
   #  before :each do
   #    @user = FactoryGirl.build(:user)

@@ -1,2 +1,2 @@
-class Admin::PriviledgeController < ApplicationController
+class Admin::PriviledgeController < AdminController
 end

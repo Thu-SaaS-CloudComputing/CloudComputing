@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe Admin::UserController do
+  before :each do
+    session[:user] = "2012012429"
+    session[:user_timestamp] = Time.now
+  end
   describe 'index action' do
     before :each do
       @result = [mock("fake_1"), mock("fake_2")]

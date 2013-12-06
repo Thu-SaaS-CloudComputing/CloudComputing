@@ -6,7 +6,9 @@ describe Admin::CategoryController do
     @category_2 = FactoryGirl.create(:category, parent: 0, id: 2, order: 2)
     @category_3 = FactoryGirl.create(:category, parent: 1, id: 3, order: 3)
     @category_4 = FactoryGirl.create(:category, parent: 2, id: 4, order: 4)
-    session[:admin_auth] = Time.now;
+    session[:user_timestamp] = Time.now;
+    session[:user] = "2012012429"
+    Admin::CategoryController.any_instance.stub(:validate).and_return(true)
   end
   
   describe "Category.find" do

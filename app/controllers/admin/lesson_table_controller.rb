@@ -1,4 +1,6 @@
 class Admin::LessonTableController < AdminController
+  before_filter :validate, :except => [:index]
+
   def index
     @lessons = Hash.new
 
@@ -42,4 +44,13 @@ class Admin::LessonTableController < AdminController
     redirect_to admin_lesson_table_path()
   end
 
+private
+  def validate
+    tem_user = User.find_by_studentID(session[:user])
+    priv = Priviledge.find_by_name("user_management")
+    if !tem_user.priviledges.include?(priv)
+      flash[:notice] = "You are not authorized to do so!"
+      redirect_to admin_index_path and return
+    end
+  end
 end

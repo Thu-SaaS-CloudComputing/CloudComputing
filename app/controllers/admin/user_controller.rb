@@ -1,4 +1,4 @@
-class Admin::UserController < ApplicationController
+class Admin::UserController < AdminController
   def index
     @users = User.all
     #@users.each do |user|

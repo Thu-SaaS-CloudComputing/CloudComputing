@@ -13,7 +13,9 @@ describe Admin::LessonTableController do
     Lesson.stub(:find_all_by_classroom).with("cla_1").and_return([@lesson_1, @lesson_3, @lesson_4])
     Lesson.stub(:find_all_by_classroom).with("cla_2").and_return([@lesson_2])
     Lesson.stub(:all).and_return([@lesson_1, @lesson_2, @lesson_3, @lesson_4])
-    session[:admin_auth] = Time.now;
+    session[:user] = "2012012429"
+    session[:user_timestamp] = Time.now
+    Admin::LessonTableController.any_instance.stub(:validate).and_return(true)
   end
 
   describe "Index page" do
