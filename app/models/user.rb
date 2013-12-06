@@ -16,18 +16,18 @@ class User < ActiveRecord::Base
     self.priviledges.exists?(priviledge)
   end
 
-  def self.temporary_user
-    if session.has_key?(:user)
-      return User.find(session[:user].id)
-    else
-      return nil
-    end
-  end
+  #def self.temporary_user
+  #  if session.has_key?(:user)
+  #    return User.find(session[:user].id)
+  #  else
+  #   return nil
+  #  end
+  #end
 
-private
+#private
 
-  def user_management?
-    tem_user = User.find_by_studentID(session[:user])
-    tem_user.priviledges.include?("user_management")
-  end
+  #def user_management?
+  #  tem_user = User.find_by_studentID(session[:user])
+  #  tem_user.priviledges.include?("user_management")
+  #end
 end

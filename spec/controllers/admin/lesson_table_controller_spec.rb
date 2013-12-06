@@ -13,8 +13,7 @@ describe Admin::LessonTableController do
     Lesson.stub(:find_all_by_classroom).with("cla_1").and_return([@lesson_1, @lesson_3, @lesson_4])
     Lesson.stub(:find_all_by_classroom).with("cla_2").and_return([@lesson_2])
     Lesson.stub(:all).and_return([@lesson_1, @lesson_2, @lesson_3, @lesson_4])
-    session[:user] = "2012012429"
-    session[:user_timestamp] = Time.now
+    AdminController.any_instance.stub(:authorize).and_return(true)
     Admin::LessonTableController.any_instance.stub(:validate).and_return(true)
   end
 
@@ -22,20 +21,20 @@ describe Admin::LessonTableController do
     it 'should have lessons list properly when not specified' do
       Lesson.should_receive(:all)
       get 'index'
-      assigns(:table_head).should == ["All Lessons"]
-      assigns(:lessons).should == {"All Lessons" => [@lesson_1, @lesson_2, @lesson_3, @lesson_4]}
+      expect(assigns(:table_head)).to eq(["All Lessons"])
+      expect(assigns(:lessons)).to eq({"All Lessons" => [@lesson_1, @lesson_2, @lesson_3, @lesson_4]})
     end
     it 'should have lessons list properly when specified with classroom' do
       Lesson.should_receive(:get_all_classrooms)
       get 'index', :sort => "classroom"
-      assigns(:table_head).should == ["cla_1", "cla_2"]
-      assigns(:lessons).should == {"cla_1" => [@lesson_1, @lesson_3, @lesson_4], "cla_2" => [@lesson_2]}
+      expect(assigns(:table_head)).to eq(["cla_1", "cla_2"])
+      expect(assigns(:lessons)).to eq({"cla_1" => [@lesson_1, @lesson_3, @lesson_4], "cla_2" => [@lesson_2]})
     end
     it 'should have lessons listed properly when specified with department' do
       Lesson.should_receive(:get_all_departments)
       get 'index', :sort => "department"
-      assigns(:table_head).should == ["dep_1", "dep_2"]
-      assigns(:lessons).should == {"dep_1" => [@lesson_1, @lesson_4], "dep_2" => [@lesson_2, @lesson_3]}
+      expect(assigns(:table_head)).to eq(["dep_1", "dep_2"])
+      expect(assigns(:lessons)).to eq({"dep_1" => [@lesson_1, @lesson_4], "dep_2" => [@lesson_2, @lesson_3]})
     end
   end
 
@@ -43,7 +42,7 @@ describe Admin::LessonTableController do
     it 'should list info of the lesson' do
       Lesson.should_receive(:find).with("1").and_return(@lesson_1)
       get 'edit', :id => 1
-      assigns(:lesson).should == @lesson_1
+      assigns(:lesson).should be @lesson_1
     end
   end
 
@@ -90,5 +89,9 @@ describe Admin::LessonTableController do
       get 'destroy', :id => 1
       flash[:notice].should == "Lesson 'fake_1' deleted."
     end
+  end
+
+  describe 'validate' do
+    pending "Needs further test"
   end
 end

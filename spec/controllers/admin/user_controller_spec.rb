@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe Admin::UserController do
   before :each do
-    session[:user] = "2012012429"
-    session[:user_timestamp] = Time.now
+    AdminController.any_instance.stub(:authorize).and_return(true)
+    Admin::UserController.any_instance.stub(:validate).and_return(true)
   end
   describe 'index action' do
     before :each do
-      @result = [mock("fake_1"), mock("fake_2")]
+      @result = [double("fake_1"), double("fake_2")]
       User.stub(:all).and_return(@result)
     end
     it 'should try to get all users' do
@@ -16,13 +16,13 @@ describe Admin::UserController do
     end
     it 'should set the return value properly' do
       get :index
-      assigns(:users).should == @result
+      expect(assigns(:users)).to eq(@result)
     end
   end
 
   describe 'show action' do
     before :each do
-      @fake_result = [mock("priv_1"), mock("priv_2")]
+      @fake_result = [double("priv_1"), double("priv_2")]
       @user_1 = FactoryGirl.build(:user, name: "user_1", studentID: 2012012429)
       User.stub(:find).and_return(@user_1)
       @user_1.stub(:priviledges).and_return(@fake_result)
@@ -42,9 +42,13 @@ describe Admin::UserController do
     end
     it 'should set the return value properly' do
       get :show, :id => "1"
-      assigns(:user).should == @user_1
-      assigns(:priviledges).should == @fake_result
-      assigns(:all_priviledges).should == @fake_result
+      assigns(:user).should be @user_1
+      expect(assigns(:priviledges)).to eq(@fake_result)
+      expect(assigns(:all_priviledges)).to eq(@fake_result)
     end
+  end
+
+  describe 'validate' do
+    pending "Needs further test"
   end
 end

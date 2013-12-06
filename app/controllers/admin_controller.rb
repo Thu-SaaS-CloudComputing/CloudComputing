@@ -10,9 +10,6 @@ class AdminController < ApplicationController
   end
   
   def auth
-    #session[:user] = "2012012427"
-    #session[:user_timestamp] = Time.now
-    #redirect_to admin_index_path
     if User.valid?(params[:login][:username])
       session[:user] = params[:login][:username]
       session[:user_timestamp] = Time.now

@@ -6,8 +6,7 @@ describe Admin::CategoryController do
     @category_2 = FactoryGirl.create(:category, parent: 0, id: 2, order: 2)
     @category_3 = FactoryGirl.create(:category, parent: 1, id: 3, order: 3)
     @category_4 = FactoryGirl.create(:category, parent: 2, id: 4, order: 4)
-    session[:user_timestamp] = Time.now;
-    session[:user] = "2012012429"
+    AdminController.any_instance.stub(:authorize).and_return(true)
     Admin::CategoryController.any_instance.stub(:validate_edit).and_return(true)
     Admin::CategoryController.any_instance.stub(:validate_delete).and_return(true)
   end
@@ -15,7 +14,7 @@ describe Admin::CategoryController do
   describe "Category.find" do
     it "should find the correct category" do
       result = Category.find "1"
-      result.should == @category_1
+      expect(result).to eq(@category_1)
     end
   end
   
@@ -77,6 +76,10 @@ describe Admin::CategoryController do
       @category_1.should_receive(:switch_show)
       get 'switch_show', {:id => 1}
     end
+  end
+
+  describe "validate" do
+    pending "Needs further test"
   end
 
 end

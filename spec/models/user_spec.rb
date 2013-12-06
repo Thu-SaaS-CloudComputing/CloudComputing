@@ -25,17 +25,28 @@ describe User do
 
   describe 'valid?' do
     before :each do
-      @fake_user = FactoryGirl.build(:user, studentID: "2012012429")
+      @fake_ID = "2012012429"
     end
-    it 'should return true when the student number is valid'
-    it 'should return false when the student number is invalid'
+    it 'should return true when the student number is valid' do
+      User.should_receive(:find_by_studentID).with(@fake_ID).and_return(true)
+      expect(User.valid?(@fake_ID)).to eq(true)
+    end
+    it 'should return false when the student number is invalid' do
+      User.should_receive(:find_by_studentID).with(@fake_ID).and_return(false)
+      expect(User.valid?(@fake_ID)).to eq(false)
+    end
   end
+
+  describe 'has_priviledge' do
+    pending "Needs further test"
+  end
+
   #describe 'temporary_user' do
   #  before :each do
-  #    @user = FactoryGirl.build(:user)
+  #    @user = FactoryGirl.build(:user, studentID: "2012012429")
   #    @user.stub(:id).and_return(1)
   #    User.stub(:find).and_return(@user)
-  #    @session[:user] = @user
+  #    session[:user] = "2012012429"
   #  end
   #  it 'should return nil if no user in session' do
   #    User.should_receive(:find).with(1).and_return(nil)
