@@ -24,4 +24,4 @@
               - if @user.has_priviledge?(priviledge)
                 = link_to "on", "#{@user.id}/switch/#{priviledge.id}", {:class => "btn btn-primary btn-block"}
               - else
-                = link_to "off", "#{@user.id}/switch/#{priviledge.id}", {:class => "btn btn-primary btn-block"}
+                = link_to "off", "#{@user.id}/switch/#{priviledge.id}", {:class => "btn btn-danger btn-block"}
