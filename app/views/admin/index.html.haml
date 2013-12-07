@@ -2,3 +2,5 @@
 %div.row-fluid
   %div.span2
     =render "nav"
+  %div.span10
+    =flash[:notice] if flash[:notice]

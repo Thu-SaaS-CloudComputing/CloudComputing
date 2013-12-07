@@ -1,4 +1,6 @@
 class Admin::CategoryController < AdminController
+  before_filter :validate_edit, :only => [:new_sub, :edit, :upward, :downward, :switch_show, :update]
+  before_filter :validate_delete, :only => :destroy
   def index
     @categories = []
     Category.find_top_categories.each do
@@ -73,4 +75,43 @@ class Admin::CategoryController < AdminController
     flash[:notice] = "Category #{@category.name}'s visibility on index has been switched."
     redirect_to admin_category_path()
   end
+
+  private
+  def validate_edit
+    if params[:id] == 0
+      validate_topcategory_edit
+    else
+      validate_subcategory_edit
+    end
+  end
+
+  def validate_topcategory_edit
+    tem_user = User.find_by_studentID(session[:user])
+    priv = Priviledge.find_by_name("edit_all_categories")
+    if !tem_user.priviledges.include(priv)
+      falsh[:notice] = "You are not authorized to do so!"
+      redirect_to admin_index_path and return
+    end
+  end
+  
+  def validate_subcategory_edit
+    cat = Category.find(params[:id])
+    tem_user = User.find_by_studentID(session[:user])
+    priv = Priviledge.find_by_name("edit_category_" + cat.name)
+    if !tem_user.priviledges.include?(priv)
+      flash[:notice] = "You are not authorized to do so!"
+      redirect_to admin_index_path and return
+    end
+  end
+
+  def validate_delete
+    tem_user = User.find_by_studentID(session[:user])
+    cat = Category.find(params[:id])
+    priv = Priviledge.find_by_name("delete_category_" + cat.name)
+    if !tem_user.priviledges.include?(priv)
+      flash[:notice] = "You are not authorized to do so!"
+      redirect_to admin_index_path and return
+    end
+  end
+  
 end

@@ -8,6 +8,7 @@ CloudComputing::Application.routes.draw do
   resources :admin, :only => [:index]
 
   namespace :admin do
+    get '', :action => :index
     resources :lesson_table, only: [:edit, :destroy, :index, :update] do
       member do
         get '', :action => :index
@@ -23,6 +24,19 @@ CloudComputing::Application.routes.draw do
         get 'upward'
         get 'downward'
         get 'switch_show'
+      end
+    end
+    resources :user, only: [:index, :edit, :update, :show] do
+      member do
+        #get '', :action => :index
+        #get 'authorize/:priviledge', :action => :authorize
+        #get 'unauthorize/:priviledge', :action => :unauthorize
+        get 'switch/:priviledge', :action => :switch
+      end
+    end
+    resources :priviledge, only: [:show, :index] do
+      member do
+        #get '', :action => :index
       end
     end
   end

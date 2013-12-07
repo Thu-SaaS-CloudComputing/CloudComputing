@@ -1,0 +1,27 @@
+%h1 User Management
+%div.row-fluid
+  %div.span2
+    =render "nav"
+  %div.span10
+    %h1
+      %small
+        =@user.name
+        =@user.studentID
+    %table.table.table-hover
+      %thead
+        %tr{:colspan => "3"}
+          %th Priviledge List
+        %tr
+          %th Priviledge
+          %th Description
+          %th State
+      %tbody
+        - @all_priviledges.each do |priviledge|
+          %tr
+            %td= priviledge.name
+            %td= priviledge.description
+            %td{:id =>  "#{priviledge.name}_switch"}
+              - if @user.has_priviledge?(priviledge)
+                = link_to "on", "#{@user.id}/switch/#{priviledge.id}", {:class => "btn btn-primary btn-block"}
+              - else
+                = link_to "off", "#{@user.id}/switch/#{priviledge.id}", {:class => "btn btn-primary btn-block"}
