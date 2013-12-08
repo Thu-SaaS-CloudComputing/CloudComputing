@@ -18,7 +18,7 @@
       %tbody
         - @plugins.each do |plugin|
           %tr
-            %td= plugin.name
+            %td= link_to plugin.name,plugin.link
             %td= plugin.description
             -if plugin.enable
               %td= link_to "Enable","javascript:;",:onclick => "Plugins.toggleEnable(#{plugin.id})"
