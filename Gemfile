@@ -11,6 +11,8 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'sqlite3'
   gem 'simplecov'
+end
+group :debug do
   # To use debugger
   gem 'debugger'
 end

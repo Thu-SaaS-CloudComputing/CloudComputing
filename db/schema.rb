@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(:version => 20131128155954) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "priviledges_users", :force => true do |t|
+  create_table "priviledges_users", :id => false, :force => true do |t|
     t.integer "priviledge_id"
     t.integer "user_id"
   end
