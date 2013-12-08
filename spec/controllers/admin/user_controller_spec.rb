@@ -3,10 +3,10 @@ require 'spec_helper'
 describe Admin::UserController do
   before :each do
     AdminController.any_instance.stub(:authorize).and_return(true)
-    Admin::UserController.any_instance.stub(:validate).and_return(true)
   end
   describe 'index action' do
     before :each do
+      Admin::UserController.any_instance.stub(:validate).and_return(true)
       @result = [double("fake_1"), double("fake_2")]
       User.stub(:all).and_return(@result)
     end
@@ -22,6 +22,7 @@ describe Admin::UserController do
 
   describe 'show action' do
     before :each do
+      Admin::UserController.any_instance.stub(:validate).and_return(true)
       @fake_result = [double("priv_1"), double("priv_2")]
       @user_1 = FactoryGirl.build(:user, name: "user_1", studentID: 2012012429)
       User.stub(:find).and_return(@user_1)
@@ -49,6 +50,24 @@ describe Admin::UserController do
   end
 
   describe 'validate' do
-    pending "Needs further test"
+    before :each do
+      @user_1 = FactoryGirl.build(:user, name: "user_1", studentID: "1")
+      @user_2 = FactoryGirl.build(:user, name: "user_2", studentID: "2")
+      @priv = FactoryGirl.build(:priviledge)
+      Priviledge.stub(:find_by_name).and_return(@priv)
+      @user_1.stub(:has_priviledge?).and_return(true)
+      @user_2.stub(:has_priviledge?).and_return(false)
+    end
+    it 'should be seen if authorized' do
+      Admin::UserController.any_instance.stub(:get_temporary_user).and_return(@user_1)
+      get 'index'
+      response.should render_template('index')
+    end
+    it 'should not be seen if unauthorized' do
+      Admin::UserController.any_instance.stub(:get_temporary_user).and_return(@user_2)
+      get 'index'
+      response.should redirect_to admin_index_path
+    end
   end
+
 end

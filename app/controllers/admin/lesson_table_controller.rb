@@ -46,9 +46,9 @@ class Admin::LessonTableController < AdminController
 
 private
   def validate
-    tem_user = User.find_by_studentID(session[:user])
+    tem_user = get_temporary_user
     priv = Priviledge.find_by_name("user_management")
-    if !tem_user.priviledges.include?(priv)
+    if !tem_user.has_priviledge?(priv)
       flash[:notice] = "You are not authorized to do so!"
       redirect_to admin_index_path and return
     end

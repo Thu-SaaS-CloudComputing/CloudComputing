@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   end
 
   def has_priviledge?(priviledge)
-    self.priviledges.exists?(priviledge)
+    self.priviledges.include?(priviledge)
   end
 
   #def self.temporary_user

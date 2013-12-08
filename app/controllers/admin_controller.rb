@@ -24,6 +24,13 @@ class AdminController < ApplicationController
   def index
   end
 
+  def get_temporary_user
+    if session[:user]
+      session[:user_timestamp] = Time.now
+      return User.find_by_studentID(session[:user])
+    end
+  end
+
 private
 
   def authorize

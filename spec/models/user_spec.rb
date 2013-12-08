@@ -38,7 +38,18 @@ describe User do
   end
 
   describe 'has_priviledge' do
-    pending "Needs further test"
+    before :each do
+      @user = FactoryGirl.build(:user)
+      @priv_1 = FactoryGirl.build(:priviledge, name: "priv_1")
+      @priv_2 = FactoryGirl.build(:priviledge, name: "priv_2")
+      @user.stub(:priviledges).and_return([@priv_1])
+    end
+    it 'should return true if it has the priviledge' do
+      expect(@user.has_priviledge?(@priv_1)).to eq true
+    end
+    it "should return false if it does not have the priviledge" do
+      expect(@user.has_priviledge?(@priv_2)).to eq false
+    end
   end
 
   #describe 'temporary_user' do
