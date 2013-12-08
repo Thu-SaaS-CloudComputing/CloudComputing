@@ -22,7 +22,8 @@ Background: categories and articles in database
 	|test_art_6	|Bill		|test_cat_1	|
 	|test_art_7	|Bill		|test_cat_1     |
 
-        Given I have already logged in
+        Given the user database is already set up
+        Given I have already logged in with 2012012429
 	And I am on the edit categary page
 
 Scenario: Insert Top Category

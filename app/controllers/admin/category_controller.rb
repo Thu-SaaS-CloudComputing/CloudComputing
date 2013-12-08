@@ -78,7 +78,7 @@ class Admin::CategoryController < AdminController
 
   private
   def validate_edit
-    if params[:id] == 0
+    if params[:id] == "0"
       validate_topcategory_edit
     else
       validate_subcategory_edit
@@ -88,7 +88,7 @@ class Admin::CategoryController < AdminController
   def validate_topcategory_edit
     tem_user = User.find_by_studentID(session[:user])
     priv = Priviledge.find_by_name("edit_all_categories")
-    if !tem_user.priviledges.include(priv)
+    if !tem_user.priviledges.include?(priv)
       falsh[:notice] = "You are not authorized to do so!"
       redirect_to admin_index_path and return
     end

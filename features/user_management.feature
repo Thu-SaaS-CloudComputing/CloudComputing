@@ -4,7 +4,7 @@ Feature: User Management
   So that it is more clear and secured.
   
 Background: users, priviledges, priviledges_database and users in database
-  
+
   Given the following users exist:
     |name     |studentID      |id |
     |user_1   |2012012429     |1  |
@@ -28,6 +28,7 @@ Background: users, priviledges, priviledges_database and users in database
     |add_atricles_anywhere        |Empty            |13 |
     |edit_atricles_anywhere       |Empty            |14 |
     |delete_atricles_anywhere     |Empty            |15 |
+    |user_management              |Empty            |16 |
     
   Given the following priviledges_users exist:
     |priviledge_id  |user_id  |
@@ -46,8 +47,10 @@ Background: users, priviledges, priviledges_database and users in database
     |13             |3        |
     |14             |3        |
     |15             |3        |
+    |16             |1        |
+
+    Given I have already logged in with 2012012429
     
-  Given I have already logged in
     
   Scenario: display all users
     When I am on the user management page

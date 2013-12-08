@@ -70,3 +70,27 @@ And /^I should see "(.*)" displayed in the following priviledges: (.*)$/ do |sig
     end
   end
 end
+
+
+Given /the user database is already set up/ do
+  categories = Category.all
+  categories.each do |cat|
+    Priviledge.create!(:name => "edit_category_" + cat.name)
+    Priviledge.create!(:name => "delete_category_" + cat.name)
+    Priviledge.create!(:name => "add_articles_under_" + cat.name)
+    Priviledge.create!(:name => "edit_articles_under_" + cat.name)
+    Priviledge.create!(:name => "delete_articles_under_" + cat.name)
+  end
+  Priviledge.create!(:name => "edit_all_categories")
+  Priviledge.create!(:name => "user_management")
+  Priviledge.create!(:name => "edit_lesson_table")
+
+  admin = User.create!(:name => "user_1", :studentID => "2012012429")
+  Priviledge.all.each do |priv|
+    admin.priviledges << priv
+  end
+  admin.save!
+
+  User.create!(:name => "user_2", :studentID => "2012012428")
+  User.create!(:name => "user_1", :studentID => "2012012427")
+end

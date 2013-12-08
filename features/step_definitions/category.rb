@@ -25,10 +25,9 @@ def path_to(page_name)
   
 end
 
-Given /I have already logged in/ do
-  Root.create!(:username => "admin", :password => "admin")
+Given /I have already logged in with (.+)$/ do |account|
   visit "/admin/login"
-  fill_in :login_username, :with => "admin"
+  fill_in :login_username, :with => account
   fill_in :login_password, :with => "admin"
   click_button "Login"
 end
