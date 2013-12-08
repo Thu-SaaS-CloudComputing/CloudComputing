@@ -1,6 +1,10 @@
 ---
 banner.gif: banner-3153c32cc73f165f38819035557772ba.gif
 banner/index.gif: banner-3153c32cc73f165f38819035557772ba.gif
+img/glyphicons-halflings-white.png: img/glyphicons-halflings-white-6cccd17a7aed91dbc0157d343c68c0d9.png
+img/glyphicons-halflings-white/index.png: img/glyphicons-halflings-white-6cccd17a7aed91dbc0157d343c68c0d9.png
+img/glyphicons-halflings.png: img/glyphicons-halflings-2851b489e8c39f8fad44fc10efb99c3e.png
+img/glyphicons-halflings/index.png: img/glyphicons-halflings-2851b489e8c39f8fad44fc10efb99c3e.png
 rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 admin/lesson_table.js: admin/lesson_table-a7fa98ba2ef09a5dcc079d3f014a4e3c.js
@@ -15,6 +19,8 @@ jquery.js: jquery-5d5fa4986bc87403cb5d6e7ffc288341.js
 jquery/index.js: jquery-5d5fa4986bc87403cb5d6e7ffc288341.js
 admin/lesson_table.css: admin/lesson_table-1b13569e9620782f423d4cd3ce931750.css
 admin/lesson_table/index.css: admin/lesson_table-1b13569e9620782f423d4cd3ce931750.css
+admin/plugins.css: admin/plugins-1b13569e9620782f423d4cd3ce931750.css
+admin/plugins/index.css: admin/plugins-1b13569e9620782f423d4cd3ce931750.css
 application.css: application-f7712428294c11bcbba1857f37ccbeb2.css
 application/index.css: application-f7712428294c11bcbba1857f37ccbeb2.css
 bootstrap.css: bootstrap-e92866af66e4244acd7f4c125262b68d.css

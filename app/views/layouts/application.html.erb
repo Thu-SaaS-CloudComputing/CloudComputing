@@ -10,15 +10,14 @@
   <%= javascript_include_tag 'ckeditor/ckeditor.js' %>
   <%= javascript_include_tag "login" %>
   <%= csrf_meta_tags %>
-  
-  <script type="text/javascript">$(document).ready(function() {
-      if ($('textarea').length > 0) {
-          var data = $('textarea');
-          $.each(data, function(i) {
-              CKEDITOR.replace(data[i].id);
-          });
-      }
-  });</script>
+  <style>
+[class^="icon-"], [class*=" icon-"] {
+  background-image: url("/assets/img/glyphicons-halflings.png");
+}
+[class^="icon-white"], [class*=" icon-white"] {
+  background-image: url("/assets/img/glyphicons-halflings-white.png");
+}
+  </style>
 </head>
 <body>
 <div class="container">
