@@ -1,2 +1,34 @@
-%h1 Admin::Carousel#index
-%p Find me in app/views/admin/carousel/index.html.haml
+%h1 Plugins Manager:Carousel
+%div.row-fluid
+  %div.span2
+    =render "nav"
+  %div.span10
+
+    %table.table.table-bordered.table-hover
+      %thead
+        %th title
+        %th link
+        %th picture
+        %th order
+      %tbody
+        - @carousels.each do |carousel|
+          %tr
+            %td= carousel.title
+            %td= carousel.link
+            %td= image_tag carousel.picture.url, :size => "32"
+            %td
+              =carousel.order
+              =link_to admin_carousel_path(carousel.id), {:method => :delete} do
+                %i.icon-remove
+    %div
+      %form{:action => admin_carousel_add_path, :method => "post", :enctype => "multipart/form-data"}
+        %fieldset
+          %legend upload
+          %label title
+          %input{:type => "text", :name => "title"}
+          %label link
+          %input{:type => "text", :name => "link"}
+          %label picture
+          %input{:type => "file", :name => "picture"}
+          %label
+          %button.btn{:type=>"submit"} add

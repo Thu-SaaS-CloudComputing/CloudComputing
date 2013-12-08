@@ -61,7 +61,9 @@ CloudComputing::Application.routes.draw do
         #get '', :action => :index
       end
     end
+    resources :carousel
     match 'plugins/carousel' => 'carousel#index'
+    match 'carousel/add' => 'carousel#add'
     resources :plugins, only: [:index, :edit] do
       member do
         get '', :action => :index
