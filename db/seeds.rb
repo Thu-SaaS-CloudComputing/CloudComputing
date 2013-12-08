@@ -54,7 +54,7 @@ lessons.each do |lesson|
 end
 
 plugins = [
-  {:name => "carousel", :description => "首页上的滚动图片新闻", :enable => false}
+  {:name => "carousel", :description => "首页上的滚动图片新闻", :enable => false, :link => "/admin/plugins/carousel"}
 ]
 plugins.each do |plugin|
   Plugins.create!(plugin)
