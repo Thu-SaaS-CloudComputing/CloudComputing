@@ -1,6 +1,8 @@
 CloudComputing::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   
+  get "carousel/index"
+
   get "category/index"
   get "articles/index"
   
