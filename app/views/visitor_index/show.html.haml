@@ -7,6 +7,9 @@
     %li{:style => "float: right"}
       - if @temporary_user
         =link_to "Personal page", personal_path(@temporary_user.id)
+%div.row-fluid
+  %div.span5
+    =render "carousel"
 -@top_categories_to_show.each do |category|
   %div.span5
     %table.table.table-bordered.table-hover{:id => category.name}

@@ -15,7 +15,7 @@
           %tr
             %td= carousel.title
             %td= carousel.link
-            %td= image_tag carousel.picture.url, :size => "32"
+            %td= image_tag carousel.picture.admin.url, :size => "32x32"
             %td
               =carousel.order
               =link_to admin_carousel_path(carousel.id), {:method => :delete} do

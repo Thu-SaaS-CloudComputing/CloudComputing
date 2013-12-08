@@ -9,11 +9,13 @@ class Admin::CarouselController < ApplicationController
     carousel.picture = params[:picture]
     carousel.order = Carousel.all.count + 1
     carousel.save!
-    render :json => { :status => 'success' }.to_json
+    redirect_to admin_carousel_index_path
   end
   def destroy
     carousel = Carousel.find params[:id]
     carousel.destroy
     redirect_to admin_carousel_index_path
+  end
+  def display
   end
 end
