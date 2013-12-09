@@ -1,6 +1,10 @@
 CloudComputing::Application.routes.draw do
   get "category/index"
   get "articles/index"
+  
+  namespace :login do
+    get '', :action => :index
+  end
 
   resources :visitor_index, only: [:index, :show]
   resources :category
