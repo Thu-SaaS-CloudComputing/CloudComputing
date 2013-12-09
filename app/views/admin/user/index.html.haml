@@ -1,0 +1,17 @@
+%h1 XueTang Project
+%div.row-fluid
+  %div.span2
+    =render "nav"
+  %div.span10
+    %table.table.table-bordered.table-hover
+      %thead
+        %tr
+          %th UserName
+          %th StudentID
+          %th ShowDetail
+      %tbody
+        - @users.each do |user|
+          %tr
+            %td= user.name
+            %td= user.studentID
+            %td= link_to "Show Details", admin_user_path(user.id), :id => "#{user.name}_detail"

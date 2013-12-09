@@ -28,9 +28,12 @@
             %td= link_to "+", new_sub_admin_category_path(category[:content]),:id=>category[:content].name+"_+"
             %td= link_to "UP", upward_admin_category_path(category[:content]),:id=>category[:content].name+"_up"
             %td= link_to "DOWN", downward_admin_category_path(category[:content]),:id=>category[:content].name+"_down"
-            -if category[:content].show_on_index == "unavailable"
-              %td= "unavailable"
-            -else
-              %td= link_to "#{category[:content].show_on_index}", switch_show_admin_category_path(category[:content])
+            %td
+              -if category[:content].show_on_index == "unavailable"
+                =link_to "unavailable", "#",{:class => "btn btn-default btn-block"}
+              -elsif category[:content].show_on_index == "shown"
+                =link_to "shown", switch_show_admin_category_path(category[:content]), {:class => "btn btn-primary btn-block"}
+              -else
+                =link_to "hidden", switch_show_admin_category_path(category[:content]), {:class => "btn btn-danger btn-block"}
     %br
     = link_to "Insert Top Category", new_sub_admin_category_path(0), {:class => "btn btn-link"}

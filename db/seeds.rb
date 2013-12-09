@@ -63,3 +63,53 @@ root_users.each do |root_user|
 end
 
 
+priviledges = Array.new
+categories.each do |cat|
+  priviledges << {:name => "edit_category_" + cat[:name], :description => "Empty"}
+  priviledges << {:name => "delete_category_" + cat[:name], :description => "Empty"}
+  priviledges << {:name => "add_articles_under_" + cat[:name], :description => "Empty"}
+  priviledges << {:name => "edit_articles_under_" + cat[:name], :description => "Empty"}
+  priviledges << {:name => "delete_articles_under_" + cat[:name], :description => "Empty"}
+end
+
+priviledges << {:name => "edit_all_categories", :description => "Empty"}
+priviledges << {:name => "delete_all_categories", :description => "Empty"}
+priviledges << {:name => "add_articles_anywhere", :description => "Empty"}
+priviledges << {:name => "edit_articles_anywhere", :description => "Empty"}
+priviledges << {:name => "delete_articles_anywhere", :description => "Empty"}
+priviledges << {:name => "user_management", :description => "Empty"}
+priviledges << {:name => "edit_lesson_table", :description => "Empty"}
+
+priviledges.each do |priviledge|
+  Priviledge.create!(priviledge)
+end
+
+users = [
+         {:name => "user_1", :studentID => "2012012429"},
+         {:name => "user_2", :studentID => "2012012428"},
+         {:name => "user_3", :studentID => "2012012427"}
+        ]
+
+users.each do |user|
+  User.create!(user)
+end
+
+links = Array.new
+(1..priviledges.size()).each do |x|
+  links << {:priviledge_id => x, :user_id => 1}
+end
+
+(1..5).each do |x|
+  links << {:priviledge_id => x, :user_id => 2}
+end
+
+links.each do |item|
+  priviledge = Priviledge.find_by_id(item[:priviledge_id])
+  user = User.find_by_id(item[:user_id])
+  priviledge.users << user
+  user.priviledges << priviledge
+  priviledge.save!
+  user.save!
+end
+
+

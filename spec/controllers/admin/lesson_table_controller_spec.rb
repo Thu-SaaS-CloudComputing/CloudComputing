@@ -13,39 +13,48 @@ describe Admin::LessonTableController do
     Lesson.stub(:find_all_by_classroom).with("cla_1").and_return([@lesson_1, @lesson_3, @lesson_4])
     Lesson.stub(:find_all_by_classroom).with("cla_2").and_return([@lesson_2])
     Lesson.stub(:all).and_return([@lesson_1, @lesson_2, @lesson_3, @lesson_4])
-    session[:admin_auth] = Time.now;
+    AdminController.any_instance.stub(:authorize).and_return(true)
   end
 
   describe "Index page" do
+    before :each do
+      Admin::LessonTableController.any_instance.stub(:validate).and_return(true)
+    end
     it 'should have lessons list properly when not specified' do
       Lesson.should_receive(:all)
       get 'index'
-      assigns(:table_head).should == ["All Lessons"]
-      assigns(:lessons).should == {"All Lessons" => [@lesson_1, @lesson_2, @lesson_3, @lesson_4]}
+      expect(assigns(:table_head)).to eq(["All Lessons"])
+      expect(assigns(:lessons)).to eq({"All Lessons" => [@lesson_1, @lesson_2, @lesson_3, @lesson_4]})
     end
     it 'should have lessons list properly when specified with classroom' do
       Lesson.should_receive(:get_all_classrooms)
       get 'index', :sort => "classroom"
-      assigns(:table_head).should == ["cla_1", "cla_2"]
-      assigns(:lessons).should == {"cla_1" => [@lesson_1, @lesson_3, @lesson_4], "cla_2" => [@lesson_2]}
+      expect(assigns(:table_head)).to eq(["cla_1", "cla_2"])
+      expect(assigns(:lessons)).to eq({"cla_1" => [@lesson_1, @lesson_3, @lesson_4], "cla_2" => [@lesson_2]})
     end
     it 'should have lessons listed properly when specified with department' do
       Lesson.should_receive(:get_all_departments)
       get 'index', :sort => "department"
-      assigns(:table_head).should == ["dep_1", "dep_2"]
-      assigns(:lessons).should == {"dep_1" => [@lesson_1, @lesson_4], "dep_2" => [@lesson_2, @lesson_3]}
+      expect(assigns(:table_head)).to eq(["dep_1", "dep_2"])
+      expect(assigns(:lessons)).to eq({"dep_1" => [@lesson_1, @lesson_4], "dep_2" => [@lesson_2, @lesson_3]})
     end
   end
 
   describe 'Edit page' do
+    before :each do
+      Admin::LessonTableController.any_instance.stub(:validate).and_return(true)
+    end
     it 'should list info of the lesson' do
       Lesson.should_receive(:find).with("1").and_return(@lesson_1)
       get 'edit', :id => 1
-      assigns(:lesson).should == @lesson_1
+      assigns(:lesson).should be @lesson_1
     end
   end
 
   describe 'Update page' do
+    before :each do
+      Admin::LessonTableController.any_instance.stub(:validate).and_return(true)
+    end
     it 'should call functions properly' do
       Lesson.should_receive(:find).with("1").and_return(@lesson_1)
       @lesson_1.should_receive(:update_attributes!)
@@ -66,6 +75,9 @@ describe Admin::LessonTableController do
   end
 
   describe 'new_lesson method' do
+    before :each do
+      Admin::LessonTableController.any_instance.stub(:validate).and_return(true)
+    end
     it 'should create a new lesson' do
       Lesson.should_receive(:create!)
       get 'new_lesson', :id => 0
@@ -77,6 +89,9 @@ describe Admin::LessonTableController do
   end
 
   describe 'destroy method' do
+    before :each do
+      Admin::LessonTableController.any_instance.stub(:validate).and_return(true)
+    end
     it 'should call proper method' do
       Lesson.should_receive(:find).with("1").and_return(@lesson_1)
       @lesson_1.should_receive(:destroy)
@@ -87,6 +102,27 @@ describe Admin::LessonTableController do
       @lesson_1.stub(:destroy)
       get 'destroy', :id => 1
       flash[:notice].should == "Lesson 'fake_1' deleted."
+    end
+  end
+
+  describe 'validate' do
+    before :each do
+      @user_1 = FactoryGirl.build(:user, name: "user_1", studentID: "1")
+      @user_2 = FactoryGirl.build(:user, name: "user_2", studentID: "2")
+      @priv = FactoryGirl.build(:priviledge)
+      Priviledge.stub(:find_by_name).and_return(@priv)
+      @user_1.stub(:has_priviledge?).and_return(true)
+      @user_2.stub(:has_priviledge?).and_return(false)
+    end
+    it 'should be able to edit if authorized' do
+      Admin::LessonTableController.any_instance.stub(:get_temporary_user).and_return(@user_1)
+      get 'new_lesson', :id => "0"
+      response.should redirect_to admin_lesson_table_path
+    end
+    it "should not be able to edit if unauthorized" do
+      Admin::LessonTableController.any_instance.stub(:get_temporary_user).and_return(@user_2)
+      get 'new_lesson', :id => "0"
+      response.should redirect_to admin_index_path
     end
   end
 end

@@ -12,7 +12,8 @@ Background: lessons in database:
 	|lesson_3   |1         |3       |115        |department_2  |
 	|lesson_4   |3         |5       |116        |department_2  |
 	|lesson_5   |4         |2       |118        |department_3  |
-        Given I have already logged in
+        Given the user database is already set up
+        Given I have already logged in with 2012012429
 	And I am on the edit lesson table page 
 Scenario: Add new lesson
 	When I follow "Add new lesson"
