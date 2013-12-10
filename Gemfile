@@ -20,6 +20,7 @@ group :test do
   gem 'cucumber-rails', :require => false 
   gem 'factory_girl_rails', :require => false
   gem 'ZenTest'
+  gem 'selenium-webdriver', :require => false
 end
 # for heroku deployee
 group :production do
