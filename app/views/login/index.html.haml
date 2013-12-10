@@ -1,6 +1,6 @@
 Login successfully!
 
 :javascript
-	if (parent)
+	if (self.frameElement.tagName=="IFRAME")
 		parent.document.location.reload();
 

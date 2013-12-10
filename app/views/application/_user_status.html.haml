@@ -1,0 +1,30 @@
+
+%div.container
+  %div.container.span4{"style"=>"float: right"}
+    %h4
+      %table#user_status.table
+        %tbody
+          - if (session[:user])
+            %tr.success
+              %td
+                User:
+              %td
+                = session[:user]
+              %td
+                %a.btn.btn-default{"href" => "/login?logout=true", "role" => "button"}
+                  Logout
+            
+          - else
+            %tr.error
+              %td
+                User:
+              %td
+                %button.btn.btn-default{"onclick" => "login_show();", "type" => "button"}
+                  Login
+
+- if (!session[:user])
+  %div#login_cover{"onclick" => "closeWindow()"}
+  %div#login_window
+    %div#login_close{"onclick" => "closeWindow()"}
+    %iframe#login_frame{"src" => "http://220.113.7.105/CloudComputing?return_addr=login"}
+      
