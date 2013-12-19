@@ -21,7 +21,10 @@
         -category.articles.each do |article|
           %tr
             %td= link_to "#{article.title}", article_path(article)
-            %td{:style => "color: gray"}= article.created_at
+            -if article.created_at.to_a[3] == Time.now.to_a[3] && article.created_at.to_a[4] == Time.now.to_a[4] && article.created_at.to_a[5] == Time.now.to_a[5]
+              %td{:style => "color: gray"}= article.created_at.to_s.scan(/([^ ]+)/).flatten[1]
+            -else
+              %td{:style => "color: gray"}=            article.created_at.to_s.scan(/([^ ]+)/).flatten[0]
             %td{:style => "color: gray"}= article.author
 
 %div.span10
