@@ -14,38 +14,11 @@
 <div class="container">
 <%= image_tag "banner.gif" %>
 </div>
-<div class="container">
-  <div class="container span4" style="float: right">
-  <h4>
-  <table id="user_status" class="table">
-    <tbody>
-      <%= content_tag(:tr, '', class: (session[:user] ? "success" : "active")) do
-        content_tag(:td, "User:") +
-        (session[:user] ? 
-        (content_tag(:td, session[:user]) +
-        content_tag(:td, 
-          content_tag(:a, "Logout", href: "/login?logout=true", class: "btn btn-default", role: "button")
-        ))
-        :
-        content_tag(:td, 
-          button_tag(type: 'button', onclick: "login_show();", class: "btn btn-default") do "Login" end
-        ))
-      end
-  %>
-      </tr>
-    </tbody>
-  </table>
-  </h4>
-  </div>
-</div>
+
+<%= render "user_status" %>
+
 <div class="container">
 <%= yield %>
-</div>
-
-<div id="login_cover" onclick="closeWindow()"></div>
-<div id="login_window">
-    <div id="login_close" onclick="closeWindow()"> </div>
-    <iframe id="login_frame" src="http://220.113.7.105/CloudComputing?return_addr=login"></iframe>
 </div>
 
 </body>
