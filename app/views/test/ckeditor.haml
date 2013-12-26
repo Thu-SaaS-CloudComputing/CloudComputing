@@ -1,0 +1,11 @@
+%h1 Testing_ckeditor
+
+%div#br
+  %ul.nav.nav-tabs
+    - @categories.each do |category|
+      %li{ :class => (params[:id] == category.id.to_s)?'active':nil }
+        =link_to "#{category.name}", category_path(category)
+    %li{:style => "float: right"}= link_to "Home", root_path()
+%div#br
+  = form_tag admin_article_path(@article), :method => :put do
+    = cktext_area :article, :content
