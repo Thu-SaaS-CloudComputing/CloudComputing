@@ -6,7 +6,12 @@ class LoginController < ApplicationController
       redirect_to root_path
       return
     end
-    session[:user] = params[:username];
+    user = User.set_user(params[:username])
+    refresh_user(user.studentID)
   end
-  
+
+  def refresh_user(studentID)
+    session[:user] = studentID
+    session[:user_timestamp] = Time.now
+  end
 end

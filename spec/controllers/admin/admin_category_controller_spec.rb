@@ -112,7 +112,7 @@ describe Admin::CategoryController do
       @priv_edit_all_category = FactoryGirl.build(:priviledge, name: "edit_all_category")
       @priv_edit_single_category = FactoryGirl.build(:priviledge, name: "edit_single_category")
       @all_right_user.stub(:priviledges).and_return([@priv_edit_all_category, @priv_edit_single_category])
-      Priviledge.stub(:find_by_name).with("edit_all_categories").and_return(@priv_edit_all_category)
+      Priviledge.stub(:find_by_name).with("edit_top_category").and_return(@priv_edit_all_category)
       Category.stub(:find).and_return(@category)
       @all_right_user.stub(:has_priviledge?).and_return(true)
       @no_right_user.stub(:has_priviledge?).and_return(false)

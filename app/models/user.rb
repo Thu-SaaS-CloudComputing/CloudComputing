@@ -4,6 +4,19 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :priviledges
   #validate :user_management?
 
+  def self.set_user(user_id)
+    user = User.find_by_studentID(user_id)
+    if !user
+      user = User.create!(:studentID => user_id, :name => "Unknown user")
+    end
+    return user
+  end
+
+  #def refresh
+  #  session[:user] = self.studentID
+  #  session[:user_timestamp] = Time.now
+  #end
+
   def self.valid?(student_id)
     if User.find_by_studentID(student_id)
       return true

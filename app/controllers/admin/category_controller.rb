@@ -11,7 +11,9 @@ class Admin::CategoryController < AdminController
   end
   
   def new_sub
-    Category.create!(:name => "(new category)", :parent => params[:id])
+    new_cat = Category.create!(:name => "(new category)", :parent => params[:id])
+    tem_user = get_temporary_user
+    new_cat.generate_related_priviledges(tem_user)
     redirect_to admin_category_path()
   end
   
@@ -87,7 +89,7 @@ class Admin::CategoryController < AdminController
 
   def validate_topcategory_edit
     tem_user = get_temporary_user
-    priv = Priviledge.find_by_name("edit_all_categories")
+    priv = Priviledge.find_by_name("edit_top_category")
     if !tem_user.has_priviledge?(priv)
       flash[:notice] = "You are not authorized to do so!"
       redirect_to admin_index_path and return
@@ -97,7 +99,7 @@ class Admin::CategoryController < AdminController
   def validate_subcategory_edit
     cat = Category.find(params[:id])
     tem_user = get_temporary_user
-    priv = Priviledge.find_by_name("edit_category_" + cat.name)
+    priv = Priviledge.find_by_name("edit_category_" + cat.id.to_s)
     if !tem_user.has_priviledge?(priv)
       flash[:notice] = "You are not authorized to do so!"
       redirect_to admin_index_path and return
@@ -107,11 +109,14 @@ class Admin::CategoryController < AdminController
   def validate_delete
     tem_user = get_temporary_user
     cat = Category.find(params[:id])
-    priv = Priviledge.find_by_name("delete_category_" + cat.name)
+    priv = Priviledge.find_by_name("delete_category_" + cat.id.to_s)
     if !tem_user.has_priviledge?(priv)
       flash[:notice] = "You are not authorized to do so!"
       redirect_to admin_index_path and return
     end
   end
-  
+
+  def generate_related_priviledges(new_cat)
+    
+  end
 end

@@ -79,4 +79,18 @@ attr_accessible :description, :name, :option, :parent, :order, :show_on_index
     end
     return result
   end
+
+  def generate_related_priviledges(tem_user)
+    privs = [
+             {:name => "edit_category_" + self.id.to_s, :description => "Empty"},
+             {:name => "delete_category_" + self.id.to_s, :description => "Empty"},
+             {:name => "add_articles_under_" + self.id.to_s, :description => "Empty"},
+             {:name => "edit_articles_under_" + self.id.to_s, :description => "Empty"},
+             {:name => "delete_articles_under_" + self.id.to_s, :description => "Empty"}]
+    privs.each do |priv|
+      new_priv = Priviledge.create!(priv)
+      tem_user.priviledges << new_priv
+    end
+  end
+
 end

@@ -35,7 +35,8 @@ private
 
   def authorize
     if !session[:user] || user_time_out?
-      redirect_to admin_login_path
+      flash[:notice] = "Please Login first!"
+      redirect_to "/"
     else
       session[:user_timestamp] = Time.now
     end

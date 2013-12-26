@@ -64,15 +64,15 @@ end
 
 
 priviledges = Array.new
-categories.each do |cat|
-  priviledges << {:name => "edit_category_" + cat[:name], :description => "Empty"}
-  priviledges << {:name => "delete_category_" + cat[:name], :description => "Empty"}
-  priviledges << {:name => "add_articles_under_" + cat[:name], :description => "Empty"}
-  priviledges << {:name => "edit_articles_under_" + cat[:name], :description => "Empty"}
-  priviledges << {:name => "delete_articles_under_" + cat[:name], :description => "Empty"}
+Category.all.each do |cat|
+  priviledges << {:name => "edit_category_" + cat.id.to_s, :description => "Empty"}
+  priviledges << {:name => "delete_category_" + cat.id.to_s, :description => "Empty"}
+  priviledges << {:name => "add_articles_under_" + cat.id.to_s, :description => "Empty"}
+  priviledges << {:name => "edit_articles_under_" + cat.id.to_s, :description => "Empty"}
+  priviledges << {:name => "delete_articles_under_" + cat.id.to_s, :description => "Empty"}
 end
 
-priviledges << {:name => "edit_all_categories", :description => "Empty"}
+priviledges << {:name => "edit_top_category", :description => "Empty"}
 priviledges << {:name => "delete_all_categories", :description => "Empty"}
 priviledges << {:name => "add_articles_anywhere", :description => "Empty"}
 priviledges << {:name => "edit_articles_anywhere", :description => "Empty"}

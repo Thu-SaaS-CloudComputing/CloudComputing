@@ -29,7 +29,7 @@ Given /I have already logged in with (.+)$/ do |account|
   visit "/admin/login"
   fill_in :login_username, :with => account
   fill_in :login_password, :with => "admin"
-  click_button "Login"
+  click_button "login_btn"
 end
 
 Given /^the following category exist:$/ do |item_list|
