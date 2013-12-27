@@ -40,7 +40,11 @@ CloudComputing::Application.routes.draw do
         get 'switch_show'
       end
     end
-    resources :articles, only: [:edit, :destroy, :index, :update]
+    resources :article, only: [:edit, :destroy, :index, :update] do
+      member do
+        get '', :action => :index
+      end
+    end
     resources :user, only: [:index, :edit, :update, :show] do
       member do
         #get '', :action => :index

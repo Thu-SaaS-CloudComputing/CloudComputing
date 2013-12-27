@@ -1,0 +1,10 @@
+-# edit.html.haml using partial
+
+%h1
+  ="Edit Article - #{@article.title}"
+%div.row-fluid
+  %div.span2
+    =render "nav"
+  %div.span10
+    = form_tag admin_article_path(@article), :method => :put do
+      = cktext_area :article, :content, {:rows => "100", :ckeditor => {:height => "400px"}}

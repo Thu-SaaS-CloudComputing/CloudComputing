@@ -41,11 +41,6 @@ private
       session[:user_timestamp] = Time.now
     end
   end
-
-  def user_time_out?
-    session[:user_timestamp] = Time.now if !session.has_key?(:user_timestamp)
-    return session[:user_timestamp] < 15.minutes.ago
-  end
   
   #The following are old version of authentification system
   #def login
