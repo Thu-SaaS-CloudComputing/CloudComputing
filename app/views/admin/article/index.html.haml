@@ -1,0 +1,17 @@
+%h1 Article edit list
+%div.row-fluid
+  %div.span2
+    =render "nav"
+  %div.span10
+    %table.table.table-bordered.table-hover
+      %thead
+        %tr
+          %th Article
+          %th edit link
+          %th delete link
+      %tbody
+        - @articles.each do |article|
+          %tr
+            %td= link_to "#{article.title}", article_path(article)
+            %td= link_to "edit", edit_admin_article_path(article)
+            %td= link_to "delete", admin_article_path(article), :method => :delete, :confirm => 'Are you sure?'
