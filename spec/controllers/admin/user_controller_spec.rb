@@ -70,4 +70,31 @@ describe Admin::UserController do
     end
   end
 
+  describe "switch" do
+    before :each do
+      Admin::UserController.any_instance.stub(:validate).and_return(true)
+      @user = FactoryGirl.build(:user)
+      User.stub(:find).and_return(@user)
+      @priv_1 = FactoryGirl.build(:priviledge, name: "priv_1")
+      @priv_2 = FactoryGirl.build(:priviledge, name: "priv_2")
+      @user.priviledges << @priv_1
+      @user.stub(:id).and_return(1)
+      #@user.stub(:has_priviledge?).with(@priv_1).and_return(true)
+      #@user.stub(:has_priviledge?).with(@priv_2).and_return(false)
+      #Priviledge.stub(:find).and_return(@priv_1)
+      #Priviledge.stub(:find).with(2).and_return(@priv_2)
+    end
+    it "should delete priv_1 from user's priviledge list if it already has" do
+      Priviledge.stub(:find).and_return(@priv_1)
+      @user.stub(:has_priviledge).and_return(true)
+      put "switch", :id => 1, :priviledge => 1
+      expect(@user.priviledges).to eq([])
+    end
+    it "should add the priviledge into the priviledge list if it does not have" do
+      Priviledge.stub(:find).and_return(@priv_2)
+      @user.stub(:has_priviledge).and_return(false)
+      put 'switch', :id => 1, :priviledge => 1
+      expect(@user.priviledges).to eq([@priv_1, @priv_2])
+    end
+  end
 end
