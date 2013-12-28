@@ -2,13 +2,13 @@
 <html>
 <head>
   <title>CloudComputing</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= stylesheet_link_tag "bootstrap" %>
   <%= stylesheet_link_tag "login" %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "jquery" %>
   <%= javascript_include_tag 'ckeditor/ckeditor.js' %>
   <%= javascript_include_tag "login" %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= csrf_meta_tags %>
   <style>
 [class^="icon-"], [class*=" icon-"] {
@@ -20,12 +20,10 @@
   </style>
 </head>
 <body>
+<%= render "user_status" %>
 <div class="container">
 <%= image_tag "banner.gif" %>
 </div>
-
-<%= render "user_status" %>
-
 <div class="container">
 <%= yield %>
 </div>

@@ -11,6 +11,10 @@
   %div.span5
     =render "carousel" if Plugins.find_by_name "carousel"
 -@top_categories_to_show.each do |category|
+  %div.col-md-6
+    %div.panel.panel-default
+      %div.panel-heading = category
+-@top_categories_to_show.each do |category|
   %div.span5
     %table.table.table-bordered.table-hover{:id => category.name}
       %thead
