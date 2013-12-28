@@ -35,6 +35,7 @@
         $.ajax({
           method:'POST',
           url: url,
+          beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
           success:function(res){
             $('.alert-success').show();
             $target.text(res.enable?'Enable':'Disable');
