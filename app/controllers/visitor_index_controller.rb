@@ -13,6 +13,8 @@ class VisitorIndexController < ApplicationController
   end
 
   def show
+    @temporary_user = get_temporary_user
+    
     @articles = Article.all
     @top_categories = Category.find_top_categories
     @top_categories_to_show = Category.find_top_categories_to_show

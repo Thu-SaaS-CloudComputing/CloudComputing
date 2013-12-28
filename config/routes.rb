@@ -12,6 +12,7 @@ CloudComputing::Application.routes.draw do
     get '', :action => :index
   end
 
+  resources :personal
   resources :visitor_index, only: [:index, :show]
   resources :category
   resources :articles do

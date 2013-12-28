@@ -1,0 +1,15 @@
+%h1= "Hi! #{@temporary_user.name}"
+%div.span10
+  %ul.nav.nav-pills
+    %li
+      =link_to "Personal Information", personal_path(:id => @temporary_user.id)
+    %li
+      =link_to "Edit Personal File", edit_personal_path(:id => @temporary_user.id)
+    %li
+      =link_to "Back to Homepage", "/personal"
+%div.span5
+  %label User Name:
+  %label Student ID:
+%div.span5
+  %label= @temporary_user.name
+  %label= @temporary_user.studentID

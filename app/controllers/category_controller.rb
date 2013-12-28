@@ -19,6 +19,7 @@ class CategoryController < ApplicationController
   end
 
   def show
+    @temporary_user = get_temporary_user
     id = params[:id]
     id ||= 0
     @current_category = Category.find(id)
