@@ -21,7 +21,7 @@
               =link_to admin_carousel_path(carousel.id), {:method => :delete} do
                 %i.icon-remove
     %div
-      %form{:action => admin_carousel_add_path, :method => "post", :enctype => "multipart/form-data"}
+      =form_tag admin_carousel_add_path,:multipart => true do
         %fieldset
           %legend upload
           %label title
