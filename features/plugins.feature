@@ -1,6 +1,4 @@
-Feature: Plugins Management
-
-  As an admin,
+Feature: Plugins Management As an admin,
   I want to manage plugins,
   So that I can decide whether it's enable or not.
 
@@ -13,12 +11,11 @@ Feature: Plugins Management
     When I am on the visitor index page
     Then I should not see plugin "carousel"
 
-  @javascript
-  Scenario: plugin carousel can be seen after enable
-    When I have already logged in
-    And I am on the plugins manage page
-    Then I should see plugin "carousel" with status "Disable"
-    When I follow plugin "carousel" status "Disable"
-    Then I should see plugin "carousel" with status "Enable"
-    When I am on the visitor index page
-    Then I should see plugin "carousel"
+#  @javascript
+#  Scenario: plugin carousel can be seen after enable
+#    When I have already logged in
+#    And I am on the plugins manage page
+#    Then I should see plugin "carousel" with status "Disable"
+#    When I follow plugin "carousel" status "Disable"
+#    Then I should see plugin "carousel" with status "Enable"
+#    When I am on the visitor index page
