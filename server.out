@@ -1,0 +1,188 @@
+=> Booting WEBrick
+=> Rails 3.2.15 application starting in development on http://0.0.0.0:3000
+=> Call with -d to detach
+=> Ctrl-C to shutdown server
+
+
+Started GET "/login?logout=true" for 127.0.0.1 at 2013-12-10 10:44:16 +0800
+Connecting to database specified by database.yml
+Processing by LoginController#index as HTML
+  Parameters: {"logout"=>"true"}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1.0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-10 10:44:17 +0800
+Processing by VisitorIndexController#show as HTML
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT "articles".* FROM "articles" [0m
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" WHERE "categories"."parent" = 0 ORDER BY "order"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "categories".* FROM "categories" WHERE "categories"."parent" = 0 ORDER BY "order"[0m
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" WHERE "categories"."parent" = 1 ORDER BY "order"
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" WHERE "categories"."parent" = 2 ORDER BY "order"[0m
+  [1m[35mLesson Load (0.1ms)[0m  SELECT "lessons".* FROM "lessons" 
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lessons".* FROM "lessons" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "lessons".* FROM "lessons" 
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."category_id" = 1[0m
+  [1m[35mArticle Load (0.2ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."category_id" = 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."category_id" = 2[0m
+  [1m[35mArticle Load (0.1ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."category_id" = 2
+  Rendered visitor_index/show.html.haml within layouts/application (137.3ms)
+Completed 200 OK in 410.6ms (Views: 212.2ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/login?username=2014012345" for 127.0.0.1 at 2013-12-10 10:44:22 +0800
+Processing by LoginController#index as HTML
+  Parameters: {"username"=>"2014012345"}
+  Rendered login/index.html.haml within layouts/application (1.4ms)
+Completed 200 OK in 17.1ms (Views: 16.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-10 10:44:22 +0800
+Processing by VisitorIndexController#show as HTML
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT "articles".* FROM "articles" [0m
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" WHERE "categories"."parent" = 0 ORDER BY "order"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "categories".* FROM "categories" WHERE "categories"."parent" = 0 ORDER BY "order"[0m
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" WHERE "categories"."parent" = 1 ORDER BY "order"
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" WHERE "categories"."parent" = 2 ORDER BY "order"[0m
+  [1m[35mLesson Load (0.1ms)[0m  SELECT "lessons".* FROM "lessons" 
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lessons".* FROM "lessons" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "lessons".* FROM "lessons" 
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."category_id" = 1[0m
+  [1m[35mArticle Load (0.1ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."category_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."category_id" = 2[0m
+  [1m[35mArticle Load (0.1ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."category_id" = 2
+  Rendered visitor_index/show.html.haml within layouts/application (20.0ms)
+Completed 200 OK in 38.9ms (Views: 30.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/login?username=2014012345" for 127.0.0.1 at 2013-12-10 10:44:22 +0800
+Processing by LoginController#index as HTML
+  Parameters: {"username"=>"2014012345"}
+  Rendered login/index.html.haml within layouts/application (0.1ms)
+Completed 200 OK in 3.2ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-10 10:44:23 +0800
+Processing by VisitorIndexController#show as HTML
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT "articles".* FROM "articles" [0m
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories" WHERE "categories"."parent" = 0 ORDER BY "order"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "categories".* FROM "categories" WHERE "categories"."parent" = 0 ORDER BY "order"[0m
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" WHERE "categories"."parent" = 1 ORDER BY "order"
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" WHERE "categories"."parent" = 2 ORDER BY "order"[0m
+  [1m[35mLesson Load (0.1ms)[0m  SELECT "lessons".* FROM "lessons" 
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lessons".* FROM "lessons" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "lessons".* FROM "lessons" 
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."category_id" = 1[0m
+  [1m[35mArticle Load (0.1ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."category_id" = 1
+  [1m[36m (6.0ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."category_id" = 2[0m
+  [1m[35mArticle Load (0.2ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."category_id" = 2
+  Rendered visitor_index/show.html.haml within layouts/application (22.9ms)
+Completed 200 OK in 41.4ms (Views: 25.6ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/login?username=2014012345" for 127.0.0.1 at 2013-12-10 10:44:23 +0800
+Processing by LoginController#index as HTML
+  Parameters: {"username"=>"2014012345"}
+  Rendered login/index.html.haml within layouts/application (0.1ms)
+Completed 200 OK in 11.1ms (Views: 10.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-10 10:44:23 +0800
+Processing by VisitorIndexController#show as HTML
+  [1m[36mArticle Load (0.3ms)[0m  [1mSELECT "articles".* FROM "articles" [0m
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" WHERE "categories"."parent" = 0 ORDER BY "order"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "categories".* FROM "categories" WHERE "categories"."parent" = 0 ORDER BY "order"[0m
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories" WHERE "categories"."parent" = 1 ORDER BY "order"
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" WHERE "categories"."parent" = 2 ORDER BY "order"[0m
+  [1m[35mLesson Load (0.2ms)[0m  SELECT "lessons".* FROM "lessons" 
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lessons".* FROM "lessons" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "lessons".* FROM "lessons" 
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."category_id" = 1[0m
+  [1m[35mArticle Load (0.2ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."category_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."category_id" = 2[0m
+  [1m[35mArticle Load (0.1ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."category_id" = 2
+  Rendered visitor_index/show.html.haml within layouts/application (17.5ms)
+Completed 200 OK in 42.6ms (Views: 24.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/login?username=2014012345" for 127.0.0.1 at 2013-12-10 10:44:23 +0800
+Processing by LoginController#index as HTML
+  Parameters: {"username"=>"2014012345"}
+  Rendered login/index.html.haml within layouts/application (0.1ms)
+Completed 200 OK in 9.0ms (Views: 8.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-10 10:44:24 +0800
+Processing by VisitorIndexController#show as HTML
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT "articles".* FROM "articles" [0m
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" WHERE "categories"."parent" = 0 ORDER BY "order"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "categories".* FROM "categories" WHERE "categories"."parent" = 0 ORDER BY "order"[0m
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" WHERE "categories"."parent" = 1 ORDER BY "order"
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" WHERE "categories"."parent" = 2 ORDER BY "order"[0m
+  [1m[35mLesson Load (0.1ms)[0m  SELECT "lessons".* FROM "lessons" 
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lessons".* FROM "lessons" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "lessons".* FROM "lessons" 
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."category_id" = 1[0m
+  [1m[35mArticle Load (0.1ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."category_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."category_id" = 2[0m
+  [1m[35mArticle Load (0.1ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."category_id" = 2
+  Rendered visitor_index/show.html.haml within layouts/application (8.7ms)
+Completed 200 OK in 34.5ms (Views: 21.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/login?username=2014012345" for 127.0.0.1 at 2013-12-10 10:44:24 +0800
+Processing by LoginController#index as HTML
+  Parameters: {"username"=>"2014012345"}
+  Rendered login/index.html.haml within layouts/application (0.1ms)
+Completed 200 OK in 13.7ms (Views: 13.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-10 10:44:24 +0800
+Processing by VisitorIndexController#show as HTML
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT "articles".* FROM "articles" [0m
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" WHERE "categories"."parent" = 0 ORDER BY "order"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "categories".* FROM "categories" WHERE "categories"."parent" = 0 ORDER BY "order"[0m
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" WHERE "categories"."parent" = 1 ORDER BY "order"
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" WHERE "categories"."parent" = 2 ORDER BY "order"[0m
+  [1m[35mLesson Load (0.1ms)[0m  SELECT "lessons".* FROM "lessons" 
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lessons".* FROM "lessons" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "lessons".* FROM "lessons" 
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."category_id" = 1[0m
+  [1m[35mArticle Load (0.1ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."category_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."category_id" = 2[0m
+  [1m[35mArticle Load (0.1ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."category_id" = 2
+  Rendered visitor_index/show.html.haml within layouts/application (22.8ms)
+Completed 200 OK in 38.5ms (Views: 28.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/login?username=2014012345" for 127.0.0.1 at 2013-12-10 10:44:24 +0800
+Processing by LoginController#index as HTML
+  Parameters: {"username"=>"2014012345"}
+  Rendered login/index.html.haml within layouts/application (0.1ms)
+Completed 200 OK in 11.4ms (Views: 11.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-10 10:44:24 +0800
+Processing by VisitorIndexController#show as HTML
+  [1m[36mArticle Load (0.6ms)[0m  [1mSELECT "articles".* FROM "articles" [0m
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories" WHERE "categories"."parent" = 0 ORDER BY "order"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "categories".* FROM "categories" WHERE "categories"."parent" = 0 ORDER BY "order"[0m
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories" WHERE "categories"."parent" = 1 ORDER BY "order"
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT "categories".* FROM "categories" WHERE "categories"."parent" = 2 ORDER BY "order"[0m
+  [1m[35mLesson Load (0.1ms)[0m  SELECT "lessons".* FROM "lessons" 
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lessons".* FROM "lessons" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "lessons".* FROM "lessons" 
+  [1m[36m (2.7ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."category_id" = 1[0m
+  [1m[35mArticle Load (0.2ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."category_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."category_id" = 2[0m
+  [1m[35mArticle Load (0.1ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."category_id" = 2
+  Rendered visitor_index/show.html.haml within layouts/application (15.4ms)
+Completed 200 OK in 51.6ms (Views: 16.3ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/login?username=2014012345" for 127.0.0.1 at 2013-12-10 10:44:25 +0800
+Processing by LoginController#index as HTML
+  Parameters: {"username"=>"2014012345"}
+  Rendered login/index.html.haml within layouts/application (0.1ms)
+Completed 200 OK in 12.6ms (Views: 12.4ms | ActiveRecord: 0.0ms)
+Exiting

@@ -2,12 +2,12 @@ class AdminController < ApplicationController
 
   before_filter :authorize, :except => [:login, :auth]
 
-  def login
-    if params[:logout]
-      session[:user] = nil
-      session.delete(:user_timestamp)
-    end
-  end
+  #def login
+  #  if params[:logout]
+  #    session[:user] = nil
+  #    session.delete(:user_timestamp)
+  #  end
+  #end
   
   def auth
     if User.valid?(params[:login][:username])
@@ -24,26 +24,15 @@ class AdminController < ApplicationController
   def index
   end
 
-  def get_temporary_user
-    if session[:user]
-      session[:user_timestamp] = Time.now
-      return User.find_by_studentID(session[:user])
-    end
-  end
-
 private
 
   def authorize
     if !session[:user] || user_time_out?
-      redirect_to admin_login_path
+      flash[:notice] = "Please Login first!"
+      redirect_to "/"
     else
       session[:user_timestamp] = Time.now
     end
-  end
-
-  def user_time_out?
-    session[:user_timestamp] = Time.now if !session.has_key?(:user_timestamp)
-    return session[:user_timestamp] < 15.minutes.ago
   end
   
   #The following are old version of authentification system

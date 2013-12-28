@@ -28,8 +28,16 @@ class ArticlesController < ApplicationController
       @trace_category.unshift @i
     end
   end
+  
+  def raw
+    id = params[:id]
+    id ||= 0
+    @article = Article.find(id)
+    render :layout => false
+  end
 
   def update
+    print("WTF!!")
   end
 
   def destroy

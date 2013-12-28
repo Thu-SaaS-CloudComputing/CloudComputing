@@ -7,6 +7,7 @@ describe Admin::CategoryController do
     @category_3 = FactoryGirl.create(:category, parent: 1, id: 3, order: 3)
     @category_4 = FactoryGirl.create(:category, parent: 2, id: 4, order: 4)
     AdminController.any_instance.stub(:authorize).and_return(true)
+    Category.any_instance.stub(:generate_related_priviledges)
   end
   
   describe "Category.find" do
@@ -45,11 +46,11 @@ describe Admin::CategoryController do
   
   describe "new sub" do
     before :each do
-    Admin::CategoryController.any_instance.stub(:validate_edit).and_return(true)
-    Admin::CategoryController.any_instance.stub(:validate_delete).and_return(true)
+      Admin::CategoryController.any_instance.stub(:validate_edit).and_return(true)
+      Admin::CategoryController.any_instance.stub(:validate_delete).and_return(true)
     end
-    it "should be able to add new sub" do
-      Category.should_receive(:create!).with(:name => "(new category)", :parent => "1")
+    it "should be able to add a new subcategory" do
+      Category.should_receive(:create!).with(:name => "(new category)", :parent => "1").and_return(@category_1)
       get 'new_sub', {:id => 1}
     end
   end
@@ -106,13 +107,13 @@ describe Admin::CategoryController do
 
   describe "validate_edit" do
     before :each do
-      @category = FactoryGirl.build(:category, name: "test")
+      @category = FactoryGirl.build(:category, name: "test", id: 1)
       @all_right_user = FactoryGirl.build(:user, name: "all_right", studentID: "1")
       @no_right_user = FactoryGirl.build(:user, name: "no_user", studentID: "2")
       @priv_edit_all_category = FactoryGirl.build(:priviledge, name: "edit_all_category")
       @priv_edit_single_category = FactoryGirl.build(:priviledge, name: "edit_single_category")
       @all_right_user.stub(:priviledges).and_return([@priv_edit_all_category, @priv_edit_single_category])
-      Priviledge.stub(:find_by_name).with("edit_all_categories").and_return(@priv_edit_all_category)
+      Priviledge.stub(:find_by_name).with("edit_top_category").and_return(@priv_edit_all_category)
       Category.stub(:find).and_return(@category)
       @all_right_user.stub(:has_priviledge?).and_return(true)
       @no_right_user.stub(:has_priviledge?).and_return(false)
@@ -128,13 +129,13 @@ describe Admin::CategoryController do
       response.should redirect_to admin_index_path
     end
     it 'should be able to edit a category if authorized' do
-      Priviledge.stub(:find_by_name).with("edit_category_test").and_return(@priv_edit_single_category)
+      Priviledge.stub(:find_by_name).with("edit_category_1").and_return(@priv_edit_single_category)
       Admin::CategoryController.any_instance.stub(:get_temporary_user).and_return(@all_right_user)
       get 'downward', :id => "1"
       response.should redirect_to admin_category_path
     end
     it 'should not be able to edit a category if not authorized' do
-      Priviledge.stub(:find_by_name).with("edit_category_test").and_return(@priv_edit_single_category)
+      Priviledge.stub(:find_by_name).with("edit_category_1").and_return(@priv_edit_single_category)
       Admin::CategoryController.any_instance.stub(:get_temporary_user).and_return(@no_right_user)
       get 'downward', :id => "1"
       response.should redirect_to admin_index_path

@@ -7,6 +7,8 @@ end
 
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
+  #puts page.methods
+  #puts page.body
   fill_in(field, :with => value)
 end
 

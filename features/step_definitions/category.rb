@@ -21,6 +21,8 @@ def path_to(page_name)
     "/admin/user"
   when /(.+) detail page/
     "/admin/user/#{User.find_by_name($1).id}"
+  #when /"(.+)" edit page/
+  #  "/admin/category/#{Category.find_by_name($1).id}/edit"
   end
   
 end
@@ -29,7 +31,7 @@ Given /I have already logged in with (.+)$/ do |account|
   visit "/admin/login"
   fill_in :login_username, :with => account
   fill_in :login_password, :with => "admin"
-  click_button "Login"
+  click_button "login_btn"
 end
 
 Given /^the following category exist:$/ do |item_list|

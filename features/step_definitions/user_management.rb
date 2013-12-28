@@ -75,13 +75,13 @@ end
 Given /the user database is already set up/ do
   categories = Category.all
   categories.each do |cat|
-    Priviledge.create!(:name => "edit_category_" + cat.name)
-    Priviledge.create!(:name => "delete_category_" + cat.name)
-    Priviledge.create!(:name => "add_articles_under_" + cat.name)
-    Priviledge.create!(:name => "edit_articles_under_" + cat.name)
-    Priviledge.create!(:name => "delete_articles_under_" + cat.name)
+    Priviledge.create!(:name => "edit_category_" + cat.id.to_s)
+    Priviledge.create!(:name => "delete_category_" + cat.id.to_s)
+    Priviledge.create!(:name => "add_articles_under_" + cat.id.to_s)
+    Priviledge.create!(:name => "edit_articles_under_" + cat.id.to_s)
+    Priviledge.create!(:name => "delete_articles_under_" + cat.id.to_s)
   end
-  Priviledge.create!(:name => "edit_all_categories")
+  Priviledge.create!(:name => "edit_top_category")
   Priviledge.create!(:name => "user_management")
   Priviledge.create!(:name => "edit_lesson_table")
 

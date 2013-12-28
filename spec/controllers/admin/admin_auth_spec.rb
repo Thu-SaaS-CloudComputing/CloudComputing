@@ -7,12 +7,12 @@ describe AdminController do
       session[:user_timestamp] = Time.now;
       session[:user] = "2012012429"
       get 'index'
-      response.should_not redirect_to admin_login_path()
+      response.should_not redirect_to login_path
     end
     
     it 'should show the login page when not logged in' do
       get 'index'
-      response.should redirect_to admin_login_path()
+      response.should redirect_to "/"
     end
   end
 

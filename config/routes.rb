@@ -1,10 +1,25 @@
 CloudComputing::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+  
   get "category/index"
   get "articles/index"
+  
+  #namespace :test do
+  #  get 'ckeditor'
+  #end
+  
+  namespace :login do
+    get '', :action => :index
+  end
 
+  resources :personal
   resources :visitor_index, only: [:index, :show]
   resources :category
-  resources :articles
+  resources :articles do
+    member do
+      get 'raw'
+    end
+  end
   resources :admin, :only => [:index]
 
   namespace :admin do
@@ -24,6 +39,11 @@ CloudComputing::Application.routes.draw do
         get 'upward'
         get 'downward'
         get 'switch_show'
+      end
+    end
+    resources :article, only: [:edit, :destroy, :index, :update] do
+      member do
+        get '', :action => :index
       end
     end
     resources :user, only: [:index, :edit, :update, :show] do

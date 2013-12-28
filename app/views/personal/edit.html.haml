@@ -1,0 +1,15 @@
+%h1= "Hi! #{@temporary_user.name}"
+%div.span10
+  %ul.nav.nav-pills
+    %li
+      =link_to "Personal Information", personal_path(:id => @temporary_user.id)
+    %li
+      =link_to "Edit Personal File", edit_personal_path(:id => @temporary_user.id)
+    %li
+      =link_to "Home Page", personal_path
+%div.span10
+  %form{:roles => "form"}
+    %div.form-group
+      %label{:for => "name"} Name:
+      %input#name.form-control{:type => "name", :placeholder => "#{@temporary_user.name}"}
+    %button.btn.btn-default{:type => "submit"} Submit
