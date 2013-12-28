@@ -54,5 +54,7 @@ gem 'jquery-rails'
 # use haml
 gem 'haml'
 gem "haml-rails"
+gem "carrierwave"
+gem "mini_magick"
 # use coverall
 gem 'coveralls', require: false
