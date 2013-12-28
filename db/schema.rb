@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131226121313) do
+ActiveRecord::Schema.define(:version => 20131228151633) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -21,17 +21,15 @@ ActiveRecord::Schema.define(:version => 20131226121313) do
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
     t.text     "tags"
+    t.string   "attachment"
   end
 
   add_index "articles", ["category_id"], :name => "index_articles_on_category_id"
 
-  create_table "carousels", :force => true do |t|
-    t.text     "title"
-    t.string   "link"
-    t.string   "picture"
-    t.integer  "order"
+  create_table "attachments", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "attachment"
   end
 
   create_table "categories", :force => true do |t|
@@ -67,15 +65,6 @@ ActiveRecord::Schema.define(:version => 20131226121313) do
     t.integer "row"
     t.string  "classroom"
     t.string  "department"
-  end
-
-  create_table "plugins", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.boolean  "enable"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "link"
   end
 
   create_table "priviledges", :force => true do |t|
