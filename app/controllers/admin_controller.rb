@@ -2,12 +2,12 @@ class AdminController < ApplicationController
 
   before_filter :authorize, :except => [:login, :auth]
 
-  def login
-    if params[:logout]
-      session[:user] = nil
-      session.delete(:user_timestamp)
-    end
-  end
+  #def login
+  #  if params[:logout]
+  #    session[:user] = nil
+  #    session.delete(:user_timestamp)
+  #  end
+  #end
   
   def auth
     if User.valid?(params[:login][:username])

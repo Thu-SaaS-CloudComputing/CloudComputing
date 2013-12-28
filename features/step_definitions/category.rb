@@ -21,6 +21,8 @@ def path_to(page_name)
     "/admin/user"
   when /(.+) detail page/
     "/admin/user/#{User.find_by_name($1).id}"
+  #when /"(.+)" edit page/
+  #  "/admin/category/#{Category.find_by_name($1).id}/edit"
   end
   
 end

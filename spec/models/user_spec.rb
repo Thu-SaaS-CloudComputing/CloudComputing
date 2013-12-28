@@ -52,6 +52,20 @@ describe User do
     end
   end
 
+  describe "set_user" do
+    it "should return expected user if it exists" do
+      fake_user = double("user")
+      User.stub(:find_by_studentID).and_return(fake_user)
+      result = User.set_user("1")
+      expect(result).to eq(fake_user)
+    end
+    it "should create a new user if it does not exist" do
+      User.stub(:find_by_studentID).and_return(nil)
+      User.should_receive(:create!).with({:studentID => "1", :name => "Unknown user"})
+      User.set_user("1")
+    end
+  end
+
   #describe 'temporary_user' do
   #  before :each do
   #    @user = FactoryGirl.build(:user, studentID: "2012012429")
