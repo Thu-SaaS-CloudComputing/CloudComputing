@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(:version => 20131226121313) do
 
   add_index "articles", ["category_id"], :name => "index_articles_on_category_id"
 
+  create_table "carousels", :force => true do |t|
+    t.text     "title"
+    t.string   "link"
+    t.string   "picture"
+    t.integer  "order"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -58,6 +67,15 @@ ActiveRecord::Schema.define(:version => 20131226121313) do
     t.integer "row"
     t.string  "classroom"
     t.string  "department"
+  end
+
+  create_table "plugins", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "enable"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "link"
   end
 
   create_table "priviledges", :force => true do |t|
