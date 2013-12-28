@@ -17,7 +17,7 @@
         %th status
       %tbody
         - @plugins.each do |plugin|
-          %tr
+          %tr{:id => plugin.name}
             %td= link_to plugin.name,plugin.link
             %td= plugin.description
             -if plugin.enable
