@@ -13,6 +13,8 @@ def path_to(page_name)
     "/visitor_index/0"
   when /the admin page/
     admin_index_path()
+  when /the plugins manage page/
+    admin_plugins_path()
   when /the edit categary page/
     "/admin/category/0"
   when /the edit lesson table page/

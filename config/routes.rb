@@ -1,6 +1,8 @@
 CloudComputing::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   
+  get "carousel/index"
+
   get "category/index"
   get "articles/index"
   
@@ -60,8 +62,17 @@ CloudComputing::Application.routes.draw do
         #get '', :action => :index
       end
     end
+    resources :carousel
+    match 'plugins/carousel' => 'carousel#index'
+    match 'carousel/add' => 'carousel#add'
+    resources :plugins, only: [:index, :edit] do
+      member do
+        get '', :action => :index
+        post 'enable', :action => :toggle_enable
+      end
+    end
   end
-  
+
   root :to => "visitor_index#show"
   # The priority is based upon order of creation:
   # first created -> highest priority.

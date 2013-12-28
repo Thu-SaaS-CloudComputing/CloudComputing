@@ -1,0 +1,29 @@
+- if (Plugins.find_by_name "carousel").enable
+  %div#carousel.carousel.slide
+    %ol.carousel-indicators
+      - Carousel.all.each do |carousel|
+        -if carousel.order==1
+          %li.active{"data-target" => "#carousel","data-slide-to"=>"#{carousel.order-1}"}
+        -else
+          %li{"data-target" => "#carousel","data-slide-to"=>"#{carousel.order-1}"}
+    %div.carousel-inner
+      -Carousel.all.each do |carousel|
+        -if carousel.order==1
+          %div.item.active
+            =image_tag carousel.picture.display.url, :size =>"400x300"
+            %div.carousel-caption
+              %h4= link_to carousel.title, carousel.link
+        -else
+          %div.item
+            =image_tag carousel.picture.display.url, :size =>"400x300"
+            %div.carousel-caption
+              %h4= link_to carousel.title, carousel.link
+    %a.carousel-control.left{:href => "#carousel","data-slide" => "prev"} &lsaquo;
+    %a.carousel-control.right{:href => "#carousel","data-slide" => "next"} &rsaquo;
+-content_for :scripts do
+  :javascript
+    $(function(){
+      $('.carousel').carousel({interval: 3000});
+    });
+
+
