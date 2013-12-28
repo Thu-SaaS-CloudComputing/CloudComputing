@@ -4,9 +4,10 @@ CloudComputing::Application.routes.draw do
   get "category/index"
   get "articles/index"
   
-  #namespace :test do
-  #  get 'ckeditor'
-  #end
+  namespace :attachment do
+    get '', :action => :index
+    post '', :action => :upload
+  end
   
   namespace :login do
     get '', :action => :index
