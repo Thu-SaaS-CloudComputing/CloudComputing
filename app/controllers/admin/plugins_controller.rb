@@ -6,7 +6,7 @@ class Admin::PluginsController < AdminController
     id = params[:id]
     plugin = Plugins.find(id)
     enable = plugin.enable
-    puts plugin
+    #puts plugin
     plugin.update_attributes!(:enable=>!enable)
     render :json => {:enable => !enable}.to_json
   end

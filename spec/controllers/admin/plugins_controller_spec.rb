@@ -4,15 +4,19 @@ describe Admin::PluginsController do
   before :each do
     @plugin_1 = FactoryGirl.create(:plugins, description: 'plugin 1', enable: false, id: 1, name: 'plugin1',link: 'http://test')
     session[:admin_auth] = Time.now
+    AdminController.any_instance.stub(:authorize).and_return(true)
   end
 
   describe "Plugins index" do
     it "should goto plugins index" do
+      result = double("result")
+      Plugins.should_receive(:all).and_return(result)
       get 'index'
-      response.should render_template('admin/plugins/index')
+      expect(assigns(:plugins)).to eq(result)
+      #response.should render_template("")
     end
   end
-
+p
   describe "Plugins enable" do
     it "should be able to enable/disable a plugin" do
       @plugin_1.should_receive(:update_attributes!)

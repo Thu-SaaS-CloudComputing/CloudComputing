@@ -27,6 +27,7 @@ class AdminController < ApplicationController
 private
 
   def authorize
+    puts session[:user]
     if !session[:user] || user_time_out?
       flash[:notice] = "Please Login first!"
       redirect_to "/"
