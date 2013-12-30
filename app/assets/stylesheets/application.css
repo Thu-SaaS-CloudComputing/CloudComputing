@@ -113,4 +113,8 @@
     text-align: center;
     font-size: 25px
 }
+body { padding-top: 50px; }
+.sub-category{
+    padding: 0;
+}
 

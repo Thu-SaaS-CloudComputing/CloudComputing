@@ -1,26 +1,35 @@
-
-%div.container
-  %div.container.span4{"style"=>"float: right"}
-    %h4
-      %table#user_status.table
-        %tbody
-          - if (session[:user])
-            %tr.success
-              %td
-                User:
-              %td
-                = session[:user]
-              %td
-                %a.btn.btn-default{"href" => "/login?logout=true", "role" => "button"}
-                  Logout
-            
-          - else
-            %tr.error
-              %td
-                User:
-              %td
-                %button.btn.btn-default{"onclick" => "login_show();", "type" => "button"}
-                  Login
+%div.navbar.navbar-default.navbar-fixed-top#user_status{'role'=>'user'}
+  %div.navbar-right
+    - if (session[:user])
+      %p.navbar-text
+        = "User:#{session[:user]}"
+      %a.btn.btn-default.navbar-btn{'type'=>'button','href'=>'/login?logout=true'}
+        Logout
+    - else
+      %button.btn.btn-default.navbar-btn{'type'=>'button','onclick'=>'login_show()'}
+        Login
+-#%div.container
+-#  %div.container.span4{"style"=>"float: right"}
+-#    %h4
+-#      %table#user_status.table
+-#        %tbody
+-#          - if (session[:user])
+-#            %tr.success
+-#              %td
+-#                User:
+-#              %td
+-#                = session[:user]
+-#              %td
+-#                %a.btn.btn-default{"href" => "/login?logout=true", "role" => "button"}
+-#                  Logout
+-#
+-#          - else
+-#            %tr.error
+-#              %td
+-#                User:
+-#              %td
+-#                %button.btn.btn-default{"onclick" => "login_show();", "type" => "button"}
+-#                  Login
 
 - if (!session[:user])
   %div#login_cover{"onclick" => "closeWindow()"}

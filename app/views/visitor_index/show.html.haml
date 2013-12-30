@@ -1,5 +1,5 @@
 
-%div#br
+%div#br.row
   %ul#navigator.nav.nav-tabs
     - @top_categories.each do |category|
       %li
@@ -11,27 +11,65 @@
   %div.span5
     =render "carousel" if Plugins.find_by_name "carousel"
 -@top_categories_to_show.each do |category|
-  %div.span5
-    %table.table.table-bordered.table-hover{:id => category.name}
-      %thead
-        %tr
-          %th{:colspan => '4', :style => "text-align: center"}= link_to "#{category.name}", category_path(category)
-      %tbody
-        %tr
-          %th{:rowspan => "#{@subcategories[category].size+1}", :style =>"vertical-align: middle"} subcats
+  %div.col-md-6
+    %div.panel.panel-default
+      %div.panel-heading
+        =category.name
+      %ul.list-group.nav
         -@subcategories[category].each do |subcategory|
-          %tr
-            %td{:colspan => '3'}= link_to "#{subcategory.name}", category_path(subcategory)
-        %tr
-          %th{:rowspan => "#{category.articles.size+1}", :style =>"vertical-align: middle"} articles
+          %li.list-group-item.sub-category
+            = link_to "#{subcategory.name}", category_path(subcategory)
+      %div.panel-body{:style=>'padding:0px;'}
+      %table.table.table-condensed.table-bordered.table-hover{:id=>category.name}
         -category.articles.each do |article|
           %tr
             %td= link_to "#{article.title}", article_path(article)
             -if article.created_at.to_a[3] == Time.now.to_a[3] && article.created_at.to_a[4] == Time.now.to_a[4] && article.created_at.to_a[5] == Time.now.to_a[5]
-              %td{:style => "color: gray"}= article.created_at.to_s.scan(/([^ ]+)/).flatten[1]
+              %td= article.created_at.to_s.scan(/([^ ]+)/).flatten[1]
             -else
-              %td{:style => "color: gray"}=            article.created_at.to_s.scan(/([^ ]+)/).flatten[0]
-            %td{:style => "color: gray"}= article.author
+              %td= article.created_at.to_s.scan(/([^ ]+)/).flatten[0]
+            %td= article.author
+
+%div.row
+  %div.col-md-10.col-md-offset-1
+    %div.panel.panel-default
+      %div.panel-heading.panel-title{:style => 'text-align:center;'} 课程表
+      %div.panel-body{:style=>'padding:5px;'}
+        %div.btn-group
+          %button.btn.btn-default.dropdown-toggle{:type=>'button','data-toggle'=>'dropdown'}
+            教室
+            %span.caret
+          %ul.dropdown-menu{:role=>'menu'}
+            -@classrooms.each do |classroom|
+              %li= link_to classroom,visitor_index_path(:id=>1,:classroom=>classroom)
+            %li= link_to '全部', visitor_index_path(:id=>1)
+        %div.btn-group
+          %button.btn.btn-default.dropdown-toggle{:type=>'button','data-toggle'=>'dropdown'}
+            系别
+            %span.caret
+          %ul.dropdown-menu{:role=>'menu'}
+            -@departments.each do |dep|
+              %li= link_to dep,visitor_index_path(:id=>1,:department=>dep)
+            %li= link_to '全部', visitor_index_path(:id=>1)
+      %table.table.table-bordered.table-hover
+        %tr
+          %th Mon.
+          %th Tue.
+          %th Wed.
+          %th Thu.
+          %th Fri.
+          %th Sat.
+          %th Sun.
+        - (1..6).each do |row|
+          %tr
+            - (1..7).each do |col|
+              %td
+                -generate_lesson_table(row, col, @table).each do |le|
+                  %span.label.label-primary
+                    -le.each do |line|
+                      =line
+                      %br
+                  %br
 
 %div.span10
 
