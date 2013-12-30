@@ -1,8 +1,8 @@
 %h1 Edit Lessons
-%div.row
-  %div.col-md-2
+%div.row-fluid
+  %div.span2
     =render "nav"
-  %div.col-md-10
+  %div.span10
     = link_to "Sorted by Classroom", admin_lesson_table_path(:id => 0, :sort => "classroom"), :class => "btn btn-default btn-lg", :role => "button"
     = link_to "Sorted by Department", admin_lesson_table_path(:id => 0, :sort => "department"), :class => "btn btn-default btn-lg", :role => "button"
     = link_to "Unsorted", admin_lesson_table_path(:id => 0), :class => "btn btn-default btn-lg", :role => "button"
@@ -28,8 +28,8 @@
               %td= "#{lesson.column}/#{lesson.row}"
               %td= lesson.classroom
               %td= lesson.department
-              %td= link_to "Edit", edit_admin_lesson_table_path(lesson.id), :id => lesson.name+"_edit"
-              %td= link_to "Delete", admin_lesson_table_path(:id => lesson.id), :method => "delete", :confirm => "Are you sure?", :id => lesson.name+"_delete"
+              %td= link_to link_to image_tag("edit.jpg", :height => "32", :width => "32"), edit_admin_lesson_table_path(lesson.id), :id => lesson.name+"_edit"
+              %td= link_to link_to image_tag("delete.jpg", :height => "32", :width => "32"), admin_lesson_table_path(:id => lesson.id), :method => "delete", :confirm => "Are you sure?", :id => lesson.name+"_delete"
 
 %br
   = link_to "Add new lesson", "/admin/lesson_table/0/new_lesson", {:class => "btn btn-link"}
