@@ -13,6 +13,7 @@ CloudComputing::Application.routes.draw do
   
   namespace :login do
     get '', :action => :index
+    post '', :action => :index
   end
 
   resources :personal
@@ -47,6 +48,7 @@ CloudComputing::Application.routes.draw do
     resources :article, only: [:edit, :destroy, :index, :update] do
       member do
         get '', :action => :index
+        get 'add'
       end
     end
     resources :user, only: [:index, :edit, :update, :show] do

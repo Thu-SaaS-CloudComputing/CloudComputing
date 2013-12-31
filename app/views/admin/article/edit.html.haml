@@ -7,4 +7,11 @@
     =render "nav"
   %div.span10
     = form_tag admin_article_path(@article), :method => :put do
+      = label :article, :title, 'Title'
+      = text_field :article, 'title', :value => @article.title, :placeholder => "Title"
       = cktext_area :article, :content, {:rows => "100", :ckeditor => {:height => "400px"}}
+  %div.span1
+    %button#show_uploader{:style => "position: fixed; left: 50px; top: 200px; ", :onclick => "$('#uploader').toggle(100)"}
+      File uploader
+    %iframe#uploader{:style => "position: fixed; left: 50px; top: 230px; display: none; width: 250px; ", :src => attachment_path}
+

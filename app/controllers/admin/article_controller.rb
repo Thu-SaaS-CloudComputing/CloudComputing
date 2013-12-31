@@ -21,4 +21,9 @@ class Admin::ArticleController < AdminController
     redirect_to admin_article_path()
   end
   
+  def add
+    article = Article.create(:category => (Article.find params[:id]).category)
+    redirect_to edit_admin_article_path(article)
+  end
+  
 end

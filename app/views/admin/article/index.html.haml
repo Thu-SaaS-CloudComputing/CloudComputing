@@ -6,12 +6,16 @@
     %table.table.table-bordered.table-hover
       %thead
         %tr
+          %th Category
           %th Article
           %th edit link
           %th delete link
       %tbody
         - @articles.each do |article|
           %tr
+            %td
+              = "#{article.category.name}"
+              = link_to image_tag("add.jpg", :height => "32", :width => "32"), add_admin_article_path(article)
             %td= link_to "#{article.title}", article_path(article)
-            %td= link_to link_to image_tag("edit.jpg", :height => "32", :width => "32"), edit_admin_article_path(article)
-            %td= link_to link_to image_tag("delete.jpg", :height => "32", :width => "32"), admin_article_path(article), :method => :delete, :confirm => 'Are you sure?'
+            %td= link_to image_tag("edit.jpg", :height => "32", :width => "32"), edit_admin_article_path(article)
+            %td= link_to image_tag("delete.jpg", :height => "32", :width => "32"), admin_article_path(article), :method => :delete, :confirm => 'Are you sure?'

@@ -9,8 +9,8 @@
 	display: none; 
 }  
 #login_window{
-	width:400px;
-	height:300px;
+	width:720px;
+	height:490px;
 	border-radius: 30px;
 	position: fixed;
 	z-index:2;
@@ -21,7 +21,7 @@
 #login_close{
 	cursor: pointer;
 	position: absolute;
-	left: 350px;
+	left: 670px;
 	top: 20px;
 	width: 29px;
 	height: 29px;
@@ -29,8 +29,8 @@
 }
 #login_frame{
 	position: relative;
-	top: 20px;
-	left: 20px;
-	width: 310px;
-	height: 250px;
+	top: 25px;
+	left: 25px;
+	width: 630px;
+	height: 440px;
 }
