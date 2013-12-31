@@ -1,0 +1,36 @@
+
+#login_cover{
+	background-color:#000;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+	opacity: 0;
+	display: none; 
+}  
+#login_window{
+	width:400px;
+	height:300px;
+	border-radius: 30px;
+	position: fixed;
+	z-index:2;
+	opacity: 0;
+	display: none; 
+	background-color: #fcf;
+}
+#login_close{
+	cursor: pointer;
+	position: absolute;
+	left: 350px;
+	top: 20px;
+	width: 29px;
+	height: 29px;
+	background-image: url('X.png');
+}
+#login_frame{
+	position: relative;
+	top: 20px;
+	left: 20px;
+	width: 310px;
+	height: 250px;
+}
