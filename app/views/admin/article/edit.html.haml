@@ -2,13 +2,13 @@
 
 %h1
   ="Edit Article - #{@article.title}"
-%div.row-fluid
-  %div.span2
+%div.row
+  %div.col-md-2
     =render "nav"
-  %div.span9
+  %div.col-md-9
     = form_tag admin_article_path(@article), :method => :put do
       = cktext_area :article, :content, {:rows => "100", :ckeditor => {:height => "400px"}}
-  %div.span1
+  %div.col-md-1
     %button#show_uploader{:onclick => "$('#uploader').toggle(100)"}
       upload file
     %iframe#uploader{:style => "display: none; width: 150px; ", :src => attachment_path}

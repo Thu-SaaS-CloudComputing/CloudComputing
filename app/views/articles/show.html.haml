@@ -13,18 +13,18 @@
       %li \
     %li.active #{@article.title}
   %div#article_table
-    %div.row-fluid
-      %div#firstline.span12.text-center
+    %div.row
+      %div#firstline.col-md-12.text-center
         %h3
           = @article.title
-    %div.row-fluid
-      %div.span2.text-left
+    %div.row
+      %div.col-md-2.text-left
         = "author: #{@article.author}"
-      %div.span8.text-center
+      %div.col-md-8.text-center
         = "create date: #{@article.created_at}"
-      %div.span2.text-right
+      %div.col-md-2.text-right
         = "category: #{@article.category.name}"
-    %div.row-fluid.hero-unit#content
-      %div.span10.text-left{:style => "padding-left:0px;padding-right:0px;"}
+    %div.row.hero-unit#content
+      %div.col-md-10.text-left{:style => "padding-left:0px;padding-right:0px;"}
         %iframe{:src => raw_article_path(@article), :scrolling => "no", :width => "100%", :onload => "javascript: this.style.height = this.contentWindow.document.body.scrollHeight + 'px'; this.style.border = 0;"}
     %div#back.btn.btn-link= link_to "back", category_path(@article.category)

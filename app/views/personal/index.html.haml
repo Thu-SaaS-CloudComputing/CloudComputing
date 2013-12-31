@@ -1,13 +1,13 @@
 %h1= "Wellcome! #{@temporary_user.name}"
-%div.span10
+%div.col-md-10
   %ul.nav.nav-pills
     %li
       =link_to "Personal Information", personal_path(:id => @temporary_user.id)
     %li
       =link_to "Edit Personal File", edit_personal_path(:id => @temporary_user.id)
-%div.span5
+%div.col-md-5
   %label User Name:
   %label Student ID:
-%div.span5
+%div.col-md-5
   %label= @temporary_user.name
   %label= @temporary_user.studentID
