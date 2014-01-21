@@ -12,7 +12,6 @@
     - @trace_category.each do |category|
       %li
         =link_to "#{category.name}", category_path(category)
-      %li \
     %li.active #{@current_category.name}
   %table#subcategory_table.table.table-bordered
     %tbody

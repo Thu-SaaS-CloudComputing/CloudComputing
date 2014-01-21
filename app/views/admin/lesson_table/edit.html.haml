@@ -1,8 +1,8 @@
 %h1 Edit Lesson
-%div.row
-  %div.col-md-2
+%div.row-fluid
+  %div.span2
     =render "nav"
-  %div.col-md-10
+  %div.span10
     = form_tag admin_lesson_table_path(@lesson), :method => :put do
       = label :lesson, :name, "Name"
       = text_field :lesson, 'name', :value => @lesson.name, :placeholder => "Name"

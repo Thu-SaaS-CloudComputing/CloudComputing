@@ -1,10 +1,10 @@
 -# edit.html.haml using partial
 
 %h1 Edit Existing Category
-%div.row
-  %div.col-md-2
+%div.row-fluid
+  %div.span2
     =render "nav"
-  %div.col-md-10
+  %div.span10
     = form_tag admin_category_path(@category), :method => :put do
       = label :category, :name, 'Name'
       = text_field :category, 'name', :value => @category.name, :placeholder => "Name"
