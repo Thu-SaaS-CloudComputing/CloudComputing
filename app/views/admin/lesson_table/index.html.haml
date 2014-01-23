@@ -1,18 +1,18 @@
 %h1 Edit Lessons
 %div.row-fluid
-  %div.span2
+  %div.col-md-2
     =render "nav"
-  %div.span10
-    = link_to "Sorted by Classroom", admin_lesson_table_path(:id => 0, :sort => "classroom"), :class => "btn btn-default btn-lg", :role => "button"
-    = link_to "Sorted by Department", admin_lesson_table_path(:id => 0, :sort => "department"), :class => "btn btn-default btn-lg", :role => "button"
-    = link_to "Unsorted", admin_lesson_table_path(:id => 0), :class => "btn btn-default btn-lg", :role => "button"
-    %br
+  %div.col-md-10
+    %div.btn-group
+      = link_to "Sorted by Classroom", admin_lesson_table_path(:id => 0, :sort => "classroom"), :class => "btn btn-default btn-lg", :role => "button"
+      = link_to "Sorted by Department", admin_lesson_table_path(:id => 0, :sort => "department"), :class => "btn btn-default btn-lg", :role => "button"
+      = link_to "Unsorted", admin_lesson_table_path(:id => 0), :class => "btn btn-default btn-lg", :role => "button"
     - @lessons.each do |key, content|
       %table.table.table-bordered.table-hover{:id => key}
         %thead
           %tr{:colspan => "6"}
             %th
-              %span.label{:style => "font-size: 16px"}
+              %span{:style => "font-size: 16px"}
                 = key
           %tr
             %th Name

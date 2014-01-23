@@ -1,18 +1,22 @@
 %h1 Edit Lesson
 %div.row-fluid
-  %div.span2
-    =render "nav"
-  %div.span10
+  %div.col-md-2
+    = render "nav"
+  %div.col-md-5
     = form_tag admin_lesson_table_path(@lesson), :method => :put do
-      = label :lesson, :name, "Name"
-      = text_field :lesson, 'name', :value => @lesson.name, :placeholder => "Name"
-      = label :lesson, :name, "Column"
-      = text_field :lesson, 'column', :value => @lesson.column, :placeholder => "Column"
-      = label :lesson, :name, "Row"
-      = text_field :lesson, 'row', :value => @lesson.row, :placeholder => "Row"
-      = label :lesson, :name, "Classroom"
-      = text_field :lesson, 'classroom', :value => @lesson.classroom, :placeholder => "Classroom"
-      = label :lesson, :name, "Department"
-      = text_field :lesson, 'department', :value => @lesson.department, :placeholder => "Department"
-      %br
-      = submit_tag 'Update Lesson Info', :class => "btn"
+      %div.form-group
+        = label :lesson, :name, "Name"
+        = text_field :lesson, 'name', :value => @lesson.name, :placeholder => "Name", :class => "form-control"
+      %div.form-group
+        = label :lesson, :column, "Week"
+        = text_field :lesson, 'column', :value => @lesson.column, :placeholder => "Column", :class => "form-control"
+      %div.form-group
+        = label :lesson, :row, "Period"
+        = text_field :lesson, 'row', :value => @lesson.row, :placeholder => "Row", :class => "form-control"
+      %div.form-group
+        = label :lesson, :classroom, "Classroom"
+        = text_field :lesson, 'classroom', :value => @lesson.classroom, :placeholder => "Classroom", :class => "form-control"
+      %div.form-group
+        = label :lesson, :department, "Department"
+        = text_field :lesson, 'department', :value => @lesson.department, :placeholder => "Department", :class => "form-control"
+      = submit_tag 'Update Lesson Info', :class => "btn btn-default"

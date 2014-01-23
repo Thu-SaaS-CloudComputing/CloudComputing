@@ -1,6 +1,6 @@
 %h1 Admin Page
 %div.row-fluid
-  %div.span2
-    =render "nav"
-  %div.span10
-    =flash[:notice] if flash[:notice]
+  %div.col-md-2
+    = render "nav"
+  %div.col-md-10
+    = flash[:notice] if flash[:notice]

@@ -2,9 +2,9 @@
 
 %h1 Edit Existing Category
 %div.row-fluid
-  %div.span2
+  %div.col-md-2
     =render "nav"
-  %div.span10
+  %div.col-md-10
     = form_tag admin_category_path(@category), :method => :put do
       = label :category, :name, 'Name'
       = text_field :category, 'name', :value => @category.name, :placeholder => "Name"
