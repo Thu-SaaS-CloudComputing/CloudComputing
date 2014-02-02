@@ -16,11 +16,11 @@ Background:
         |art_3    |Charle   |cat_2      |content for art_3 |
         |art_4    |David    |cat_2      |content for art_4 |
 
-Scenario: display top level categories
-          When I am on an article art_1 page
-          Then I should see the following displayed: cat_1, cat_2
-          When I follow "cat_1"
-          Then I am on a category cat_1 page
+#Scenario: display top level categories
+#          When I am on an article art_1 page
+#          Then I should see the following displayed: cat_1, cat_2
+#          When I follow "cat_1"
+#          Then I am on a category cat_1 page
 
 #Scenario: display the content of an article
 #          When I am on an article art_1 page

@@ -20,6 +20,7 @@ CloudComputing::Application.routes.draw do
   resources :visitor_index, only: [:index, :show]
   resources :category
   resources :articles do
+    get "tag", :action => :tag
     member do
       get 'raw'
     end

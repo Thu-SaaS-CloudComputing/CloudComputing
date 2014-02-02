@@ -37,6 +37,12 @@ class ArticlesController < ApplicationController
     render :layout => false
   end
 
+  def tag
+    tag_name = params[:tag_name]
+    @tag = Tag.find_by_name(tag_name)
+    @articles = Tag.get_all_articles(tag_name)
+  end
+
   def update
     print("WTF!!")
   end
