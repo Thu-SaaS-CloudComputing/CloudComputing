@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131228151633) do
+ActiveRecord::Schema.define(:version => 20140127022248) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -25,6 +25,11 @@ ActiveRecord::Schema.define(:version => 20131228151633) do
   end
 
   add_index "articles", ["category_id"], :name => "index_articles_on_category_id"
+
+  create_table "articles_tags", :id => false, :force => true do |t|
+    t.integer "tag_id"
+    t.integer "article_id"
+  end
 
   create_table "attachments", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -100,6 +105,12 @@ ActiveRecord::Schema.define(:version => 20131228151633) do
   create_table "roots", :force => true do |t|
     t.string   "username"
     t.string   "password"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

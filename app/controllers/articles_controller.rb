@@ -18,6 +18,7 @@ class ArticlesController < ApplicationController
     id = params[:id]
     id ||= 0
     @article = Article.find(id)
+    @tags = @article.tags
     @category = @article.category
     @categories = Category.find_top_categories
     

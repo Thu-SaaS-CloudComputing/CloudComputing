@@ -1,16 +1,20 @@
 -# edit.html.haml using partial
-
 %h1
   ="Edit Article - #{@article.title}"
 %div.row
   %div.col-md-2
-    =render "nav"
-  %div.col-md-9
+    = render "nav"
+  %div.col-md-8
     = form_tag admin_article_path(@article), :method => :put do
-      = label :article, :title, 'Title'
-      = text_field :article, 'title', :value => @article.title, :placeholder => "Title"
-      = cktext_area :article, :content, {:rows => "100", :ckeditor => {:height => "400px"}}
-  %div.col-md-1
+      %div.form-group
+        = label :article, :title, 'Title'
+        = text_field :article, 'title', :value => @article.title, :placeholder => "Title"
+      %div.form-group
+        = label :article, :label, "Tag"
+        = text_field :article, "tags", :value => @all_tag_string, :placeholder => @all_tag_string
+      %div.form-group
+        = cktext_area :article, :content, {:rows => "100", :ckeditor => {:height => "400px"}}
+  %div.col-md-2
     %button#show_uploader{:style => "position: fixed; left: 50px; top: 200px; ", :onclick => "$('#uploader').toggle(100)"}
       File uploader
     %iframe#uploader{:style => "position: fixed; left: 50px; top: 230px; display: none; width: 250px; ", :src => attachment_path}

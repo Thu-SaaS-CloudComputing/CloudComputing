@@ -118,4 +118,8 @@ links.each do |item|
   user.save!
 end
 
+tags = [{:name => "Tag_1"}, {:name => "Tag_2"}, {:name => "Tag_3"}]
+tags.each do |tag|
+  Tag.create(tag)
+end
 

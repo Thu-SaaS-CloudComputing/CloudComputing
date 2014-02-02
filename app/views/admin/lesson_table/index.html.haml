@@ -7,6 +7,7 @@
       = link_to "Sorted by Classroom", admin_lesson_table_path(:id => 0, :sort => "classroom"), :class => "btn btn-default btn-lg", :role => "button"
       = link_to "Sorted by Department", admin_lesson_table_path(:id => 0, :sort => "department"), :class => "btn btn-default btn-lg", :role => "button"
       = link_to "Unsorted", admin_lesson_table_path(:id => 0), :class => "btn btn-default btn-lg", :role => "button"
+      = link_to "Add new lesson", "/admin/lesson_table/0/new_lesson", :class => "btn btn-default btn-lg", :role => "button"
     - @lessons.each do |key, content|
       %table.table.table-bordered.table-hover{:id => key}
         %thead
@@ -32,4 +33,3 @@
               %td= link_to link_to image_tag("delete.jpg", :height => "32", :width => "32"), admin_lesson_table_path(:id => lesson.id), :method => "delete", :confirm => "Are you sure?", :id => lesson.name+"_delete"
 
 %br
-  = link_to "Add new lesson", "/admin/lesson_table/0/new_lesson", {:class => "btn btn-link"}
