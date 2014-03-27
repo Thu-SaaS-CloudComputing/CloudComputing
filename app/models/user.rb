@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   attr_accessible :name, :studentID
   has_and_belongs_to_many :priviledges
+  has_many :comments
   #validate :user_management?
 
   def self.set_user(user_id)

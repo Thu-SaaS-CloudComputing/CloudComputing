@@ -1,4 +1,3 @@
-
 %div#br
   %ul.nav.nav-tabs
     - @categories.each do |category|
@@ -8,7 +7,7 @@
   %ol.breadcrumb
     - @trace_category.each do |category|
       %li
-        =link_to "#{category.name}", category_path(category)
+        = link_to "#{category.name}", category_path(category)
     %li.active #{@article.title}
   %div#article_table
     %div.row
@@ -25,8 +24,13 @@
     %ul.pager
       - @tags.each do |tag|
         %li
-          = link_to tag.name, article_path(@article.id, :tag_name => tag.name)
+          = link_to tag.name, article_tag_path(@article.id, :tag_name => tag.name)
     %div.row.hero-unit#content
       %div.col-md-10.text-left{:style => "padding-left:0px;padding-right:0px;"}
         %iframe{:src => raw_article_path(@article), :scrolling => "no", :width => "100%", :onload => "javascript: this.style.height = this.contentWindow.document.body.scrollHeight + 'px'; this.style.border = 0;"}
-    %div#back.btn.btn-link= link_to "back", category_path(@article.category)
+    %table.table
+      - @comments.each do |comment|
+        = render "comment"
+    %div
+      = render "new_comment"
+  %div#back.btn.btn-link= link_to "back", category_path(@article.category)

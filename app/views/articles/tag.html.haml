@@ -1,0 +1,14 @@
+%h1
+  = @tag.name
+- if @articles
+  %table.table.table-bordered
+    %tbody
+      %tr#firstline
+        %td Title
+        %td Author
+        %td id
+      - @articles.each do |article|
+        %tr.articles
+          %td= link_to "#{article.title}", article_path(article)
+          %td= article.author
+          %td= article.id

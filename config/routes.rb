@@ -25,6 +25,7 @@ CloudComputing::Application.routes.draw do
       get 'raw'
     end
   end
+  resources :comments, :only => [:new]
   resources :admin, :only => [:index]
 
   namespace :admin do

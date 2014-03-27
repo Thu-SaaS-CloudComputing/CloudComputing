@@ -1,0 +1,5 @@
+= form_tag new_comment_path(), :method => :get do
+  %div.form-group
+    %label{:for => "content"} Content
+    %input{:type => "text", :class => "form-control", :id => "content"}
+  = submit_tag "Submit", :class => "btn btn-default"
