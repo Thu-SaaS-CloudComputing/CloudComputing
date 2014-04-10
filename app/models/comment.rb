@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :comment
+  attr_accessible :content
   belongs_to :user
   belongs_to :article
 end

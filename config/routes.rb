@@ -1,4 +1,13 @@
 CloudComputing::Application.routes.draw do
+  resources :blocks
+
+
+  resources :posts
+
+
+  resources :messages
+
+
   mount Ckeditor::Engine => '/ckeditor'
   
   get "carousel/index"
@@ -25,7 +34,7 @@ CloudComputing::Application.routes.draw do
       get 'raw'
     end
   end
-  resources :comments, :only => [:new]
+  resources :comments, :only => [:create]
   resources :admin, :only => [:index]
 
   namespace :admin do
