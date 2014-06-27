@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140410115214) do
+ActiveRecord::Schema.define(:version => 20140410124750) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -138,10 +138,8 @@ ActiveRecord::Schema.define(:version => 20140410115214) do
     t.string   "link"
   end
 
-  create_table "posts", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+# Could not dump table "posts" because of following StandardError
+#   Unknown type 'bool' for column 'featured'
 
   create_table "priviledges", :force => true do |t|
     t.string   "name"
@@ -166,6 +164,16 @@ ActiveRecord::Schema.define(:version => 20140410115214) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "topics", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.text     "option"
+    t.integer  "parent",      :default => 0
+    t.integer  "order"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "users", :force => true do |t|

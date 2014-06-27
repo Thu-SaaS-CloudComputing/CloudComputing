@@ -117,6 +117,5 @@ class Admin::CategoryController < AdminController
   end
 
   def generate_related_priviledges(new_cat)
-    
   end
 end

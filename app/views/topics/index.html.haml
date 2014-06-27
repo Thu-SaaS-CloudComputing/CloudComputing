@@ -1,0 +1,14 @@
+%h1 Listing topics
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @topics.each do |topic|
+    %tr
+      %td= topic.name
+      %td= link_to 'Show', topic_path(topic.id)
+
+%br

@@ -1,9 +1,9 @@
 CloudComputing::Application.routes.draw do
-  resources :blocks
+  resources :topics, only: [:show, :index]
 
+  resources :blocks, only: [:show, :index]
 
   resources :posts
-
 
   resources :messages
 
@@ -82,6 +82,14 @@ CloudComputing::Application.routes.draw do
       member do
         get '', :action => :index
         post 'enable', :action => :toggle_enable
+      end
+    end
+
+    resources :topics, only: [:index, :show, :edit, :destroy, :update] do
+      member do
+        get 'new_sub'
+        get 'upward'
+        get 'downward'
       end
     end
   end

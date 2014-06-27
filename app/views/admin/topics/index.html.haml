@@ -1,0 +1,31 @@
+%h1 Topic edit list
+%div.row-fluid
+  %div.col-md-2
+    = render "nav"
+  %div.col-md-10
+    %table.table.table-bordered.table-hover
+      %thead
+        %tr
+          %th Topics
+          %th order
+          %th id
+          %th parent
+          %th edit link
+          %th delete link
+          %th insert link
+          %th upward
+          %th downward
+      %tbody
+        - @topics.each do |topic|
+          %tr
+            %td= link_to "#{topic.name}", topic_path(topic.id)
+            %td= topic.order
+            %td= topic.id
+            %td= topic.parent
+            %td= link_to image_tag("edit.jpg", :height => "32", :width => "32"), edit_admin_topic_path(topic.id), :id => topic.name+"_edit"
+            %td= link_to image_tag("delete.jpg", :height => "32", :width => "32"), admin_topic_path(topic.id), :method => :delete, :confirm => 'Are you sure?', :id => topic.name+"_-"
+            %td= link_to image_tag("add.jpg", :height => "32", :width => "32"), new_sub_admin_topic_path(topic.id),:id=>topic.name+"_+"
+            %td= link_to image_tag("up.jpg", :height => "32", :width => "32"), upward_admin_topic_path(topic.id),:id=>topic.name+"_up"
+            %td= link_to image_tag("down.jpg", :height => "32", :width => "32"), downward_admin_topic_path(topic.id),:id=>topic.name+"_down"
+    %br
+    = link_to "Insert Top Category", new_sub_admin_topic_path(0), {:class => "btn btn-link"}

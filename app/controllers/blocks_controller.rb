@@ -2,7 +2,13 @@ class BlocksController < ApplicationController
   # GET /blocks
   # GET /blocks.json
   def index
-    @blocks = Block.all
+    all_blocks = Block.all
+    @blocks = Array.new
+    all_blocks.each do |block|
+      if block.parent == 0
+        @block << block
+      end
+    end
 
     respond_to do |format|
       format.html # index.html.erb
